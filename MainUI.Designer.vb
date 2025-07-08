@@ -88,6 +88,8 @@ Partial Class MainUI
         MicCaliLbl = New Label()
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
+        WhatModelsBtn = New Label()
+        demucs_model = New ComboBox()
         silent_duration = New NumericUpDown()
         silent_duration_lbl = New Label()
         Label18 = New Label()
@@ -878,6 +880,8 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
+        TabPage3.Controls.Add(WhatModelsBtn)
+        TabPage3.Controls.Add(demucs_model)
         TabPage3.Controls.Add(silent_duration)
         TabPage3.Controls.Add(silent_duration_lbl)
         TabPage3.Controls.Add(Label18)
@@ -898,6 +902,27 @@ Partial Class MainUI
         TabPage3.Size = New Size(459, 312)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Generate Captions"
+        ' 
+        ' WhatModelsBtn
+        ' 
+        WhatModelsBtn.AutoSize = True
+        WhatModelsBtn.Location = New Point(418, 121)
+        WhatModelsBtn.Name = "WhatModelsBtn"
+        WhatModelsBtn.Size = New Size(12, 15)
+        WhatModelsBtn.TabIndex = 12
+        WhatModelsBtn.Text = "?"
+        ' 
+        ' demucs_model
+        ' 
+        demucs_model.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        demucs_model.AutoCompleteSource = AutoCompleteSource.ListItems
+        demucs_model.FormattingEnabled = True
+        demucs_model.Items.AddRange(New Object() {"DEFAULT", "htdemucs", "htdemucs_ft", "htdemucs_6s", "hdemucs_mmi", "mdx", "mdx_extra", "mdx_q", "mdx_extra_q", "hdemucs", "demucs"})
+        demucs_model.Location = New Point(249, 115)
+        demucs_model.Name = "demucs_model"
+        demucs_model.Size = New Size(163, 23)
+        demucs_model.TabIndex = 11
+        demucs_model.Text = "DEFAULT"
         ' 
         ' silent_duration
         ' 
@@ -926,9 +951,9 @@ Partial Class MainUI
         Label18.AutoSize = True
         Label18.Location = New Point(179, 120)
         Label18.Name = "Label18"
-        Label18.Size = New Size(21, 15)
+        Label18.Size = New Size(64, 15)
         Label18.TabIndex = 8
-        Label18.Text = "dB"
+        Label18.Text = "dB   Model"
         ' 
         ' silent_threshold
         ' 
@@ -1678,5 +1703,7 @@ Partial Class MainUI
     Friend WithEvents silent_detect As CheckBox
     Friend WithEvents silent_duration As NumericUpDown
     Friend WithEvents silent_duration_lbl As Label
+    Friend WithEvents demucs_model As ComboBox
+    Friend WithEvents WhatModelsBtn As Label
 
 End Class

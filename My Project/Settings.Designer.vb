@@ -749,6 +749,18 @@ Namespace My
                 Me("silent_duration") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("DEFAULT")>  _
+        Public Property demucs_model() As String
+            Get
+                Return CType(Me("demucs_model"),String)
+            End Get
+            Set
+                Me("demucs_model") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

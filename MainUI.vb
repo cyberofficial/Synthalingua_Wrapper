@@ -288,4 +288,39 @@ Public Class MainUI
             End If
         End Using
     End Sub
+
+    Private Sub WhatModelsBtn_Click(sender As Object, e As EventArgs) Handles WhatModelsBtn.Click
+        Dim info As String =
+            "Model Name: htdemucs" & vbCrLf &
+            "  Description: Latest Hybrid Transformer (default)" & vbCrLf &
+            "  Recommended for: General music separation" & vbCrLf & vbCrLf &
+            "Model Name: htdemucs_ft" & vbCrLf &
+            "  Description: Fine-tuned for better quality" & vbCrLf &
+            "  Recommended for: Highest quality separation" & vbCrLf & vbCrLf &
+            "Model Name: htdemucs_6s" & vbCrLf &
+            "  Description: 6-source separation (piano/guitar)" & vbCrLf &
+            "  Recommended for: Detailed instrument separation" & vbCrLf & vbCrLf &
+            "Model Name: hdemucs_mmi" & vbCrLf &
+            "  Description: Hybrid v3, expanded dataset" & vbCrLf &
+            "  Recommended for: Legacy compatibility" & vbCrLf & vbCrLf &
+            "Model Name: mdx" & vbCrLf &
+            "  Description: Frequency-domain MDX winner" & vbCrLf &
+            "  Recommended for: Good quality, fast separation" & vbCrLf & vbCrLf &
+            "Model Name: mdx_extra" & vbCrLf &
+            "  Description: Enhanced with extra training data" & vbCrLf &
+            "  Recommended for: Balanced quality and speed" & vbCrLf & vbCrLf &
+            "Model Name: mdx_q" & vbCrLf &
+            "  Description: Quantized MDX (faster)" & vbCrLf &
+            "  Recommended for: Fastest separation" & vbCrLf & vbCrLf &
+            "Model Name: mdx_extra_q" & vbCrLf &
+            "  Description: Quantized MDX Extra" & vbCrLf &
+            "  Recommended for: Fastest separation (extra data)" & vbCrLf & vbCrLf &
+            "Model Name: hdemucs" & vbCrLf &
+            "  Description: Original Hybrid Demucs v3" & vbCrLf &
+            "  Recommended for: Legacy compatibility" & vbCrLf & vbCrLf &
+            "Model Name: demucs" & vbCrLf &
+            "  Description: Original time-domain" & vbCrLf &
+            "  Recommended for: Legacy compatibility"
+        MessageBox.Show(info, "Model Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 End Class

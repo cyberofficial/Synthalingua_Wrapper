@@ -18,6 +18,14 @@ Public Class CommandGenerator
             Throw New Exception("No Stream language was set.")
         End If
 
+        Dim validModels As New List(Of String) From {
+            "htdemucs", "htdemucs_ft", "htdemucs_6s", "hdemucs_mmi", "mdx", "mdx_extra", "mdx_q", "mdx_extra_q", "hdemucs", "demucs", "DEFAULT"
+        }
+        If Not validModels.Contains(settings.demucs_model.Text) Then
+            MessageBox.Show($"'{settings.demucs_model.Text}' is not a model that is known.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Throw New Exception($"Unknown demucs model: {settings.demucs_model.Text}")
+        End If
+
         settings.ShortCutType = If(settings.ScriptFileLocation.Text.Contains("transcribe_audio.py"), "Source", "Portable")
         settings.PrimaryFolder = Path.GetDirectoryName(settings.ScriptFileLocation.Text)
 
@@ -58,6 +66,10 @@ Public Class CommandGenerator
             If settings.silent_detect.Checked Then builder.Append("--silent_detect ")
             If settings.silent_threshold.Value <> -35 Then builder.Append($"--silent_threshold {settings.silent_threshold.Value} ")
             If settings.silent_duration.Value <> 0.5 Then builder.Append($"--silent_duration {settings.silent_duration.Value} ")
+            ' if "silent_detect" is checked and value from "demucs_model" is not DEFAULT then we add the value from the dropdown "demucs_model" to the command builder and it'll be "--demucs_model {value}"
+            If settings.silent_detect.Checked AndAlso settings.demucs_model.Text <> "DEFAULT" Then
+                builder.Append($"--demucs_model {settings.demucs_model.Text} ")
+            End If
         ElseIf settings.MIC_RadioButton.Checked Then
             builder.Append("--microphone_enabled true ")
             If settings.MicEnCheckBox.Checked Then builder.Append($"--energy_threshold {settings.EnThreshValue.Value} ")

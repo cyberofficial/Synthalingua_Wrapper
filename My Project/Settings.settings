@@ -176,5 +176,8 @@
     <Setting Name="silent_duration" Type="System.String" Scope="User">
       <Value Profile="(Default)">0.5</Value>
     </Setting>
+    <Setting Name="demucs_model" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DEFAULT</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
