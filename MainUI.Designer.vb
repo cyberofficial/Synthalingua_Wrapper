@@ -144,6 +144,8 @@ Partial Class MainUI
         paddedaudio = New CheckBox()
         paddedaudio_value = New TrackBar()
         paddedaudio_nvalue = New Label()
+        PictureBox1 = New PictureBox()
+        Label19 = New Label()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         CType(ChunkSizeTrackBar, ComponentModel.ISupportInitialize).BeginInit()
@@ -169,6 +171,7 @@ Partial Class MainUI
         CType(KoFiPicture, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox6.SuspendLayout()
         CType(paddedaudio_value, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' GroupBox1
@@ -1497,12 +1500,34 @@ Partial Class MainUI
         paddedaudio_nvalue.TabIndex = 38
         paddedaudio_nvalue.Text = "1"
         ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.Image = My.Resources.Resources.PyCharm_Icon_svg
+        PictureBox1.Location = New Point(1046, 533)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(48, 48)
+        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox1.TabIndex = 39
+        PictureBox1.TabStop = False
+        ' 
+        ' Label19
+        ' 
+        Label19.AutoSize = True
+        Label19.Location = New Point(855, 533)
+        Label19.Name = "Label19"
+        Label19.Size = New Size(185, 30)
+        Label19.TabIndex = 40
+        Label19.Text = "Thanks to Jetbrains for providing" & vbCrLf & "PyCharm with their OSS Program."
+        Label19.TextAlign = ContentAlignment.TopCenter
+        ' 
         ' MainUI
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateBlue
         ClientSize = New Size(1102, 647)
+        Controls.Add(Label19)
+        Controls.Add(PictureBox1)
         Controls.Add(paddedaudio_nvalue)
         Controls.Add(ConfigTextBox)
         Controls.Add(paddedaudio_value)
@@ -1581,6 +1606,7 @@ Partial Class MainUI
         GroupBox6.ResumeLayout(False)
         GroupBox6.PerformLayout()
         CType(paddedaudio_value, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -1705,5 +1731,7 @@ Partial Class MainUI
     Friend WithEvents silent_duration_lbl As Label
     Friend WithEvents demucs_model As ComboBox
     Friend WithEvents WhatModelsBtn As Label
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label19 As Label
 
 End Class
