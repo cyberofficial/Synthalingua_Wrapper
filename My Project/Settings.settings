@@ -167,5 +167,14 @@
     <Setting Name="paddedaudio_value" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="silent_detect" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="silent_threshold" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-35</Value>
+    </Setting>
+    <Setting Name="silent_duration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.5</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

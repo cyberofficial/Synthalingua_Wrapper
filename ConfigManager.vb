@@ -112,6 +112,11 @@ Public Class ConfigManager
 
                 ' Isolate Vocals
                 .isolate_vocals = settings.isolate_vocals.Checked
+
+                ' Silent Detection
+                .silent_detect = settings.silent_detect.Checked
+                .silent_threshold = settings.silent_threshold.Value.ToString()
+                .silent_duration = settings.silent_duration.Value.ToString()
             End With
             My.Settings.Save()
             If Not String.IsNullOrEmpty(settings.hlspassword.Text) Then
@@ -181,6 +186,9 @@ Public Class ConfigManager
                 form.SelectSource.Checked = .SelectSource
                 form.word_timestamps.Checked = .word_timestamps
                 form.isolate_vocals.Checked = .isolate_vocals
+                form.silent_detect.Checked = .silent_detect
+                form.silent_threshold.Value = CInt(.silent_threshold)
+                form.silent_duration.Value = CDec(.silent_duration)
 
                 Try
                     form.PrimaryFolder = .PrimaryFolder

@@ -55,6 +55,9 @@ Public Class CommandGenerator
     Private Sub AppendAudioSourceSettings()
         If settings.CAP_RadioButton.Checked Then
             builder.Append($"--makecaptions --file_input=""{settings.CaptionsInput.Text}"" --file_output=""{settings.CaptionsOutput.Text}"" --file_output_name=""{settings.CaptionsName.Text}"" ")
+            If settings.silent_detect.Checked Then builder.Append("--silent_detect ")
+            If settings.silent_threshold.Value <> -35 Then builder.Append($"--silent_threshold {settings.silent_threshold.Value} ")
+            If settings.silent_duration.Value <> 0.5 Then builder.Append($"--silent_duration {settings.silent_duration.Value} ")
         ElseIf settings.MIC_RadioButton.Checked Then
             builder.Append("--microphone_enabled true ")
             If settings.MicEnCheckBox.Checked Then builder.Append($"--energy_threshold {settings.EnThreshValue.Value} ")

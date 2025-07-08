@@ -713,6 +713,42 @@ Namespace My
                 Me("paddedaudio_value") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property silent_detect() As Boolean
+            Get
+                Return CType(Me("silent_detect"),Boolean)
+            End Get
+            Set
+                Me("silent_detect") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("-35")>  _
+        Public Property silent_threshold() As String
+            Get
+                Return CType(Me("silent_threshold"),String)
+            End Get
+            Set
+                Me("silent_threshold") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0.5")>  _
+        Public Property silent_duration() As String
+            Get
+                Return CType(Me("silent_duration"),String)
+            End Get
+            Set
+                Me("silent_duration") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

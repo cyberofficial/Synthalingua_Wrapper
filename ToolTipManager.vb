@@ -49,6 +49,9 @@ Public Class ToolTipManager
         toolTip.SetToolTip(form.auto_blocklist, "Enable automatic blocklist detection and configuration.")
         toolTip.SetToolTip(form.paddedaudio, "Number of chunks to overlap from previous batch for better transcription context." & vbCrLf & "Works with both streaming (--stream) and microphone (--microphone_enabled) input." & vbCrLf & "For streams with --stream_chunks 4 --paddedaudio 1, each batch will contain" & vbCrLf & "1 chunk from the previous batch plus 4 new chunks (5 total)." & vbCrLf & "For microphone input, use with --mic_chunk_size to define batch size.")
         toolTip.SetToolTip(form.paddedaudio_value, "Number of chunks to overlap from previous batch for better transcription context." & vbCrLf & "Works with both streaming (--stream) and microphone (--microphone_enabled) input." & vbCrLf & "For streams with --stream_chunks 4 --paddedaudio 1, each batch will contain" & vbCrLf & "1 chunk from the previous batch plus 4 new chunks (5 total)." & vbCrLf & "For microphone input, use with --mic_chunk_size to define batch size.")
+        toolTip.SetToolTip(form.silent_detect, "Skip processing silent audio chunks during caption generation. Only works with makecaptions, not with HLS streaming or microphone input.")
+        toolTip.SetToolTip(form.silent_duration, "Minimum duration in seconds for a region to be considered silence (default: 0.5). Higher values (e.g., 2.0) treat brief pauses as speech. Lower values (e.g., 0.1) detect shorter silent periods. Only used with silent detect.")
+        toolTip.SetToolTip(form.silent_duration_lbl, "Minimum duration in seconds for a region to be considered silence (default: 0.5). Higher values (e.g., 2.0) treat brief pauses as speech. Lower values (e.g., 0.1) detect shorter silent periods. Only used with silent detect.")
     End Sub
 
     Public Sub ShowMicrophoneSettingsHelp(control As String)

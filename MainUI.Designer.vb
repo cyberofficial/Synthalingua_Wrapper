@@ -22,7 +22,7 @@ Partial Class MainUI
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
+        components = New ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainUI))
         GroupBox1 = New GroupBox()
         CAP_RadioButton = New RadioButton()
@@ -88,6 +88,11 @@ Partial Class MainUI
         MicCaliLbl = New Label()
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
+        silent_duration = New NumericUpDown()
+        silent_duration_lbl = New Label()
+        Label18 = New Label()
+        silent_threshold = New NumericUpDown()
+        silent_detect = New CheckBox()
         word_timestamps = New CheckBox()
         CaptionsName = New TextBox()
         CaptionsOutput = New TextBox()
@@ -153,6 +158,8 @@ Partial Class MainUI
         CType(MicCaliTime, ComponentModel.ISupportInitialize).BeginInit()
         CType(EnThreshValue, ComponentModel.ISupportInitialize).BeginInit()
         TabPage3.SuspendLayout()
+        CType(silent_duration, ComponentModel.ISupportInitialize).BeginInit()
+        CType(silent_threshold, ComponentModel.ISupportInitialize).BeginInit()
         TabPage4.SuspendLayout()
         GroupBox5.SuspendLayout()
         CType(PictureItch, ComponentModel.ISupportInitialize).BeginInit()
@@ -220,7 +227,7 @@ Partial Class MainUI
         SaveConfigToFileButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfigToFileButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfigToFileButton.FlatStyle = FlatStyle.Popup
-        SaveConfigToFileButton.Font = New Font("Segoe UI", 12F)
+        SaveConfigToFileButton.Font = New Font("Segoe UI", 12.0F)
         SaveConfigToFileButton.Location = New Point(631, 578)
         SaveConfigToFileButton.Margin = New Padding(3, 2, 3, 2)
         SaveConfigToFileButton.Name = "SaveConfigToFileButton"
@@ -343,7 +350,7 @@ Partial Class MainUI
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Font = New Font("Segoe UI", 10F)
+        Label14.Font = New Font("Segoe UI", 10.0F)
         Label14.Location = New Point(5, 154)
         Label14.Name = "Label14"
         Label14.Size = New Size(423, 95)
@@ -557,7 +564,7 @@ Partial Class MainUI
         ' 
         ConfigTextBox.BackColor = Color.SlateBlue
         ConfigTextBox.BorderStyle = BorderStyle.FixedSingle
-        ConfigTextBox.Font = New Font("Segoe UI", 13F)
+        ConfigTextBox.Font = New Font("Segoe UI", 13.0F)
         ConfigTextBox.Location = New Point(157, 222)
         ConfigTextBox.Margin = New Padding(3, 2, 3, 2)
         ConfigTextBox.Multiline = True
@@ -574,7 +581,7 @@ Partial Class MainUI
         GenerateConfigButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         GenerateConfigButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         GenerateConfigButton.FlatStyle = FlatStyle.Popup
-        GenerateConfigButton.Font = New Font("Segoe UI", 13F)
+        GenerateConfigButton.Font = New Font("Segoe UI", 13.0F)
         GenerateConfigButton.Location = New Point(631, 371)
         GenerateConfigButton.Margin = New Padding(3, 2, 3, 2)
         GenerateConfigButton.Name = "GenerateConfigButton"
@@ -871,6 +878,11 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
+        TabPage3.Controls.Add(silent_duration)
+        TabPage3.Controls.Add(silent_duration_lbl)
+        TabPage3.Controls.Add(Label18)
+        TabPage3.Controls.Add(silent_threshold)
+        TabPage3.Controls.Add(silent_detect)
         TabPage3.Controls.Add(word_timestamps)
         TabPage3.Controls.Add(CaptionsName)
         TabPage3.Controls.Add(CaptionsOutput)
@@ -886,6 +898,57 @@ Partial Class MainUI
         TabPage3.Size = New Size(459, 312)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Generate Captions"
+        ' 
+        ' silent_duration
+        ' 
+        silent_duration.DecimalPlaces = 1
+        silent_duration.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        silent_duration.Location = New Point(116, 145)
+        silent_duration.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
+        silent_duration.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
+        silent_duration.Name = "silent_duration"
+        silent_duration.Size = New Size(120, 23)
+        silent_duration.TabIndex = 10
+        silent_duration.ThousandsSeparator = True
+        silent_duration.Value = New Decimal(New Integer() {5, 0, 0, 65536})
+        ' 
+        ' silent_duration_lbl
+        ' 
+        silent_duration_lbl.AutoSize = True
+        silent_duration_lbl.Location = New Point(26, 147)
+        silent_duration_lbl.Name = "silent_duration_lbl"
+        silent_duration_lbl.Size = New Size(84, 15)
+        silent_duration_lbl.TabIndex = 9
+        silent_duration_lbl.Text = "Silent duration"
+        ' 
+        ' Label18
+        ' 
+        Label18.AutoSize = True
+        Label18.Location = New Point(179, 120)
+        Label18.Name = "Label18"
+        Label18.Size = New Size(21, 15)
+        Label18.TabIndex = 8
+        Label18.Text = "dB"
+        ' 
+        ' silent_threshold
+        ' 
+        silent_threshold.Location = New Point(116, 116)
+        silent_threshold.Maximum = New Decimal(New Integer() {500, 0, 0, 0})
+        silent_threshold.Minimum = New Decimal(New Integer() {500, 0, 0, Integer.MinValue})
+        silent_threshold.Name = "silent_threshold"
+        silent_threshold.Size = New Size(57, 23)
+        silent_threshold.TabIndex = 7
+        silent_threshold.Value = New Decimal(New Integer() {35, 0, 0, Integer.MinValue})
+        ' 
+        ' silent_detect
+        ' 
+        silent_detect.AutoSize = True
+        silent_detect.Location = New Point(10, 117)
+        silent_detect.Name = "silent_detect"
+        silent_detect.Size = New Size(100, 19)
+        silent_detect.TabIndex = 6
+        silent_detect.Text = "Detect Silence"
+        silent_detect.UseVisualStyleBackColor = True
         ' 
         ' word_timestamps
         ' 
@@ -991,7 +1054,7 @@ Partial Class MainUI
         ' Label17
         ' 
         Label17.AutoSize = True
-        Label17.Font = New Font("Segoe UI", 12F)
+        Label17.Font = New Font("Segoe UI", 12.0F)
         Label17.Location = New Point(6, 88)
         Label17.Name = "Label17"
         Label17.Size = New Size(443, 189)
@@ -1066,7 +1129,7 @@ Partial Class MainUI
         RunScript.FlatAppearance.MouseDownBackColor = Color.Indigo
         RunScript.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         RunScript.FlatStyle = FlatStyle.Popup
-        RunScript.Font = New Font("Segoe UI", 15F)
+        RunScript.Font = New Font("Segoe UI", 15.0F)
         RunScript.Location = New Point(631, 443)
         RunScript.Margin = New Padding(3, 2, 3, 2)
         RunScript.Name = "RunScript"
@@ -1205,7 +1268,7 @@ Partial Class MainUI
         ' CookiesRefresh
         ' 
         CookiesRefresh.FlatStyle = FlatStyle.Flat
-        CookiesRefresh.Font = New Font("Segoe UI", 8F)
+        CookiesRefresh.Font = New Font("Segoe UI", 8.0F)
         CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
         CookiesRefresh.Location = New Point(585, 34)
         CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
@@ -1242,7 +1305,7 @@ Partial Class MainUI
         SaveConfig.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfig.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfig.FlatStyle = FlatStyle.Popup
-        SaveConfig.Font = New Font("Segoe UI", 12F)
+        SaveConfig.Font = New Font("Segoe UI", 12.0F)
         SaveConfig.Location = New Point(631, 407)
         SaveConfig.Margin = New Padding(3, 2, 3, 2)
         SaveConfig.Name = "SaveConfig"
@@ -1411,7 +1474,7 @@ Partial Class MainUI
         ' 
         ' MainUI
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateBlue
         ClientSize = New Size(1102, 647)
@@ -1481,6 +1544,8 @@ Partial Class MainUI
         CType(EnThreshValue, ComponentModel.ISupportInitialize).EndInit()
         TabPage3.ResumeLayout(False)
         TabPage3.PerformLayout()
+        CType(silent_duration, ComponentModel.ISupportInitialize).EndInit()
+        CType(silent_threshold, ComponentModel.ISupportInitialize).EndInit()
         TabPage4.ResumeLayout(False)
         TabPage4.PerformLayout()
         GroupBox5.ResumeLayout(False)
@@ -1608,5 +1673,10 @@ Partial Class MainUI
     Friend WithEvents paddedaudio As CheckBox
     Friend WithEvents paddedaudio_value As TrackBar
     Friend WithEvents paddedaudio_nvalue As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents silent_threshold As NumericUpDown
+    Friend WithEvents silent_detect As CheckBox
+    Friend WithEvents silent_duration As NumericUpDown
+    Friend WithEvents silent_duration_lbl As Label
 
 End Class
