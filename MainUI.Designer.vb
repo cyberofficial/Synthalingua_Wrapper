@@ -36,11 +36,12 @@ Partial Class MainUI
         RamSize = New ComboBox()
         ForceRam = New CheckBox()
         GroupBox2 = New GroupBox()
+        GroupBox7 = New GroupBox()
+        hlspassid = New TextBox()
+        hlspassword = New TextBox()
+        Label14 = New Label()
         SelectSource = New CheckBox()
         AutoHLS_Checkbox = New CheckBox()
-        Label14 = New Label()
-        hlspassword = New TextBox()
-        hlspassid = New TextBox()
         cb_halspassword = New CheckBox()
         ShowOriginalText = New CheckBox()
         ChunkSizeTrackBarValue = New Label()
@@ -49,7 +50,6 @@ Partial Class MainUI
         HLS_URL = New TextBox()
         Label3 = New Label()
         EnglishTranslationCheckBox = New CheckBox()
-        Label7 = New Label()
         SecondaryTranslation = New CheckBox()
         Label5 = New Label()
         SecondaryTranslationLanguage = New ComboBox()
@@ -88,6 +88,7 @@ Partial Class MainUI
         MicCaliLbl = New Label()
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
+        compare_mode = New CheckBox()
         WhatModelsBtn = New Label()
         demucs_model = New ComboBox()
         silent_duration = New NumericUpDown()
@@ -110,11 +111,20 @@ Partial Class MainUI
         Label16 = New Label()
         modelDIr = New TextBox()
         modelDirPicker = New Button()
+        TabPage5 = New TabPage()
+        Label20 = New Label()
+        WipeSettings = New Button()
+        EraseCheckBox = New CheckBox()
+        paddedaudio_nvalue = New Label()
+        DiscordWebHook = New TextBox()
+        Label13 = New Label()
+        paddedaudio_value = New TrackBar()
+        CookiesName = New ComboBox()
+        paddedaudio = New CheckBox()
+        CookiesRefresh = New Button()
         isolate_vocals = New CheckBox()
         MicIDs = New Button()
         RunScript = New Button()
-        Label13 = New Label()
-        DiscordWebHook = New TextBox()
         GroupBox5 = New GroupBox()
         Button3 = New Button()
         Label15 = New Label()
@@ -122,18 +132,14 @@ Partial Class MainUI
         WebLinkT1 = New Button()
         WebLinkT2 = New Button()
         SubWindow = New Button()
-        CookiesName = New ComboBox()
-        CookiesRefresh = New Button()
         ToolTip1 = New ToolTip(components)
         PictureItch = New PictureBox()
         GitHubPicture = New PictureBox()
         SaveConfig = New Button()
-        WipeSettings = New Button()
         KoFiPicture = New PictureBox()
         CheckBoxCMDBLock = New CheckBox()
         FolderBrowserDialog1 = New FolderBrowserDialog()
         CaptionsInputFile = New OpenFileDialog()
-        EraseCheckBox = New CheckBox()
         WordBlockList = New CheckBox()
         EditBlockList = New Button()
         GroupBox6 = New GroupBox()
@@ -141,14 +147,13 @@ Partial Class MainUI
         RepeatProtection = New CheckBox()
         Button1 = New Button()
         FolderBrowserDialog2 = New FolderBrowserDialog()
-        paddedaudio = New CheckBox()
-        paddedaudio_value = New TrackBar()
-        paddedaudio_nvalue = New Label()
         JetBrainsLogoImg = New PictureBox()
         Label19 = New Label()
-        compare_mode = New CheckBox()
+        Label7 = New Label()
+        Label21 = New Label()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
+        GroupBox7.SuspendLayout()
         CType(ChunkSizeTrackBar, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox3.SuspendLayout()
         CType(PortNumber, ComponentModel.ISupportInitialize).BeginInit()
@@ -166,12 +171,13 @@ Partial Class MainUI
         CType(silent_duration, ComponentModel.ISupportInitialize).BeginInit()
         CType(silent_threshold, ComponentModel.ISupportInitialize).BeginInit()
         TabPage4.SuspendLayout()
+        TabPage5.SuspendLayout()
+        CType(paddedaudio_value, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox5.SuspendLayout()
         CType(PictureItch, ComponentModel.ISupportInitialize).BeginInit()
         CType(GitHubPicture, ComponentModel.ISupportInitialize).BeginInit()
         CType(KoFiPicture, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox6.SuspendLayout()
-        CType(paddedaudio_value, ComponentModel.ISupportInitialize).BeginInit()
         CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -186,7 +192,7 @@ Partial Class MainUI
         GroupBox1.Margin = New Padding(3, 2, 3, 2)
         GroupBox1.Name = "GroupBox1"
         GroupBox1.Padding = New Padding(3, 2, 3, 2)
-        GroupBox1.Size = New Size(137, 101)
+        GroupBox1.Size = New Size(155, 101)
         GroupBox1.TabIndex = 0
         GroupBox1.TabStop = False
         GroupBox1.Text = "Audio Soruce"
@@ -197,10 +203,10 @@ Partial Class MainUI
         CAP_RadioButton.Location = New Point(5, 65)
         CAP_RadioButton.Margin = New Padding(3, 2, 3, 2)
         CAP_RadioButton.Name = "CAP_RadioButton"
-        CAP_RadioButton.Size = New Size(122, 19)
+        CAP_RadioButton.Size = New Size(109, 19)
         CAP_RadioButton.TabIndex = 1
         CAP_RadioButton.TabStop = True
-        CAP_RadioButton.Text = "Generate Captions"
+        CAP_RadioButton.Text = "Create Captions"
         CAP_RadioButton.UseVisualStyleBackColor = True
         ' 
         ' MIC_RadioButton
@@ -225,7 +231,7 @@ Partial Class MainUI
         HSL_RadioButton.Size = New Size(86, 19)
         HSL_RadioButton.TabIndex = 0
         HSL_RadioButton.TabStop = True
-        HSL_RadioButton.Text = "HLS Stream"
+        HSL_RadioButton.Text = "Live Stream"
         HSL_RadioButton.UseVisualStyleBackColor = True
         ' 
         ' SaveConfigToFileButton
@@ -233,11 +239,11 @@ Partial Class MainUI
         SaveConfigToFileButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfigToFileButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfigToFileButton.FlatStyle = FlatStyle.Popup
-        SaveConfigToFileButton.Font = New Font("Segoe UI", 12F)
-        SaveConfigToFileButton.Location = New Point(631, 578)
+        SaveConfigToFileButton.Font = New Font("Segoe UI", 12.0F)
+        SaveConfigToFileButton.Location = New Point(522, 478)
         SaveConfigToFileButton.Margin = New Padding(3, 2, 3, 2)
         SaveConfigToFileButton.Name = "SaveConfigToFileButton"
-        SaveConfigToFileButton.Size = New Size(113, 32)
+        SaveConfigToFileButton.Size = New Size(98, 32)
         SaveConfigToFileButton.TabIndex = 1
         SaveConfigToFileButton.Text = "Save to File"
         SaveConfigToFileButton.UseVisualStyleBackColor = True
@@ -311,11 +317,9 @@ Partial Class MainUI
         ' GroupBox2
         ' 
         GroupBox2.BackColor = Color.DarkSlateBlue
+        GroupBox2.Controls.Add(GroupBox7)
         GroupBox2.Controls.Add(SelectSource)
         GroupBox2.Controls.Add(AutoHLS_Checkbox)
-        GroupBox2.Controls.Add(Label14)
-        GroupBox2.Controls.Add(hlspassword)
-        GroupBox2.Controls.Add(hlspassid)
         GroupBox2.Controls.Add(cb_halspassword)
         GroupBox2.Controls.Add(ShowOriginalText)
         GroupBox2.Controls.Add(ChunkSizeTrackBarValue)
@@ -328,62 +332,75 @@ Partial Class MainUI
         GroupBox2.Margin = New Padding(3, 2, 3, 2)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.Padding = New Padding(3, 2, 3, 2)
-        GroupBox2.Size = New Size(450, 255)
+        GroupBox2.Size = New Size(668, 399)
         GroupBox2.TabIndex = 8
         GroupBox2.TabStop = False
         GroupBox2.Text = "HLS Info"
         ' 
+        ' GroupBox7
+        ' 
+        GroupBox7.Controls.Add(hlspassid)
+        GroupBox7.Controls.Add(hlspassword)
+        GroupBox7.Controls.Add(Label14)
+        GroupBox7.ForeColor = Color.FloralWhite
+        GroupBox7.Location = New Point(6, 145)
+        GroupBox7.Name = "GroupBox7"
+        GroupBox7.Size = New Size(441, 184)
+        GroupBox7.TabIndex = 30
+        GroupBox7.TabStop = False
+        GroupBox7.Text = "Stream Credentials"
+        ' 
+        ' hlspassid
+        ' 
+        hlspassid.Location = New Point(6, 22)
+        hlspassid.Name = "hlspassid"
+        hlspassid.PlaceholderText = "id type"
+        hlspassid.Size = New Size(163, 23)
+        hlspassid.TabIndex = 25
+        ' 
+        ' hlspassword
+        ' 
+        hlspassword.Location = New Point(6, 51)
+        hlspassword.Name = "hlspassword"
+        hlspassword.PasswordChar = "*"c
+        hlspassword.PlaceholderText = "password/key"
+        hlspassword.Size = New Size(163, 23)
+        hlspassword.TabIndex = 26
+        ' 
+        ' Label14
+        ' 
+        Label14.AutoSize = True
+        Label14.Font = New Font("Segoe UI", 10.0F)
+        Label14.Location = New Point(6, 77)
+        Label14.Name = "Label14"
+        Label14.Size = New Size(423, 95)
+        Label14.TabIndex = 27
+        Label14.Text = resources.GetString("Label14.Text")
+        ' 
         ' SelectSource
         ' 
         SelectSource.AutoSize = True
-        SelectSource.Location = New Point(258, 70)
+        SelectSource.Location = New Point(6, 124)
         SelectSource.Name = "SelectSource"
-        SelectSource.Size = New Size(96, 19)
+        SelectSource.Size = New Size(139, 19)
         SelectSource.TabIndex = 29
-        SelectSource.Text = "Select Source"
+        SelectSource.Text = "List Available Sources"
         SelectSource.UseVisualStyleBackColor = True
         ' 
         ' AutoHLS_Checkbox
         ' 
         AutoHLS_Checkbox.AutoSize = True
-        AutoHLS_Checkbox.Location = New Point(128, 70)
+        AutoHLS_Checkbox.Location = New Point(6, 76)
         AutoHLS_Checkbox.Name = "AutoHLS_Checkbox"
         AutoHLS_Checkbox.Size = New Size(124, 19)
         AutoHLS_Checkbox.TabIndex = 28
         AutoHLS_Checkbox.Text = "Detect HLS Length"
         AutoHLS_Checkbox.UseVisualStyleBackColor = True
         ' 
-        ' Label14
-        ' 
-        Label14.AutoSize = True
-        Label14.Font = New Font("Segoe UI", 10F)
-        Label14.Location = New Point(5, 154)
-        Label14.Name = "Label14"
-        Label14.Size = New Size(423, 95)
-        Label14.TabIndex = 27
-        Label14.Text = resources.GetString("Label14.Text")
-        ' 
-        ' hlspassword
-        ' 
-        hlspassword.Location = New Point(134, 128)
-        hlspassword.Name = "hlspassword"
-        hlspassword.PasswordChar = "*"c
-        hlspassword.PlaceholderText = "password/key"
-        hlspassword.Size = New Size(311, 23)
-        hlspassword.TabIndex = 26
-        ' 
-        ' hlspassid
-        ' 
-        hlspassid.Location = New Point(5, 128)
-        hlspassid.Name = "hlspassid"
-        hlspassid.PlaceholderText = "id type"
-        hlspassid.Size = New Size(124, 23)
-        hlspassid.TabIndex = 25
-        ' 
         ' cb_halspassword
         ' 
         cb_halspassword.AutoSize = True
-        cb_halspassword.Location = New Point(6, 103)
+        cb_halspassword.Location = New Point(136, 76)
         cb_halspassword.Name = "cb_halspassword"
         cb_halspassword.Size = New Size(340, 19)
         cb_halspassword.TabIndex = 24
@@ -393,7 +410,7 @@ Partial Class MainUI
         ' ShowOriginalText
         ' 
         ShowOriginalText.AutoSize = True
-        ShowOriginalText.Location = New Point(5, 70)
+        ShowOriginalText.Location = New Point(6, 100)
         ShowOriginalText.Margin = New Padding(3, 2, 3, 2)
         ShowOriginalText.Name = "ShowOriginalText"
         ShowOriginalText.Size = New Size(124, 19)
@@ -404,7 +421,7 @@ Partial Class MainUI
         ' ChunkSizeTrackBarValue
         ' 
         ChunkSizeTrackBarValue.AutoSize = True
-        ChunkSizeTrackBarValue.Location = New Point(128, 46)
+        ChunkSizeTrackBarValue.Location = New Point(6, 58)
         ChunkSizeTrackBarValue.Name = "ChunkSizeTrackBarValue"
         ChunkSizeTrackBarValue.Size = New Size(59, 15)
         ChunkSizeTrackBarValue.TabIndex = 11
@@ -412,19 +429,19 @@ Partial Class MainUI
         ' 
         ' ChunkSizeTrackBar
         ' 
-        ChunkSizeTrackBar.Location = New Point(194, 46)
+        ChunkSizeTrackBar.Location = New Point(113, 42)
         ChunkSizeTrackBar.Margin = New Padding(3, 2, 3, 2)
         ChunkSizeTrackBar.Maximum = 30
         ChunkSizeTrackBar.Minimum = 1
         ChunkSizeTrackBar.Name = "ChunkSizeTrackBar"
-        ChunkSizeTrackBar.Size = New Size(250, 45)
+        ChunkSizeTrackBar.Size = New Size(447, 45)
         ChunkSizeTrackBar.TabIndex = 10
         ChunkSizeTrackBar.Value = 5
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Location = New Point(5, 46)
+        Label6.Location = New Point(6, 42)
         Label6.Name = "Label6"
         Label6.Size = New Size(108, 15)
         Label6.TabIndex = 9
@@ -436,7 +453,7 @@ Partial Class MainUI
         HLS_URL.Margin = New Padding(3, 2, 3, 2)
         HLS_URL.Name = "HLS_URL"
         HLS_URL.PlaceholderText = "Stream URL"
-        HLS_URL.Size = New Size(357, 23)
+        HLS_URL.Size = New Size(472, 23)
         HLS_URL.TabIndex = 1
         ' 
         ' Label3
@@ -451,27 +468,19 @@ Partial Class MainUI
         ' EnglishTranslationCheckBox
         ' 
         EnglishTranslationCheckBox.AutoSize = True
-        EnglishTranslationCheckBox.Location = New Point(323, 91)
+        EnglishTranslationCheckBox.CheckAlign = ContentAlignment.TopLeft
+        EnglishTranslationCheckBox.Location = New Point(323, 61)
         EnglishTranslationCheckBox.Margin = New Padding(3, 2, 3, 2)
         EnglishTranslationCheckBox.Name = "EnglishTranslationCheckBox"
-        EnglishTranslationCheckBox.Size = New Size(267, 19)
+        EnglishTranslationCheckBox.Size = New Size(152, 19)
         EnglishTranslationCheckBox.TabIndex = 8
-        EnglishTranslationCheckBox.Text = "Enable | Use if Stream language is not english."
+        EnglishTranslationCheckBox.Text = "Enable English Captions"
         EnglishTranslationCheckBox.UseVisualStyleBackColor = True
-        ' 
-        ' Label7
-        ' 
-        Label7.AutoSize = True
-        Label7.Location = New Point(166, 92)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(151, 15)
-        Label7.TabIndex = 7
-        Label7.Text = "English Translated Captions"
         ' 
         ' SecondaryTranslation
         ' 
         SecondaryTranslation.AutoSize = True
-        SecondaryTranslation.Location = New Point(501, 115)
+        SecondaryTranslation.Location = New Point(323, 111)
         SecondaryTranslation.Margin = New Padding(3, 2, 3, 2)
         SecondaryTranslation.Name = "SecondaryTranslation"
         SecondaryTranslation.Size = New Size(119, 19)
@@ -482,7 +491,7 @@ Partial Class MainUI
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(192, 116)
+        Label5.Location = New Point(192, 87)
         Label5.Name = "Label5"
         Label5.Size = New Size(125, 15)
         Label5.TabIndex = 4
@@ -494,7 +503,7 @@ Partial Class MainUI
         SecondaryTranslationLanguage.DropDownStyle = ComboBoxStyle.DropDownList
         SecondaryTranslationLanguage.FormattingEnabled = True
         SecondaryTranslationLanguage.Items.AddRange(New Object() {"Afrikaans", "Albanian", "Amharic", "Arabic", "Armenian", "Assamese", "Azerbaijani", "Bashkir", "Basque", "Belarusian", "Bengali", "Bosnian", "Breton", "Bulgarian", "Burmese", "Castilian", "Catalan", "Chinese", "Croatian", "Czech", "Danish", "Dutch", "English", "Estonian", "Faroese", "Finnish", "Flemish", "French", "Galician", "Georgian", "German", "Greek", "Gujarati", "Haitian", "Haitian Creole", "Hausa", "Hawaiian", "Hebrew", "Hindi", "Hungarian", "Icelandic", "Indonesian", "Italian", "Japanese", "Javanese", "Kannada", "Kazakh", "Khmer", "Korean", "Lao", "Latin", "Latvian", "Letzeburgesch", "Lingala", "Lithuanian", "Luxembourgish", "Macedonian", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Moldavian", "Moldovan", "Mongolian", "Myanmar", "Nepali", "Norwegian", "Nynorsk", "Occitan", "Panjabi", "Pashto", "Persian", "Polish", "Portuguese", "Punjabi", "Pushto", "Romanian", "Russian", "Sanskrit", "Serbian", "Shona", "Sindhi", "Sinhala", "Sinhalese", "Slovak", "Slovenian", "Somali", "Spanish", "Sundanese", "Swahili", "Swedish", "Tagalog", "Tajik", "Tamil", "Tatar", "Telugu", "Thai", "Tibetan", "Turkish", "Turkmen", "Ukrainian", "Urdu", "Uzbek", "Valencian", "Vietnamese", "Welsh", "Yiddish", "Yoruba"})
-        SecondaryTranslationLanguage.Location = New Point(323, 113)
+        SecondaryTranslationLanguage.Location = New Point(323, 84)
         SecondaryTranslationLanguage.Margin = New Padding(3, 2, 3, 2)
         SecondaryTranslationLanguage.Name = "SecondaryTranslationLanguage"
         SecondaryTranslationLanguage.Size = New Size(172, 23)
@@ -507,35 +516,35 @@ Partial Class MainUI
         StreamLanguage.DropDownStyle = ComboBoxStyle.DropDownList
         StreamLanguage.FormattingEnabled = True
         StreamLanguage.Items.AddRange(New Object() {"--Auto Detect--", "Afrikaans", "Albanian", "Amharic", "Arabic", "Armenian", "Assamese", "Azerbaijani", "Bashkir", "Basque", "Belarusian", "Bengali", "Bosnian", "Breton", "Bulgarian", "Burmese", "Castilian", "Catalan", "Chinese", "Croatian", "Czech", "Danish", "Dutch", "English", "Estonian", "Faroese", "Finnish", "Flemish", "French", "Galician", "Georgian", "German", "Greek", "Gujarati", "Haitian", "Haitian Creole", "Hausa", "Hawaiian", "Hebrew", "Hindi", "Hungarian", "Icelandic", "Indonesian", "Italian", "Japanese", "Javanese", "Kannada", "Kazakh", "Khmer", "Korean", "Lao", "Latin", "Latvian", "Letzeburgesch", "Lingala", "Lithuanian", "Luxembourgish", "Macedonian", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Moldavian", "Moldovan", "Mongolian", "Myanmar", "Nepali", "Norwegian", "Nynorsk", "Occitan", "Panjabi", "Pashto", "Persian", "Polish", "Portuguese", "Punjabi", "Pushto", "Romanian", "Russian", "Sanskrit", "Serbian", "Shona", "Sindhi", "Sinhala", "Sinhalese", "Slovak", "Slovenian", "Somali", "Spanish", "Sundanese", "Swahili", "Swedish", "Tagalog", "Tajik", "Tamil", "Tatar", "Telugu", "Thai", "Tibetan", "Turkish", "Turkmen", "Ukrainian", "Urdu", "Uzbek", "Valencian", "Vietnamese", "Welsh", "Yiddish", "Yoruba"})
-        StreamLanguage.Location = New Point(323, 65)
+        StreamLanguage.Location = New Point(323, 34)
         StreamLanguage.Margin = New Padding(3, 2, 3, 2)
         StreamLanguage.Name = "StreamLanguage"
-        StreamLanguage.Size = New Size(258, 23)
+        StreamLanguage.Size = New Size(172, 23)
         StreamLanguage.Sorted = True
         StreamLanguage.TabIndex = 3
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(212, 68)
+        Label4.Location = New Point(216, 37)
         Label4.Name = "Label4"
-        Label4.Size = New Size(105, 15)
+        Label4.Size = New Size(101, 15)
         Label4.TabIndex = 2
-        Label4.Text = "Stream Language: "
+        Label4.Text = "Source Language:"
         ' 
         ' GroupBox3
         ' 
         GroupBox3.Controls.Add(CPU_RadioButton)
         GroupBox3.Controls.Add(CUDA_RadioButton)
         GroupBox3.ForeColor = Color.FloralWhite
-        GroupBox3.Location = New Point(10, 114)
+        GroupBox3.Location = New Point(6, 7)
         GroupBox3.Margin = New Padding(3, 2, 3, 2)
         GroupBox3.Name = "GroupBox3"
         GroupBox3.Padding = New Padding(3, 2, 3, 2)
-        GroupBox3.Size = New Size(137, 70)
+        GroupBox3.Size = New Size(155, 70)
         GroupBox3.TabIndex = 9
         GroupBox3.TabStop = False
-        GroupBox3.Text = "Proc Device"
+        GroupBox3.Text = "Processing Device"
         ' 
         ' CPU_RadioButton
         ' 
@@ -543,9 +552,9 @@ Partial Class MainUI
         CPU_RadioButton.Location = New Point(5, 42)
         CPU_RadioButton.Margin = New Padding(3, 2, 3, 2)
         CPU_RadioButton.Name = "CPU_RadioButton"
-        CPU_RadioButton.Size = New Size(45, 19)
+        CPU_RadioButton.Size = New Size(104, 19)
         CPU_RadioButton.TabIndex = 0
-        CPU_RadioButton.Text = "cpu"
+        CPU_RadioButton.Text = "CPU (SLOWER)"
         CPU_RadioButton.UseVisualStyleBackColor = True
         ' 
         ' CUDA_RadioButton
@@ -555,10 +564,10 @@ Partial Class MainUI
         CUDA_RadioButton.Location = New Point(5, 20)
         CUDA_RadioButton.Margin = New Padding(3, 2, 3, 2)
         CUDA_RadioButton.Name = "CUDA_RadioButton"
-        CUDA_RadioButton.Size = New Size(51, 19)
+        CUDA_RadioButton.Size = New Size(140, 19)
         CUDA_RadioButton.TabIndex = 0
         CUDA_RadioButton.TabStop = True
-        CUDA_RadioButton.Text = "cuda"
+        CUDA_RadioButton.Text = "CUDA (GPU) (FASTER)"
         CUDA_RadioButton.UseVisualStyleBackColor = True
         ' 
         ' OpenScriptDiag
@@ -570,15 +579,15 @@ Partial Class MainUI
         ' 
         ConfigTextBox.BackColor = Color.SlateBlue
         ConfigTextBox.BorderStyle = BorderStyle.FixedSingle
-        ConfigTextBox.Font = New Font("Segoe UI", 13F)
-        ConfigTextBox.Location = New Point(157, 222)
+        ConfigTextBox.Font = New Font("Segoe UI", 13.0F)
+        ConfigTextBox.Location = New Point(153, 170)
         ConfigTextBox.Margin = New Padding(3, 2, 3, 2)
         ConfigTextBox.Multiline = True
         ConfigTextBox.Name = "ConfigTextBox"
         ConfigTextBox.ReadOnly = True
         ConfigTextBox.RightToLeft = RightToLeft.No
         ConfigTextBox.ScrollBars = ScrollBars.Vertical
-        ConfigTextBox.Size = New Size(463, 388)
+        ConfigTextBox.Size = New Size(467, 304)
         ConfigTextBox.TabIndex = 10
         ConfigTextBox.Visible = False
         ' 
@@ -587,11 +596,11 @@ Partial Class MainUI
         GenerateConfigButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         GenerateConfigButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         GenerateConfigButton.FlatStyle = FlatStyle.Popup
-        GenerateConfigButton.Font = New Font("Segoe UI", 13F)
-        GenerateConfigButton.Location = New Point(631, 371)
+        GenerateConfigButton.Font = New Font("Segoe UI", 13.0F)
+        GenerateConfigButton.Location = New Point(257, 478)
         GenerateConfigButton.Margin = New Padding(3, 2, 3, 2)
         GenerateConfigButton.Name = "GenerateConfigButton"
-        GenerateConfigButton.Size = New Size(467, 32)
+        GenerateConfigButton.Size = New Size(150, 32)
         GenerateConfigButton.TabIndex = 11
         GenerateConfigButton.Text = "Generate Config"
         GenerateConfigButton.UseVisualStyleBackColor = True
@@ -599,7 +608,7 @@ Partial Class MainUI
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Location = New Point(214, 37)
+        Label8.Location = New Point(360, 8)
         Label8.Name = "Label8"
         Label8.Size = New Size(103, 15)
         Label8.TabIndex = 12
@@ -607,7 +616,7 @@ Partial Class MainUI
         ' 
         ' PortNumber
         ' 
-        PortNumber.Location = New Point(6, 52)
+        PortNumber.Location = New Point(91, 20)
         PortNumber.Margin = New Padding(3, 2, 3, 2)
         PortNumber.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
         PortNumber.Name = "PortNumber"
@@ -619,7 +628,7 @@ Partial Class MainUI
         ' 
         WebServerButton.AutoSize = True
         WebServerButton.ForeColor = Color.FloralWhite
-        WebServerButton.Location = New Point(5, 14)
+        WebServerButton.Location = New Point(72, 0)
         WebServerButton.Margin = New Padding(3, 2, 3, 2)
         WebServerButton.Name = "WebServerButton"
         WebServerButton.Size = New Size(61, 19)
@@ -630,7 +639,7 @@ Partial Class MainUI
         ' Label10
         ' 
         Label10.AutoSize = True
-        Label10.Location = New Point(5, 34)
+        Label10.Location = New Point(6, 18)
         Label10.Name = "Label10"
         Label10.Size = New Size(79, 15)
         Label10.TabIndex = 17
@@ -642,11 +651,11 @@ Partial Class MainUI
         GroupBox4.Controls.Add(PortNumber)
         GroupBox4.Controls.Add(WebServerButton)
         GroupBox4.ForeColor = Color.FloralWhite
-        GroupBox4.Location = New Point(10, 188)
+        GroupBox4.Location = New Point(167, 7)
         GroupBox4.Margin = New Padding(3, 2, 3, 2)
         GroupBox4.Name = "GroupBox4"
         GroupBox4.Padding = New Padding(3, 2, 3, 2)
-        GroupBox4.Size = New Size(137, 82)
+        GroupBox4.Size = New Size(187, 53)
         GroupBox4.TabIndex = 18
         GroupBox4.TabStop = False
         GroupBox4.Text = "Web Server"
@@ -658,12 +667,13 @@ Partial Class MainUI
         SettingsTabs.Controls.Add(TabPage2)
         SettingsTabs.Controls.Add(TabPage3)
         SettingsTabs.Controls.Add(TabPage4)
+        SettingsTabs.Controls.Add(TabPage5)
         SettingsTabs.HotTrack = True
         SettingsTabs.Location = New Point(627, 6)
         SettingsTabs.Margin = New Padding(3, 2, 3, 2)
         SettingsTabs.Name = "SettingsTabs"
         SettingsTabs.SelectedIndex = 0
-        SettingsTabs.Size = New Size(467, 343)
+        SettingsTabs.Size = New Size(591, 376)
         SettingsTabs.TabIndex = 19
         ' 
         ' TabPage1
@@ -674,9 +684,9 @@ Partial Class MainUI
         TabPage1.Margin = New Padding(3, 2, 3, 2)
         TabPage1.Name = "TabPage1"
         TabPage1.Padding = New Padding(3, 2, 3, 2)
-        TabPage1.Size = New Size(459, 312)
+        TabPage1.Size = New Size(583, 345)
         TabPage1.TabIndex = 0
-        TabPage1.Text = "HLS Settings"
+        TabPage1.Text = "Stream Mode Settings"
         ' 
         ' TabPage2
         ' 
@@ -702,7 +712,7 @@ Partial Class MainUI
         TabPage2.Margin = New Padding(3, 2, 3, 2)
         TabPage2.Name = "TabPage2"
         TabPage2.Padding = New Padding(3, 2, 3, 2)
-        TabPage2.Size = New Size(459, 312)
+        TabPage2.Size = New Size(583, 345)
         TabPage2.TabIndex = 1
         TabPage2.Text = "Microphone Settings"
         ' 
@@ -904,9 +914,19 @@ Partial Class MainUI
         TabPage3.Location = New Point(4, 27)
         TabPage3.Name = "TabPage3"
         TabPage3.Padding = New Padding(3)
-        TabPage3.Size = New Size(459, 312)
+        TabPage3.Size = New Size(583, 345)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Generate Captions"
+        ' 
+        ' compare_mode
+        ' 
+        compare_mode.AutoSize = True
+        compare_mode.Location = New Point(6, 174)
+        compare_mode.Name = "compare_mode"
+        compare_mode.Size = New Size(438, 64)
+        compare_mode.TabIndex = 13
+        compare_mode.Text = resources.GetString("compare_mode.Text")
+        compare_mode.UseVisualStyleBackColor = True
         ' 
         ' WhatModelsBtn
         ' 
@@ -1077,14 +1097,14 @@ Partial Class MainUI
         TabPage4.Location = New Point(4, 27)
         TabPage4.Name = "TabPage4"
         TabPage4.Padding = New Padding(3)
-        TabPage4.Size = New Size(459, 312)
+        TabPage4.Size = New Size(583, 345)
         TabPage4.TabIndex = 3
         TabPage4.Text = "Model Settings"
         ' 
         ' Label17
         ' 
         Label17.AutoSize = True
-        Label17.Font = New Font("Segoe UI", 12F)
+        Label17.Font = New Font("Segoe UI", 12.0F)
         Label17.Location = New Point(6, 88)
         Label17.Name = "Label17"
         Label17.Size = New Size(443, 189)
@@ -1134,6 +1154,134 @@ Partial Class MainUI
         modelDirPicker.Text = "..."
         modelDirPicker.UseVisualStyleBackColor = False
         ' 
+        ' TabPage5
+        ' 
+        TabPage5.BackColor = Color.DarkSlateBlue
+        TabPage5.Controls.Add(Label20)
+        TabPage5.Controls.Add(GroupBox3)
+        TabPage5.Controls.Add(GroupBox4)
+        TabPage5.Controls.Add(WipeSettings)
+        TabPage5.Controls.Add(EraseCheckBox)
+        TabPage5.Controls.Add(paddedaudio_nvalue)
+        TabPage5.Controls.Add(DiscordWebHook)
+        TabPage5.Controls.Add(Label13)
+        TabPage5.Controls.Add(paddedaudio_value)
+        TabPage5.Controls.Add(CookiesName)
+        TabPage5.Controls.Add(paddedaudio)
+        TabPage5.Controls.Add(Label8)
+        TabPage5.Controls.Add(CookiesRefresh)
+        TabPage5.Location = New Point(4, 27)
+        TabPage5.Name = "TabPage5"
+        TabPage5.Padding = New Padding(3)
+        TabPage5.Size = New Size(583, 345)
+        TabPage5.TabIndex = 4
+        TabPage5.Text = "Configuration"
+        ' 
+        ' Label20
+        ' 
+        Label20.AutoSize = True
+        Label20.Location = New Point(18, 160)
+        Label20.Name = "Label20"
+        Label20.Size = New Size(113, 15)
+        Label20.TabIndex = 39
+        Label20.Text = "Padded Sound Files:"
+        ' 
+        ' WipeSettings
+        ' 
+        WipeSettings.FlatAppearance.MouseDownBackColor = Color.Indigo
+        WipeSettings.FlatAppearance.MouseOverBackColor = Color.SlateBlue
+        WipeSettings.FlatStyle = FlatStyle.Popup
+        WipeSettings.Location = New Point(454, 316)
+        WipeSettings.Name = "WipeSettings"
+        WipeSettings.Size = New Size(123, 23)
+        WipeSettings.TabIndex = 29
+        WipeSettings.Text = "Wipe Settings"
+        ToolTip1.SetToolTip(WipeSettings, "[DANGER] Wipes the Settings,")
+        WipeSettings.UseVisualStyleBackColor = True
+        ' 
+        ' EraseCheckBox
+        ' 
+        EraseCheckBox.AutoSize = True
+        EraseCheckBox.Location = New Point(439, 321)
+        EraseCheckBox.Name = "EraseCheckBox"
+        EraseCheckBox.Size = New Size(15, 14)
+        EraseCheckBox.TabIndex = 30
+        EraseCheckBox.UseVisualStyleBackColor = True
+        ' 
+        ' paddedaudio_nvalue
+        ' 
+        paddedaudio_nvalue.AutoSize = True
+        paddedaudio_nvalue.Location = New Point(137, 160)
+        paddedaudio_nvalue.Name = "paddedaudio_nvalue"
+        paddedaudio_nvalue.Size = New Size(13, 15)
+        paddedaudio_nvalue.TabIndex = 38
+        paddedaudio_nvalue.Text = "1"
+        ' 
+        ' DiscordWebHook
+        ' 
+        DiscordWebHook.Location = New Point(6, 96)
+        DiscordWebHook.Margin = New Padding(3, 2, 3, 2)
+        DiscordWebHook.Name = "DiscordWebHook"
+        DiscordWebHook.PasswordChar = "*"c
+        DiscordWebHook.PlaceholderText = "<--- Discord WebHook URL --->"
+        DiscordWebHook.Size = New Size(298, 23)
+        DiscordWebHook.TabIndex = 22
+        ' 
+        ' Label13
+        ' 
+        Label13.AutoSize = True
+        Label13.Location = New Point(6, 79)
+        Label13.Name = "Label13"
+        Label13.Size = New Size(112, 15)
+        Label13.TabIndex = 21
+        Label13.Text = "Discord Web Hook: "
+        ' 
+        ' paddedaudio_value
+        ' 
+        paddedaudio_value.LargeChange = 1
+        paddedaudio_value.Location = New Point(156, 124)
+        paddedaudio_value.Minimum = 1
+        paddedaudio_value.Name = "paddedaudio_value"
+        paddedaudio_value.Size = New Size(416, 45)
+        paddedaudio_value.TabIndex = 37
+        paddedaudio_value.Value = 1
+        ' 
+        ' CookiesName
+        ' 
+        CookiesName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        CookiesName.AutoCompleteSource = AutoCompleteSource.ListItems
+        CookiesName.DropDownStyle = ComboBoxStyle.DropDownList
+        CookiesName.FormattingEnabled = True
+        CookiesName.Location = New Point(360, 25)
+        CookiesName.Margin = New Padding(3, 2, 3, 2)
+        CookiesName.Name = "CookiesName"
+        CookiesName.Size = New Size(184, 23)
+        CookiesName.TabIndex = 26
+        ' 
+        ' paddedaudio
+        ' 
+        paddedaudio.AutoSize = True
+        paddedaudio.CheckAlign = ContentAlignment.MiddleRight
+        paddedaudio.Location = New Point(4, 124)
+        paddedaudio.Name = "paddedaudio"
+        paddedaudio.Size = New Size(146, 34)
+        paddedaudio.TabIndex = 36
+        paddedaudio.Text = "Enabled Padded Audio" & vbCrLf & "(Hover for info)"
+        paddedaudio.UseVisualStyleBackColor = True
+        ' 
+        ' CookiesRefresh
+        ' 
+        CookiesRefresh.FlatStyle = FlatStyle.Flat
+        CookiesRefresh.Font = New Font("Segoe UI", 8.0F)
+        CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
+        CookiesRefresh.Location = New Point(550, 25)
+        CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
+        CookiesRefresh.Name = "CookiesRefresh"
+        CookiesRefresh.Size = New Size(22, 21)
+        CookiesRefresh.TabIndex = 27
+        CookiesRefresh.Text = "🔃"
+        CookiesRefresh.UseVisualStyleBackColor = True
+        ' 
         ' isolate_vocals
         ' 
         isolate_vocals.AutoSize = True
@@ -1156,36 +1304,18 @@ Partial Class MainUI
         ' 
         ' RunScript
         ' 
+        RunScript.BackColor = Color.OliveDrab
         RunScript.FlatAppearance.MouseDownBackColor = Color.Indigo
         RunScript.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         RunScript.FlatStyle = FlatStyle.Popup
-        RunScript.Font = New Font("Segoe UI", 15F)
-        RunScript.Location = New Point(631, 443)
+        RunScript.Font = New Font("Segoe UI", 15.0F)
+        RunScript.Location = New Point(153, 514)
         RunScript.Margin = New Padding(3, 2, 3, 2)
         RunScript.Name = "RunScript"
-        RunScript.Size = New Size(467, 44)
+        RunScript.Size = New Size(467, 34)
         RunScript.TabIndex = 20
         RunScript.Text = "Run"
-        RunScript.UseVisualStyleBackColor = True
-        ' 
-        ' Label13
-        ' 
-        Label13.AutoSize = True
-        Label13.Location = New Point(205, 153)
-        Label13.Name = "Label13"
-        Label13.Size = New Size(112, 15)
-        Label13.TabIndex = 21
-        Label13.Text = "Discord Web Hook: "
-        ' 
-        ' DiscordWebHook
-        ' 
-        DiscordWebHook.Location = New Point(323, 150)
-        DiscordWebHook.Margin = New Padding(3, 2, 3, 2)
-        DiscordWebHook.Name = "DiscordWebHook"
-        DiscordWebHook.PasswordChar = "*"c
-        DiscordWebHook.PlaceholderText = "<--- Discord WebHook URL --->"
-        DiscordWebHook.Size = New Size(298, 23)
-        DiscordWebHook.TabIndex = 22
+        RunScript.UseVisualStyleBackColor = False
         ' 
         ' GroupBox5
         ' 
@@ -1196,7 +1326,7 @@ Partial Class MainUI
         GroupBox5.Controls.Add(WebLinkT2)
         GroupBox5.Controls.Add(SubWindow)
         GroupBox5.ForeColor = Color.FloralWhite
-        GroupBox5.Location = New Point(10, 274)
+        GroupBox5.Location = New Point(10, 114)
         GroupBox5.Margin = New Padding(3, 2, 3, 2)
         GroupBox5.Name = "GroupBox5"
         GroupBox5.Padding = New Padding(3, 2, 3, 2)
@@ -1283,35 +1413,10 @@ Partial Class MainUI
         SubWindow.Text = "Show Sub Title Window"
         SubWindow.UseVisualStyleBackColor = True
         ' 
-        ' CookiesName
-        ' 
-        CookiesName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        CookiesName.AutoCompleteSource = AutoCompleteSource.ListItems
-        CookiesName.DropDownStyle = ComboBoxStyle.DropDownList
-        CookiesName.FormattingEnabled = True
-        CookiesName.Location = New Point(323, 34)
-        CookiesName.Margin = New Padding(3, 2, 3, 2)
-        CookiesName.Name = "CookiesName"
-        CookiesName.Size = New Size(256, 23)
-        CookiesName.TabIndex = 26
-        ' 
-        ' CookiesRefresh
-        ' 
-        CookiesRefresh.FlatStyle = FlatStyle.Flat
-        CookiesRefresh.Font = New Font("Segoe UI", 8F)
-        CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
-        CookiesRefresh.Location = New Point(585, 34)
-        CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
-        CookiesRefresh.Name = "CookiesRefresh"
-        CookiesRefresh.Size = New Size(22, 21)
-        CookiesRefresh.TabIndex = 27
-        CookiesRefresh.Text = "🔃"
-        CookiesRefresh.UseVisualStyleBackColor = True
-        ' 
         ' PictureItch
         ' 
         PictureItch.Image = My.Resources.Resources.itch_io_icon_256x256_0aig5hor
-        PictureItch.Location = New Point(1046, 587)
+        PictureItch.Location = New Point(1131, 387)
         PictureItch.Name = "PictureItch"
         PictureItch.Size = New Size(48, 48)
         PictureItch.SizeMode = PictureBoxSizeMode.Zoom
@@ -1322,7 +1427,7 @@ Partial Class MainUI
         ' GitHubPicture
         ' 
         GitHubPicture.Image = My.Resources.Resources._25231
-        GitHubPicture.Location = New Point(992, 587)
+        GitHubPicture.Location = New Point(899, 387)
         GitHubPicture.Name = "GitHubPicture"
         GitHubPicture.Size = New Size(48, 48)
         GitHubPicture.SizeMode = PictureBoxSizeMode.Zoom
@@ -1335,33 +1440,20 @@ Partial Class MainUI
         SaveConfig.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfig.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfig.FlatStyle = FlatStyle.Popup
-        SaveConfig.Font = New Font("Segoe UI", 12F)
-        SaveConfig.Location = New Point(631, 407)
+        SaveConfig.Font = New Font("Segoe UI", 12.0F)
+        SaveConfig.Location = New Point(153, 478)
         SaveConfig.Margin = New Padding(3, 2, 3, 2)
         SaveConfig.Name = "SaveConfig"
-        SaveConfig.Size = New Size(467, 32)
+        SaveConfig.Size = New Size(98, 32)
         SaveConfig.TabIndex = 1
         SaveConfig.Text = "Quick Save"
         ToolTip1.SetToolTip(SaveConfig, "Save's the current state of the gui." & vbCrLf)
         SaveConfig.UseVisualStyleBackColor = True
         ' 
-        ' WipeSettings
-        ' 
-        WipeSettings.FlatAppearance.MouseDownBackColor = Color.Indigo
-        WipeSettings.FlatAppearance.MouseOverBackColor = Color.SlateBlue
-        WipeSettings.FlatStyle = FlatStyle.Popup
-        WipeSettings.Location = New Point(25, 616)
-        WipeSettings.Name = "WipeSettings"
-        WipeSettings.Size = New Size(123, 23)
-        WipeSettings.TabIndex = 29
-        WipeSettings.Text = "Wipe Settings"
-        ToolTip1.SetToolTip(WipeSettings, "[DANGER] Wipes the Settings,")
-        WipeSettings.UseVisualStyleBackColor = True
-        ' 
         ' KoFiPicture
         ' 
         KoFiPicture.Image = CType(resources.GetObject("KoFiPicture.Image"), Image)
-        KoFiPicture.Location = New Point(938, 587)
+        KoFiPicture.Location = New Point(1077, 387)
         KoFiPicture.Name = "KoFiPicture"
         KoFiPicture.Size = New Size(48, 48)
         KoFiPicture.SizeMode = PictureBoxSizeMode.Zoom
@@ -1372,28 +1464,19 @@ Partial Class MainUI
         ' CheckBoxCMDBLock
         ' 
         CheckBoxCMDBLock.AutoSize = True
-        CheckBoxCMDBLock.CheckAlign = ContentAlignment.MiddleRight
-        CheckBoxCMDBLock.Location = New Point(162, 616)
+        CheckBoxCMDBLock.CheckAlign = ContentAlignment.BottomRight
+        CheckBoxCMDBLock.Location = New Point(448, 118)
         CheckBoxCMDBLock.Margin = New Padding(3, 2, 3, 2)
         CheckBoxCMDBLock.Name = "CheckBoxCMDBLock"
         CheckBoxCMDBLock.RightToLeft = RightToLeft.No
-        CheckBoxCMDBLock.Size = New Size(419, 19)
+        CheckBoxCMDBLock.Size = New Size(172, 49)
         CheckBoxCMDBLock.TabIndex = 28
-        CheckBoxCMDBLock.Text = "Unhide command block | If you have a weebhook set, best to keep hidden."
+        CheckBoxCMDBLock.Text = "Unhide command block" & vbCrLf & "If you have a weebhook set," & vbCrLf & "best to keep hidden."
         CheckBoxCMDBLock.UseVisualStyleBackColor = True
         ' 
         ' CaptionsInputFile
         ' 
         CaptionsInputFile.FileName = "OpenFileDialog1"
-        ' 
-        ' EraseCheckBox
-        ' 
-        EraseCheckBox.AutoSize = True
-        EraseCheckBox.Location = New Point(10, 621)
-        EraseCheckBox.Name = "EraseCheckBox"
-        EraseCheckBox.Size = New Size(15, 14)
-        EraseCheckBox.TabIndex = 30
-        EraseCheckBox.UseVisualStyleBackColor = True
         ' 
         ' WordBlockList
         ' 
@@ -1428,7 +1511,7 @@ Partial Class MainUI
         GroupBox6.Controls.Add(EditBlockList)
         GroupBox6.Controls.Add(Button1)
         GroupBox6.ForeColor = Color.FloralWhite
-        GroupBox6.Location = New Point(10, 448)
+        GroupBox6.Location = New Point(10, 288)
         GroupBox6.Name = "GroupBox6"
         GroupBox6.Size = New Size(137, 141)
         GroupBox6.TabIndex = 33
@@ -1472,40 +1555,10 @@ Partial Class MainUI
         Button1.Text = "Load Word Blocklist"
         Button1.UseVisualStyleBackColor = True
         ' 
-        ' paddedaudio
-        ' 
-        paddedaudio.AutoSize = True
-        paddedaudio.CheckAlign = ContentAlignment.MiddleRight
-        paddedaudio.Location = New Point(171, 178)
-        paddedaudio.Name = "paddedaudio"
-        paddedaudio.Size = New Size(146, 34)
-        paddedaudio.TabIndex = 36
-        paddedaudio.Text = "Enabled Padded Audio" & vbCrLf & "(Hover for info)"
-        paddedaudio.UseVisualStyleBackColor = True
-        ' 
-        ' paddedaudio_value
-        ' 
-        paddedaudio_value.LargeChange = 1
-        paddedaudio_value.Location = New Point(323, 178)
-        paddedaudio_value.Minimum = 1
-        paddedaudio_value.Name = "paddedaudio_value"
-        paddedaudio_value.Size = New Size(267, 45)
-        paddedaudio_value.TabIndex = 37
-        paddedaudio_value.Value = 1
-        ' 
-        ' paddedaudio_nvalue
-        ' 
-        paddedaudio_nvalue.AutoSize = True
-        paddedaudio_nvalue.Location = New Point(596, 187)
-        paddedaudio_nvalue.Name = "paddedaudio_nvalue"
-        paddedaudio_nvalue.Size = New Size(13, 15)
-        paddedaudio_nvalue.TabIndex = 38
-        paddedaudio_nvalue.Text = "1"
-        ' 
         ' JetBrainsLogoImg
         ' 
         JetBrainsLogoImg.Image = My.Resources.Resources.PyCharm_Icon_svg
-        JetBrainsLogoImg.Location = New Point(1046, 533)
+        JetBrainsLogoImg.Location = New Point(626, 387)
         JetBrainsLogoImg.Name = "JetBrainsLogoImg"
         JetBrainsLogoImg.Size = New Size(48, 48)
         JetBrainsLogoImg.SizeMode = PictureBoxSizeMode.StretchImage
@@ -1515,57 +1568,52 @@ Partial Class MainUI
         ' Label19
         ' 
         Label19.AutoSize = True
-        Label19.Location = New Point(855, 533)
+        Label19.Location = New Point(680, 387)
         Label19.Name = "Label19"
-        Label19.Size = New Size(185, 30)
+        Label19.Size = New Size(133, 45)
         Label19.TabIndex = 40
-        Label19.Text = "Thanks to Jetbrains for providing" & vbCrLf & "PyCharm with their OSS Program."
-        Label19.TextAlign = ContentAlignment.TopCenter
+        Label19.Text = "Thanks to Jetbrains for" & vbCrLf & "providing PyCharm" & vbCrLf & "with their OSS Program."
         ' 
-        ' compare_mode
+        ' Label7
         ' 
-        compare_mode.AutoSize = True
-        compare_mode.Location = New Point(3, 246)
-        compare_mode.Name = "compare_mode"
-        compare_mode.Size = New Size(438, 64)
-        compare_mode.TabIndex = 13
-        compare_mode.Text = resources.GetString("compare_mode.Text")
-        compare_mode.UseVisualStyleBackColor = True
+        Label7.AutoSize = True
+        Label7.Location = New Point(819, 387)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(74, 15)
+        Label7.TabIndex = 41
+        Label7.Text = "Source Code"
+        ' 
+        ' Label21
+        ' 
+        Label21.AutoSize = True
+        Label21.Location = New Point(953, 388)
+        Label21.Name = "Label21"
+        Label21.Size = New Size(270, 105)
+        Label21.TabIndex = 41
+        Label21.Text = "Like the Project?" & vbCrLf & "You Can Support" & vbCrLf & "On itch.io and Ko-Fi" & vbCrLf & vbCrLf & "Please note: This project is free, will always be free" & vbCrLf & "if someone is trying to sell you it, report them and" & vbCrLf & "ignore them."
         ' 
         ' MainUI
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateBlue
-        ClientSize = New Size(1102, 647)
+        ClientSize = New Size(1226, 553)
+        Controls.Add(Label7)
+        Controls.Add(SecondaryTranslation)
         Controls.Add(Label19)
         Controls.Add(JetBrainsLogoImg)
-        Controls.Add(paddedaudio_nvalue)
         Controls.Add(ConfigTextBox)
-        Controls.Add(paddedaudio_value)
-        Controls.Add(paddedaudio)
         Controls.Add(KoFiPicture)
         Controls.Add(GitHubPicture)
         Controls.Add(PictureItch)
         Controls.Add(GroupBox6)
-        Controls.Add(EraseCheckBox)
-        Controls.Add(WipeSettings)
         Controls.Add(CheckBoxCMDBLock)
-        Controls.Add(CookiesRefresh)
-        Controls.Add(CookiesName)
         Controls.Add(GroupBox5)
-        Controls.Add(DiscordWebHook)
-        Controls.Add(Label13)
         Controls.Add(RunScript)
         Controls.Add(SettingsTabs)
-        Controls.Add(GroupBox4)
         Controls.Add(EnglishTranslationCheckBox)
-        Controls.Add(Label8)
-        Controls.Add(Label7)
         Controls.Add(GenerateConfigButton)
-        Controls.Add(SecondaryTranslation)
         Controls.Add(Label5)
-        Controls.Add(GroupBox3)
         Controls.Add(SecondaryTranslationLanguage)
         Controls.Add(StreamLanguage)
         Controls.Add(Label4)
@@ -1575,6 +1623,7 @@ Partial Class MainUI
         Controls.Add(SaveConfig)
         Controls.Add(SaveConfigToFileButton)
         Controls.Add(GroupBox1)
+        Controls.Add(Label21)
         ForeColor = Color.FloralWhite
         FormBorderStyle = FormBorderStyle.FixedSingle
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
@@ -1588,6 +1637,8 @@ Partial Class MainUI
         GroupBox1.PerformLayout()
         GroupBox2.ResumeLayout(False)
         GroupBox2.PerformLayout()
+        GroupBox7.ResumeLayout(False)
+        GroupBox7.PerformLayout()
         CType(ChunkSizeTrackBar, ComponentModel.ISupportInitialize).EndInit()
         GroupBox3.ResumeLayout(False)
         GroupBox3.PerformLayout()
@@ -1610,6 +1661,9 @@ Partial Class MainUI
         CType(silent_threshold, ComponentModel.ISupportInitialize).EndInit()
         TabPage4.ResumeLayout(False)
         TabPage4.PerformLayout()
+        TabPage5.ResumeLayout(False)
+        TabPage5.PerformLayout()
+        CType(paddedaudio_value, ComponentModel.ISupportInitialize).EndInit()
         GroupBox5.ResumeLayout(False)
         GroupBox5.PerformLayout()
         CType(PictureItch, ComponentModel.ISupportInitialize).EndInit()
@@ -1617,7 +1671,6 @@ Partial Class MainUI
         CType(KoFiPicture, ComponentModel.ISupportInitialize).EndInit()
         GroupBox6.ResumeLayout(False)
         GroupBox6.PerformLayout()
-        CType(paddedaudio_value, ComponentModel.ISupportInitialize).EndInit()
         CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
@@ -1644,7 +1697,6 @@ Partial Class MainUI
     Friend WithEvents Label5 As Label
     Friend WithEvents SecondaryTranslationLanguage As ComboBox
     Friend WithEvents SecondaryTranslation As CheckBox
-    Friend WithEvents Label7 As Label
     Friend WithEvents EnglishTranslationCheckBox As CheckBox
     Friend WithEvents ChunkSizeTrackBar As TrackBar
     Friend WithEvents Label6 As Label
@@ -1746,5 +1798,10 @@ Partial Class MainUI
     Friend WithEvents JetBrainsLogoImg As PictureBox
     Friend WithEvents Label19 As Label
     Friend WithEvents compare_mode As CheckBox
+    Friend WithEvents TabPage5 As TabPage
+    Friend WithEvents GroupBox7 As GroupBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label21 As Label
+    Friend WithEvents Label20 As Label
 
 End Class
