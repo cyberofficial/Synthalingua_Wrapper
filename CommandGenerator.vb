@@ -62,7 +62,12 @@ Public Class CommandGenerator
 
     Private Sub AppendAudioSourceSettings()
         If settings.CAP_RadioButton.Checked Then
-            builder.Append($"--makecaptions --file_input=""{settings.CaptionsInput.Text}"" --file_output=""{settings.CaptionsOutput.Text}"" --file_output_name=""{settings.CaptionsName.Text}"" ")
+            ' If compare_mode is checked, append "--makecaptions compare", else just "--makecaptions"
+            If settings.compare_mode IsNot Nothing AndAlso settings.compare_mode.Checked Then
+                builder.Append($"--makecaptions compare --file_input=""{settings.CaptionsInput.Text}"" --file_output=""{settings.CaptionsOutput.Text}"" --file_output_name=""{settings.CaptionsName.Text}"" ")
+            Else
+                builder.Append($"--makecaptions --file_input=""{settings.CaptionsInput.Text}"" --file_output=""{settings.CaptionsOutput.Text}"" --file_output_name=""{settings.CaptionsName.Text}"" ")
+            End If
             If settings.silent_detect.Checked Then builder.Append("--silent_detect ")
             If settings.silent_threshold.Value <> -35 Then builder.Append($"--silent_threshold {settings.silent_threshold.Value} ")
             If settings.silent_duration.Value <> 0.5 Then builder.Append($"--silent_duration {settings.silent_duration.Value} ")
