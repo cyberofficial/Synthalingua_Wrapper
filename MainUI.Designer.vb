@@ -144,7 +144,7 @@ Partial Class MainUI
         paddedaudio = New CheckBox()
         paddedaudio_value = New TrackBar()
         paddedaudio_nvalue = New Label()
-        PictureBox1 = New PictureBox()
+        JetBrainsLogoImg = New PictureBox()
         Label19 = New Label()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
@@ -171,7 +171,7 @@ Partial Class MainUI
         CType(KoFiPicture, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox6.SuspendLayout()
         CType(paddedaudio_value, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' GroupBox1
@@ -1500,15 +1500,15 @@ Partial Class MainUI
         paddedaudio_nvalue.TabIndex = 38
         paddedaudio_nvalue.Text = "1"
         ' 
-        ' PictureBox1
+        ' JetBrainsLogoImg
         ' 
-        PictureBox1.Image = My.Resources.Resources.PyCharm_Icon_svg
-        PictureBox1.Location = New Point(1046, 533)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(48, 48)
-        PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
-        PictureBox1.TabIndex = 39
-        PictureBox1.TabStop = False
+        JetBrainsLogoImg.Image = My.Resources.Resources.PyCharm_Icon_svg
+        JetBrainsLogoImg.Location = New Point(1046, 533)
+        JetBrainsLogoImg.Name = "JetBrainsLogoImg"
+        JetBrainsLogoImg.Size = New Size(48, 48)
+        JetBrainsLogoImg.SizeMode = PictureBoxSizeMode.StretchImage
+        JetBrainsLogoImg.TabIndex = 39
+        JetBrainsLogoImg.TabStop = False
         ' 
         ' Label19
         ' 
@@ -1527,7 +1527,7 @@ Partial Class MainUI
         BackColor = Color.DarkSlateBlue
         ClientSize = New Size(1102, 647)
         Controls.Add(Label19)
-        Controls.Add(PictureBox1)
+        Controls.Add(JetBrainsLogoImg)
         Controls.Add(paddedaudio_nvalue)
         Controls.Add(ConfigTextBox)
         Controls.Add(paddedaudio_value)
@@ -1606,7 +1606,7 @@ Partial Class MainUI
         GroupBox6.ResumeLayout(False)
         GroupBox6.PerformLayout()
         CType(paddedaudio_value, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -1731,7 +1731,7 @@ Partial Class MainUI
     Friend WithEvents silent_duration_lbl As Label
     Friend WithEvents demucs_model As ComboBox
     Friend WithEvents WhatModelsBtn As Label
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents JetBrainsLogoImg As PictureBox
     Friend WithEvents Label19 As Label
 
 End Class

@@ -9,9 +9,37 @@ Public Class MainUI
     Private ReadOnly toolTipManager As ToolTipManager
     Public WordBlockListLocation As String = "blacklist.txt"
 
+    ' JetBrains legal notice template
+    Private Const JetBrainsLegalNotice As String = "Copyright © 2025 JetBrains s.r.o. PyCharm and the PyCharm logo are trademarks of JetBrains s.r.o."
+    Private Const JetBrainsUrl As String = "https://www.jetbrains.com/pycharm/"
+    Private Const JetBrainsTrackingUrl As String = "https://www.jetbrains.com/pycharm/?from=Synthalingua"
+
     Public Sub New()
         InitializeComponent()
         toolTipManager = New ToolTipManager(ToolTip1)
+
+        ' Attach event handlers for JetBrainsLogoImg
+        AddHandler JetBrainsLogoImg.MouseHover, AddressOf JetBrainsLogoImg_MouseHover
+        AddHandler JetBrainsLogoImg.Click, AddressOf JetBrainsLogoImg_Click
+    End Sub
+    ' Show legal notice on hover
+    Private Sub JetBrainsLogoImg_MouseHover(sender As Object, e As EventArgs)
+        ToolTip1.SetToolTip(JetBrainsLogoImg, JetBrainsLegalNotice)
+    End Sub
+
+    ' Show legal notice and open URL on click
+    Private Sub JetBrainsLogoImg_Click(sender As Object, e As EventArgs)
+        Dim result = MessageBox.Show(JetBrainsLegalNotice & vbCrLf & vbCrLf & "Click OK to open the PyCharm website, or Cancel to stay.", "JetBrains Legal Notice", MessageBoxButtons.OKCancel, MessageBoxIcon.Information)
+        If result = DialogResult.OK Then
+            Try
+                Process.Start(New ProcessStartInfo With {
+                    .FileName = JetBrainsTrackingUrl,
+                    .UseShellExecute = True
+                })
+            Catch ex As Exception
+                MessageBox.Show("Unable to open the web page: " & ex.Message)
+            End Try
+        End If
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles SearchForProgramBTN.Click
