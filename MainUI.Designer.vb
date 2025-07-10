@@ -89,8 +89,6 @@ Partial Class MainUI
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
         compare_mode = New CheckBox()
-        WhatModelsBtn = New Label()
-        demucs_model = New ComboBox()
         silent_duration = New NumericUpDown()
         silent_duration_lbl = New Label()
         Label18 = New Label()
@@ -122,6 +120,8 @@ Partial Class MainUI
         CookiesName = New ComboBox()
         paddedaudio = New CheckBox()
         CookiesRefresh = New Button()
+        WhatModelsBtn = New Label()
+        demucs_model = New ComboBox()
         isolate_vocals = New CheckBox()
         MicIDs = New Button()
         RunScript = New Button()
@@ -151,7 +151,6 @@ Partial Class MainUI
         Label19 = New Label()
         Label7 = New Label()
         Label21 = New Label()
-        Label22 = New Label()
         demucs_model_jobs = New NumericUpDown()
         Label23 = New Label()
         GroupBox1.SuspendLayout()
@@ -243,7 +242,7 @@ Partial Class MainUI
         SaveConfigToFileButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfigToFileButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfigToFileButton.FlatStyle = FlatStyle.Popup
-        SaveConfigToFileButton.Font = New Font("Segoe UI", 12F)
+        SaveConfigToFileButton.Font = New Font("Segoe UI", 12.0F)
         SaveConfigToFileButton.Location = New Point(522, 478)
         SaveConfigToFileButton.Margin = New Padding(3, 2, 3, 2)
         SaveConfigToFileButton.Name = "SaveConfigToFileButton"
@@ -374,7 +373,7 @@ Partial Class MainUI
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Font = New Font("Segoe UI", 10F)
+        Label14.Font = New Font("Segoe UI", 10.0F)
         Label14.Location = New Point(6, 77)
         Label14.Name = "Label14"
         Label14.Size = New Size(423, 95)
@@ -503,8 +502,9 @@ Partial Class MainUI
         ' 
         ' SecondaryTranslationLanguage
         ' 
+        SecondaryTranslationLanguage.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        SecondaryTranslationLanguage.AutoCompleteSource = AutoCompleteSource.ListItems
         SecondaryTranslationLanguage.DisplayMember = "1"
-        SecondaryTranslationLanguage.DropDownStyle = ComboBoxStyle.DropDownList
         SecondaryTranslationLanguage.FormattingEnabled = True
         SecondaryTranslationLanguage.Items.AddRange(New Object() {"Afrikaans", "Albanian", "Amharic", "Arabic", "Armenian", "Assamese", "Azerbaijani", "Bashkir", "Basque", "Belarusian", "Bengali", "Bosnian", "Breton", "Bulgarian", "Burmese", "Castilian", "Catalan", "Chinese", "Croatian", "Czech", "Danish", "Dutch", "English", "Estonian", "Faroese", "Finnish", "Flemish", "French", "Galician", "Georgian", "German", "Greek", "Gujarati", "Haitian", "Haitian Creole", "Hausa", "Hawaiian", "Hebrew", "Hindi", "Hungarian", "Icelandic", "Indonesian", "Italian", "Japanese", "Javanese", "Kannada", "Kazakh", "Khmer", "Korean", "Lao", "Latin", "Latvian", "Letzeburgesch", "Lingala", "Lithuanian", "Luxembourgish", "Macedonian", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Moldavian", "Moldovan", "Mongolian", "Myanmar", "Nepali", "Norwegian", "Nynorsk", "Occitan", "Panjabi", "Pashto", "Persian", "Polish", "Portuguese", "Punjabi", "Pushto", "Romanian", "Russian", "Sanskrit", "Serbian", "Shona", "Sindhi", "Sinhala", "Sinhalese", "Slovak", "Slovenian", "Somali", "Spanish", "Sundanese", "Swahili", "Swedish", "Tagalog", "Tajik", "Tamil", "Tatar", "Telugu", "Thai", "Tibetan", "Turkish", "Turkmen", "Ukrainian", "Urdu", "Uzbek", "Valencian", "Vietnamese", "Welsh", "Yiddish", "Yoruba"})
         SecondaryTranslationLanguage.Location = New Point(323, 84)
@@ -513,11 +513,13 @@ Partial Class MainUI
         SecondaryTranslationLanguage.Size = New Size(172, 23)
         SecondaryTranslationLanguage.Sorted = True
         SecondaryTranslationLanguage.TabIndex = 3
+        SecondaryTranslationLanguage.Text = "French"
         ' 
         ' StreamLanguage
         ' 
+        StreamLanguage.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        StreamLanguage.AutoCompleteSource = AutoCompleteSource.ListItems
         StreamLanguage.DisplayMember = "1"
-        StreamLanguage.DropDownStyle = ComboBoxStyle.DropDownList
         StreamLanguage.FormattingEnabled = True
         StreamLanguage.Items.AddRange(New Object() {"--Auto Detect--", "Afrikaans", "Albanian", "Amharic", "Arabic", "Armenian", "Assamese", "Azerbaijani", "Bashkir", "Basque", "Belarusian", "Bengali", "Bosnian", "Breton", "Bulgarian", "Burmese", "Castilian", "Catalan", "Chinese", "Croatian", "Czech", "Danish", "Dutch", "English", "Estonian", "Faroese", "Finnish", "Flemish", "French", "Galician", "Georgian", "German", "Greek", "Gujarati", "Haitian", "Haitian Creole", "Hausa", "Hawaiian", "Hebrew", "Hindi", "Hungarian", "Icelandic", "Indonesian", "Italian", "Japanese", "Javanese", "Kannada", "Kazakh", "Khmer", "Korean", "Lao", "Latin", "Latvian", "Letzeburgesch", "Lingala", "Lithuanian", "Luxembourgish", "Macedonian", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Moldavian", "Moldovan", "Mongolian", "Myanmar", "Nepali", "Norwegian", "Nynorsk", "Occitan", "Panjabi", "Pashto", "Persian", "Polish", "Portuguese", "Punjabi", "Pushto", "Romanian", "Russian", "Sanskrit", "Serbian", "Shona", "Sindhi", "Sinhala", "Sinhalese", "Slovak", "Slovenian", "Somali", "Spanish", "Sundanese", "Swahili", "Swedish", "Tagalog", "Tajik", "Tamil", "Tatar", "Telugu", "Thai", "Tibetan", "Turkish", "Turkmen", "Ukrainian", "Urdu", "Uzbek", "Valencian", "Vietnamese", "Welsh", "Yiddish", "Yoruba"})
         StreamLanguage.Location = New Point(323, 34)
@@ -526,6 +528,8 @@ Partial Class MainUI
         StreamLanguage.Size = New Size(172, 23)
         StreamLanguage.Sorted = True
         StreamLanguage.TabIndex = 3
+        StreamLanguage.Text = "Japanese"
+        ToolTip1.SetToolTip(StreamLanguage, "English")
         ' 
         ' Label4
         ' 
@@ -583,7 +587,7 @@ Partial Class MainUI
         ' 
         ConfigTextBox.BackColor = Color.SlateBlue
         ConfigTextBox.BorderStyle = BorderStyle.FixedSingle
-        ConfigTextBox.Font = New Font("Segoe UI", 13F)
+        ConfigTextBox.Font = New Font("Segoe UI", 13.0F)
         ConfigTextBox.Location = New Point(153, 170)
         ConfigTextBox.Margin = New Padding(3, 2, 3, 2)
         ConfigTextBox.Multiline = True
@@ -600,7 +604,7 @@ Partial Class MainUI
         GenerateConfigButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         GenerateConfigButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         GenerateConfigButton.FlatStyle = FlatStyle.Popup
-        GenerateConfigButton.Font = New Font("Segoe UI", 13F)
+        GenerateConfigButton.Font = New Font("Segoe UI", 13.0F)
         GenerateConfigButton.Location = New Point(257, 478)
         GenerateConfigButton.Margin = New Padding(3, 2, 3, 2)
         GenerateConfigButton.Name = "GenerateConfigButton"
@@ -898,7 +902,6 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
-        TabPage3.Controls.Add(Label22)
         TabPage3.Controls.Add(compare_mode)
         TabPage3.Controls.Add(silent_duration)
         TabPage3.Controls.Add(silent_duration_lbl)
@@ -931,27 +934,6 @@ Partial Class MainUI
         compare_mode.Text = resources.GetString("compare_mode.Text")
         compare_mode.UseVisualStyleBackColor = True
         ' 
-        ' WhatModelsBtn
-        ' 
-        WhatModelsBtn.AutoSize = True
-        WhatModelsBtn.Location = New Point(150, 127)
-        WhatModelsBtn.Name = "WhatModelsBtn"
-        WhatModelsBtn.Size = New Size(110, 15)
-        WhatModelsBtn.TabIndex = 12
-        WhatModelsBtn.Text = "(?) Isolation Models"
-        ' 
-        ' demucs_model
-        ' 
-        demucs_model.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        demucs_model.AutoCompleteSource = AutoCompleteSource.ListItems
-        demucs_model.FormattingEnabled = True
-        demucs_model.Items.AddRange(New Object() {"DEFAULT", "htdemucs", "htdemucs_ft", "htdemucs_6s", "hdemucs_mmi", "mdx", "mdx_extra", "mdx_q", "mdx_extra_q", "hdemucs", "demucs"})
-        demucs_model.Location = New Point(154, 142)
-        demucs_model.Name = "demucs_model"
-        demucs_model.Size = New Size(97, 23)
-        demucs_model.TabIndex = 11
-        demucs_model.Text = "DEFAULT"
-        ' 
         ' silent_duration
         ' 
         silent_duration.DecimalPlaces = 1
@@ -979,9 +961,9 @@ Partial Class MainUI
         Label18.AutoSize = True
         Label18.Location = New Point(179, 120)
         Label18.Name = "Label18"
-        Label18.Size = New Size(64, 15)
+        Label18.Size = New Size(212, 15)
         Label18.TabIndex = 8
-        Label18.Text = "dB   Model"
+        Label18.Text = "dB (-25 normal speaking -35 whispers.)"
         ' 
         ' silent_threshold
         ' 
@@ -1107,7 +1089,7 @@ Partial Class MainUI
         ' Label17
         ' 
         Label17.AutoSize = True
-        Label17.Font = New Font("Segoe UI", 12F)
+        Label17.Font = New Font("Segoe UI", 12.0F)
         Label17.Location = New Point(6, 88)
         Label17.Name = "Label17"
         Label17.Size = New Size(443, 189)
@@ -1275,7 +1257,7 @@ Partial Class MainUI
         ' CookiesRefresh
         ' 
         CookiesRefresh.FlatStyle = FlatStyle.Flat
-        CookiesRefresh.Font = New Font("Segoe UI", 8F)
+        CookiesRefresh.Font = New Font("Segoe UI", 8.0F)
         CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
         CookiesRefresh.Location = New Point(550, 25)
         CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
@@ -1284,6 +1266,27 @@ Partial Class MainUI
         CookiesRefresh.TabIndex = 27
         CookiesRefresh.Text = "🔃"
         CookiesRefresh.UseVisualStyleBackColor = True
+        ' 
+        ' WhatModelsBtn
+        ' 
+        WhatModelsBtn.AutoSize = True
+        WhatModelsBtn.Location = New Point(150, 127)
+        WhatModelsBtn.Name = "WhatModelsBtn"
+        WhatModelsBtn.Size = New Size(110, 15)
+        WhatModelsBtn.TabIndex = 12
+        WhatModelsBtn.Text = "(?) Isolation Models"
+        ' 
+        ' demucs_model
+        ' 
+        demucs_model.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        demucs_model.AutoCompleteSource = AutoCompleteSource.ListItems
+        demucs_model.FormattingEnabled = True
+        demucs_model.Items.AddRange(New Object() {"DEFAULT", "htdemucs", "htdemucs_ft", "htdemucs_6s", "hdemucs_mmi", "mdx", "mdx_extra", "mdx_q", "mdx_extra_q", "hdemucs", "demucs"})
+        demucs_model.Location = New Point(154, 142)
+        demucs_model.Name = "demucs_model"
+        demucs_model.Size = New Size(97, 23)
+        demucs_model.TabIndex = 11
+        demucs_model.Text = "DEFAULT"
         ' 
         ' isolate_vocals
         ' 
@@ -1310,7 +1313,7 @@ Partial Class MainUI
         RunScript.FlatAppearance.MouseDownBackColor = Color.Indigo
         RunScript.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         RunScript.FlatStyle = FlatStyle.Popup
-        RunScript.Font = New Font("Segoe UI", 15F)
+        RunScript.Font = New Font("Segoe UI", 15.0F)
         RunScript.Location = New Point(153, 514)
         RunScript.Margin = New Padding(3, 2, 3, 2)
         RunScript.Name = "RunScript"
@@ -1442,7 +1445,7 @@ Partial Class MainUI
         SaveConfig.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfig.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfig.FlatStyle = FlatStyle.Popup
-        SaveConfig.Font = New Font("Segoe UI", 12F)
+        SaveConfig.Font = New Font("Segoe UI", 12.0F)
         SaveConfig.Location = New Point(153, 478)
         SaveConfig.Margin = New Padding(3, 2, 3, 2)
         SaveConfig.Name = "SaveConfig"
@@ -1593,15 +1596,6 @@ Partial Class MainUI
         Label21.TabIndex = 41
         Label21.Text = "Like the Project?" & vbCrLf & "You Can Support" & vbCrLf & "On itch.io and Ko-Fi" & vbCrLf & vbCrLf & "Please note: This project is free, will always be free" & vbCrLf & "if someone is trying to sell you it, report them and" & vbCrLf & "ignore them."
         ' 
-        ' Label22
-        ' 
-        Label22.AutoSize = True
-        Label22.Location = New Point(249, 97)
-        Label22.Name = "Label22"
-        Label22.Size = New Size(47, 15)
-        Label22.TabIndex = 14
-        Label22.Text = "Label22"
-        ' 
         ' demucs_model_jobs
         ' 
         demucs_model_jobs.Location = New Point(257, 142)
@@ -1622,7 +1616,7 @@ Partial Class MainUI
         ' 
         ' MainUI
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateBlue
         ClientSize = New Size(1226, 553)
@@ -1837,7 +1831,6 @@ Partial Class MainUI
     Friend WithEvents Label7 As Label
     Friend WithEvents Label21 As Label
     Friend WithEvents Label20 As Label
-    Friend WithEvents Label22 As Label
     Friend WithEvents demucs_model_jobs As NumericUpDown
     Friend WithEvents Label23 As Label
 

@@ -69,6 +69,15 @@ Public Class MainUI
 
     <Obsolete>
     Private Sub GenerateConfigButton_Click(sender As Object, e As EventArgs) Handles GenerateConfigButton.Click
+        ' Validate StreamLanguage and SecondaryTranslationLanguage
+        If Not StreamLanguage.Items.Contains(StreamLanguage.Text) Then
+            MessageBox.Show($"The language '{StreamLanguage.Text}' doesn't exist in the item list.", "Invalid Language", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+        If SecondaryTranslation.Checked AndAlso Not SecondaryTranslationLanguage.Items.Contains(SecondaryTranslationLanguage.Text) Then
+            MessageBox.Show($"The language '{SecondaryTranslationLanguage.Text}' doesn't exist in the item list.", "Invalid Language", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
         ' AutoHLS_Checkbox is now handled in config and command generation
         Try
             Dim generator As New CommandGenerator(Me)
@@ -88,6 +97,15 @@ Public Class MainUI
     End Sub
 
     Private Sub RunScript_Click(sender As Object, e As EventArgs) Handles RunScript.Click
+        ' Validate StreamLanguage and SecondaryTranslationLanguage
+        If Not StreamLanguage.Items.Contains(StreamLanguage.Text) Then
+            MessageBox.Show($"The language '{StreamLanguage.Text}' doesn't exist in the item list.", "Invalid Language", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
+        If SecondaryTranslation.Checked AndAlso Not SecondaryTranslationLanguage.Items.Contains(SecondaryTranslationLanguage.Text) Then
+            MessageBox.Show($"The language '{SecondaryTranslationLanguage.Text}' doesn't exist in the item list.", "Invalid Language", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Exit Sub
+        End If
         If String.IsNullOrEmpty(ScriptFileLocation.Text) Then
             MessageBox.Show("Please select the program file.")
             Exit Sub
