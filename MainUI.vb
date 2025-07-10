@@ -176,6 +176,23 @@ Public Class MainUI
         FileOperations.InitializeCookiesFolder(System.IO.Directory.GetCurrentDirectory())
         FileOperations.RefreshCookiesList(CookiesName)
 
+        ' Set demucs_model_jobs minimum to 1 and maximum to CPU core count
+        Try
+            Dim cpuCores As Integer = Environment.ProcessorCount
+            demucs_model_jobs.Minimum = 0
+            demucs_model_jobs.Maximum = cpuCores
+        Catch ex As Exception
+            demucs_model_jobs.Minimum = 0
+            demucs_model_jobs.Maximum = 1 ' fallback default
+        End Try
+
+        ' Load saved value from user settings if available
+        If My.Settings.demucs_model_jobs >= demucs_model_jobs.Minimum AndAlso My.Settings.demucs_model_jobs <= demucs_model_jobs.Maximum Then
+            demucs_model_jobs.Value = My.Settings.demucs_model_jobs
+        Else
+            demucs_model_jobs.Value = demucs_model_jobs.Minimum
+        End If
+
         If String.IsNullOrEmpty(ScriptFileLocation.Text) Then
             Dim scriptInfo = FileOperations.FindScriptFile(System.IO.Directory.GetCurrentDirectory())
             If Not String.IsNullOrEmpty(scriptInfo.ScriptPath) Then
@@ -240,6 +257,13 @@ Public Class MainUI
         Dim result = CaptionsInputFile.ShowDialog
         CaptionsInput.Text = CaptionsInputFile.FileName
         CaptionsName.Text = Path.GetFileNameWithoutExtension(CaptionsInputFile.SafeFileName)
+        ' Set CaptionsOutput.Text to the folder of the selected file, without trailing backslash
+        If Not String.IsNullOrEmpty(CaptionsInputFile.FileName) Then
+            Dim folderPath As String = Path.GetDirectoryName(CaptionsInputFile.FileName)
+            If Not String.IsNullOrEmpty(folderPath) Then
+                CaptionsOutput.Text = folderPath
+            End If
+        End If
     End Sub
 
     Private Sub CaptionsOutputBtn_Click(sender As Object, e As EventArgs) Handles CaptionsOutputBtn.Click

@@ -151,6 +151,9 @@ Partial Class MainUI
         Label19 = New Label()
         Label7 = New Label()
         Label21 = New Label()
+        Label22 = New Label()
+        demucs_model_jobs = New NumericUpDown()
+        Label23 = New Label()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -179,6 +182,7 @@ Partial Class MainUI
         CType(KoFiPicture, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox6.SuspendLayout()
         CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).BeginInit()
+        CType(demucs_model_jobs, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' GroupBox1
@@ -239,7 +243,7 @@ Partial Class MainUI
         SaveConfigToFileButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfigToFileButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfigToFileButton.FlatStyle = FlatStyle.Popup
-        SaveConfigToFileButton.Font = New Font("Segoe UI", 12.0F)
+        SaveConfigToFileButton.Font = New Font("Segoe UI", 12F)
         SaveConfigToFileButton.Location = New Point(522, 478)
         SaveConfigToFileButton.Margin = New Padding(3, 2, 3, 2)
         SaveConfigToFileButton.Name = "SaveConfigToFileButton"
@@ -370,7 +374,7 @@ Partial Class MainUI
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Font = New Font("Segoe UI", 10.0F)
+        Label14.Font = New Font("Segoe UI", 10F)
         Label14.Location = New Point(6, 77)
         Label14.Name = "Label14"
         Label14.Size = New Size(423, 95)
@@ -579,7 +583,7 @@ Partial Class MainUI
         ' 
         ConfigTextBox.BackColor = Color.SlateBlue
         ConfigTextBox.BorderStyle = BorderStyle.FixedSingle
-        ConfigTextBox.Font = New Font("Segoe UI", 13.0F)
+        ConfigTextBox.Font = New Font("Segoe UI", 13F)
         ConfigTextBox.Location = New Point(153, 170)
         ConfigTextBox.Margin = New Padding(3, 2, 3, 2)
         ConfigTextBox.Multiline = True
@@ -596,7 +600,7 @@ Partial Class MainUI
         GenerateConfigButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         GenerateConfigButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         GenerateConfigButton.FlatStyle = FlatStyle.Popup
-        GenerateConfigButton.Font = New Font("Segoe UI", 13.0F)
+        GenerateConfigButton.Font = New Font("Segoe UI", 13F)
         GenerateConfigButton.Location = New Point(257, 478)
         GenerateConfigButton.Margin = New Padding(3, 2, 3, 2)
         GenerateConfigButton.Name = "GenerateConfigButton"
@@ -894,9 +898,8 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
+        TabPage3.Controls.Add(Label22)
         TabPage3.Controls.Add(compare_mode)
-        TabPage3.Controls.Add(WhatModelsBtn)
-        TabPage3.Controls.Add(demucs_model)
         TabPage3.Controls.Add(silent_duration)
         TabPage3.Controls.Add(silent_duration_lbl)
         TabPage3.Controls.Add(Label18)
@@ -931,11 +934,11 @@ Partial Class MainUI
         ' WhatModelsBtn
         ' 
         WhatModelsBtn.AutoSize = True
-        WhatModelsBtn.Location = New Point(418, 121)
+        WhatModelsBtn.Location = New Point(150, 127)
         WhatModelsBtn.Name = "WhatModelsBtn"
-        WhatModelsBtn.Size = New Size(12, 15)
+        WhatModelsBtn.Size = New Size(110, 15)
         WhatModelsBtn.TabIndex = 12
-        WhatModelsBtn.Text = "?"
+        WhatModelsBtn.Text = "(?) Isolation Models"
         ' 
         ' demucs_model
         ' 
@@ -943,9 +946,9 @@ Partial Class MainUI
         demucs_model.AutoCompleteSource = AutoCompleteSource.ListItems
         demucs_model.FormattingEnabled = True
         demucs_model.Items.AddRange(New Object() {"DEFAULT", "htdemucs", "htdemucs_ft", "htdemucs_6s", "hdemucs_mmi", "mdx", "mdx_extra", "mdx_q", "mdx_extra_q", "hdemucs", "demucs"})
-        demucs_model.Location = New Point(249, 115)
+        demucs_model.Location = New Point(154, 142)
         demucs_model.Name = "demucs_model"
-        demucs_model.Size = New Size(163, 23)
+        demucs_model.Size = New Size(97, 23)
         demucs_model.TabIndex = 11
         demucs_model.Text = "DEFAULT"
         ' 
@@ -1104,7 +1107,7 @@ Partial Class MainUI
         ' Label17
         ' 
         Label17.AutoSize = True
-        Label17.Font = New Font("Segoe UI", 12.0F)
+        Label17.Font = New Font("Segoe UI", 12F)
         Label17.Location = New Point(6, 88)
         Label17.Name = "Label17"
         Label17.Size = New Size(443, 189)
@@ -1272,7 +1275,7 @@ Partial Class MainUI
         ' CookiesRefresh
         ' 
         CookiesRefresh.FlatStyle = FlatStyle.Flat
-        CookiesRefresh.Font = New Font("Segoe UI", 8.0F)
+        CookiesRefresh.Font = New Font("Segoe UI", 8F)
         CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
         CookiesRefresh.Location = New Point(550, 25)
         CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
@@ -1285,10 +1288,9 @@ Partial Class MainUI
         ' isolate_vocals
         ' 
         isolate_vocals.AutoSize = True
-        isolate_vocals.Dock = DockStyle.Bottom
-        isolate_vocals.Location = New Point(3, 15)
+        isolate_vocals.Location = New Point(154, 111)
         isolate_vocals.Name = "isolate_vocals"
-        isolate_vocals.Size = New Size(131, 19)
+        isolate_vocals.Size = New Size(121, 19)
         isolate_vocals.TabIndex = 6
         isolate_vocals.Text = "Isolate Vocals First"
         isolate_vocals.UseVisualStyleBackColor = True
@@ -1308,7 +1310,7 @@ Partial Class MainUI
         RunScript.FlatAppearance.MouseDownBackColor = Color.Indigo
         RunScript.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         RunScript.FlatStyle = FlatStyle.Popup
-        RunScript.Font = New Font("Segoe UI", 15.0F)
+        RunScript.Font = New Font("Segoe UI", 15F)
         RunScript.Location = New Point(153, 514)
         RunScript.Margin = New Padding(3, 2, 3, 2)
         RunScript.Name = "RunScript"
@@ -1440,7 +1442,7 @@ Partial Class MainUI
         SaveConfig.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfig.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfig.FlatStyle = FlatStyle.Popup
-        SaveConfig.Font = New Font("Segoe UI", 12.0F)
+        SaveConfig.Font = New Font("Segoe UI", 12F)
         SaveConfig.Location = New Point(153, 478)
         SaveConfig.Margin = New Padding(3, 2, 3, 2)
         SaveConfig.Name = "SaveConfig"
@@ -1482,7 +1484,7 @@ Partial Class MainUI
         ' 
         WordBlockList.AutoSize = True
         WordBlockList.Dock = DockStyle.Bottom
-        WordBlockList.Location = New Point(3, 72)
+        WordBlockList.Location = New Point(3, 56)
         WordBlockList.Name = "WordBlockList"
         WordBlockList.Size = New Size(131, 19)
         WordBlockList.TabIndex = 31
@@ -1495,7 +1497,7 @@ Partial Class MainUI
         EditBlockList.FlatAppearance.MouseDownBackColor = Color.Indigo
         EditBlockList.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         EditBlockList.FlatStyle = FlatStyle.Popup
-        EditBlockList.Location = New Point(3, 91)
+        EditBlockList.Location = New Point(3, 75)
         EditBlockList.Name = "EditBlockList"
         EditBlockList.Size = New Size(131, 24)
         EditBlockList.TabIndex = 32
@@ -1504,7 +1506,6 @@ Partial Class MainUI
         ' 
         ' GroupBox6
         ' 
-        GroupBox6.Controls.Add(isolate_vocals)
         GroupBox6.Controls.Add(auto_blocklist)
         GroupBox6.Controls.Add(RepeatProtection)
         GroupBox6.Controls.Add(WordBlockList)
@@ -1513,7 +1514,7 @@ Partial Class MainUI
         GroupBox6.ForeColor = Color.FloralWhite
         GroupBox6.Location = New Point(10, 288)
         GroupBox6.Name = "GroupBox6"
-        GroupBox6.Size = New Size(137, 141)
+        GroupBox6.Size = New Size(137, 125)
         GroupBox6.TabIndex = 33
         GroupBox6.TabStop = False
         GroupBox6.Text = "Features"
@@ -1522,7 +1523,7 @@ Partial Class MainUI
         ' 
         auto_blocklist.AutoSize = True
         auto_blocklist.Dock = DockStyle.Bottom
-        auto_blocklist.Location = New Point(3, 34)
+        auto_blocklist.Location = New Point(3, 18)
         auto_blocklist.Name = "auto_blocklist"
         auto_blocklist.Size = New Size(131, 19)
         auto_blocklist.TabIndex = 35
@@ -1535,7 +1536,7 @@ Partial Class MainUI
         RepeatProtection.Checked = True
         RepeatProtection.CheckState = CheckState.Checked
         RepeatProtection.Dock = DockStyle.Bottom
-        RepeatProtection.Location = New Point(3, 53)
+        RepeatProtection.Location = New Point(3, 37)
         RepeatProtection.Name = "RepeatProtection"
         RepeatProtection.Size = New Size(131, 19)
         RepeatProtection.TabIndex = 33
@@ -1548,7 +1549,7 @@ Partial Class MainUI
         Button1.FlatAppearance.MouseDownBackColor = Color.Indigo
         Button1.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         Button1.FlatStyle = FlatStyle.Popup
-        Button1.Location = New Point(3, 115)
+        Button1.Location = New Point(3, 99)
         Button1.Name = "Button1"
         Button1.Size = New Size(131, 23)
         Button1.TabIndex = 34
@@ -1592,13 +1593,45 @@ Partial Class MainUI
         Label21.TabIndex = 41
         Label21.Text = "Like the Project?" & vbCrLf & "You Can Support" & vbCrLf & "On itch.io and Ko-Fi" & vbCrLf & vbCrLf & "Please note: This project is free, will always be free" & vbCrLf & "if someone is trying to sell you it, report them and" & vbCrLf & "ignore them."
         ' 
+        ' Label22
+        ' 
+        Label22.AutoSize = True
+        Label22.Location = New Point(249, 97)
+        Label22.Name = "Label22"
+        Label22.Size = New Size(47, 15)
+        Label22.TabIndex = 14
+        Label22.Text = "Label22"
+        ' 
+        ' demucs_model_jobs
+        ' 
+        demucs_model_jobs.Location = New Point(257, 142)
+        demucs_model_jobs.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        demucs_model_jobs.Name = "demucs_model_jobs"
+        demucs_model_jobs.Size = New Size(44, 23)
+        demucs_model_jobs.TabIndex = 42
+        demucs_model_jobs.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        ' 
+        ' Label23
+        ' 
+        Label23.AutoSize = True
+        Label23.Location = New Point(307, 145)
+        Label23.Name = "Label23"
+        Label23.Size = New Size(63, 15)
+        Label23.TabIndex = 43
+        Label23.Text = "Batch Jobs"
+        ' 
         ' MainUI
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateBlue
         ClientSize = New Size(1226, 553)
+        Controls.Add(Label23)
+        Controls.Add(demucs_model_jobs)
+        Controls.Add(isolate_vocals)
         Controls.Add(Label7)
+        Controls.Add(WhatModelsBtn)
+        Controls.Add(demucs_model)
         Controls.Add(SecondaryTranslation)
         Controls.Add(Label19)
         Controls.Add(JetBrainsLogoImg)
@@ -1672,6 +1705,7 @@ Partial Class MainUI
         GroupBox6.ResumeLayout(False)
         GroupBox6.PerformLayout()
         CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).EndInit()
+        CType(demucs_model_jobs, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -1803,5 +1837,8 @@ Partial Class MainUI
     Friend WithEvents Label7 As Label
     Friend WithEvents Label21 As Label
     Friend WithEvents Label20 As Label
+    Friend WithEvents Label22 As Label
+    Friend WithEvents demucs_model_jobs As NumericUpDown
+    Friend WithEvents Label23 As Label
 
 End Class

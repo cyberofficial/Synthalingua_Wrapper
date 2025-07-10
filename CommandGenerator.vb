@@ -128,6 +128,12 @@ Public Class CommandGenerator
         If settings.auto_blocklist.Checked Then builder.Append("--auto_blocklist ")
         If settings.SelectSource.Checked Then builder.Append("--selectsource ")
         If settings.word_timestamps.Checked Then builder.Append("--word_timestamps ")
-        If settings.isolate_vocals.Checked Then builder.Append("--isolate_vocals ")
+        If settings.isolate_vocals.Checked Then
+            builder.Append("--isolate_vocals ")
+            ' Add demucs_model_jobs value if greater than 0, directly after --isolate_vocals
+            If settings.demucs_model_jobs.Value > 0 Then
+                builder.Append($"{settings.demucs_model_jobs.Value} ")
+            End If
+        End If
     End Sub
 End Class

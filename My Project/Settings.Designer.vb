@@ -761,6 +761,18 @@ Namespace My
                 Me("demucs_model") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property demucs_model_jobs() As Integer
+            Get
+                Return CType(Me("demucs_model_jobs"),Integer)
+            End Get
+            Set
+                Me("demucs_model_jobs") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

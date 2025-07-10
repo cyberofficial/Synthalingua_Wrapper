@@ -120,6 +120,7 @@ Public Class ConfigManager
 
                 ' Model Name
                 .demucs_model = settings.demucs_model.Text
+                .demucs_model_jobs = settings.demucs_model_jobs.Value
             End With
             My.Settings.Save()
             If Not String.IsNullOrEmpty(settings.hlspassword.Text) Then
@@ -193,6 +194,7 @@ Public Class ConfigManager
                 form.silent_threshold.Value = CInt(.silent_threshold)
                 form.silent_duration.Value = CDec(.silent_duration)
                 form.demucs_model.Text = .demucs_model
+                form.demucs_model_jobs.Value = .demucs_model_jobs
 
                 Try
                     form.PrimaryFolder = .PrimaryFolder
