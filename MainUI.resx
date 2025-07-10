@@ -142,7 +142,9 @@ Don't use for 5+ minutes, unless you are going out to eat for a while.</value>
   <data name="Label17.Text" xml:space="preserve">
     <value>Info:
 7GB - Turbo model is an optimized version of large-v3 that
-offers faster transcription speed with a minimal
+offers faster transcription speed with a minimal.
+⚠ 7GB Does NOT support Translation, only transcription. 
+Use the 7GB model if you wantt to transcribe audio/streams at native languages.
 degradation in accuracy.
 11GB v2 - More Stable, Much Faster,, 
 11GB v3 - More Accurate, Tiny bit Slower, Tiny bit more Heavy.

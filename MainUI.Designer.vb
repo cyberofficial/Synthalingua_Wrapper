@@ -1092,7 +1092,7 @@ Partial Class MainUI
         Label17.Font = New Font("Segoe UI", 12.0F)
         Label17.Location = New Point(6, 88)
         Label17.Name = "Label17"
-        Label17.Size = New Size(443, 189)
+        Label17.Size = New Size(565, 231)
         Label17.TabIndex = 9
         Label17.Text = resources.GetString("Label17.Text")
         ' 
