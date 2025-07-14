@@ -134,23 +134,26 @@ This will hide the info for secuirty.</value>
     <value>183, 17</value>
   </metadata>
   <data name="compare_mode.Text" xml:space="preserve">
-    <value>Enable Compare Mode - This will test all Models for the Speach to Text Engine.
+    <value>Enable Compare Mode - This will test all Models for the Speech to Text Engine.
 This will legit take a while, so grab a coffee or drink some milk as it works.
 I recomend to only use on short clips like 30s max, or a few minutes. 
 Don't use for 5+ minutes, unless you are going out to eat for a while.</value>
   </data>
   <data name="Label17.Text" xml:space="preserve">
-    <value>Info:
-7GB - Turbo model is an optimized version of large-v3 that
-offers faster transcription speed with a minimal.
-⚠ 7GB Does NOT support Translation, only transcription. 
-Use the 7GB model if you wantt to transcribe audio/streams at native languages.
-degradation in accuracy.
-11GB v2 - More Stable, Much Faster,, 
-11GB v3 - More Accurate, Tiny bit Slower, Tiny bit more Heavy.
+    <value>7GB Turbo Model
+- Optimized version of large-v3 for much faster transcription speed.
+- Minimal loss in accuracy.
+- ⚠ Does NOT support translation; only transcription in the original language.
+- Recommended for fast native language transcription of audio/streams.
 
-Half Mode - This will help reduce time but, but will reduce
-accuracy. This option is for all models.</value>
+11GB v2 Model
+- More stable and significantly faster.
+11GB v3 Model
+- More accurate, slightly slower, and a bit heavier than v2.
+
+Half Mode Reduces processing time for all models.
+Note: This will also reduce accuracy.
+Use if speed is more important than precision.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="KoFiPicture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

@@ -681,7 +681,7 @@ Partial Class MainUI
         SettingsTabs.Margin = New Padding(3, 2, 3, 2)
         SettingsTabs.Name = "SettingsTabs"
         SettingsTabs.SelectedIndex = 0
-        SettingsTabs.Size = New Size(591, 376)
+        SettingsTabs.Size = New Size(591, 407)
         SettingsTabs.TabIndex = 19
         ' 
         ' TabPage1
@@ -692,7 +692,7 @@ Partial Class MainUI
         TabPage1.Margin = New Padding(3, 2, 3, 2)
         TabPage1.Name = "TabPage1"
         TabPage1.Padding = New Padding(3, 2, 3, 2)
-        TabPage1.Size = New Size(583, 345)
+        TabPage1.Size = New Size(583, 376)
         TabPage1.TabIndex = 0
         TabPage1.Text = "Stream Mode Settings"
         ' 
@@ -720,7 +720,7 @@ Partial Class MainUI
         TabPage2.Margin = New Padding(3, 2, 3, 2)
         TabPage2.Name = "TabPage2"
         TabPage2.Padding = New Padding(3, 2, 3, 2)
-        TabPage2.Size = New Size(583, 345)
+        TabPage2.Size = New Size(583, 376)
         TabPage2.TabIndex = 1
         TabPage2.Text = "Microphone Settings"
         ' 
@@ -740,7 +740,7 @@ Partial Class MainUI
         SetMicChunkSizeLbl.Name = "SetMicChunkSizeLbl"
         SetMicChunkSizeLbl.Size = New Size(152, 15)
         SetMicChunkSizeLbl.TabIndex = 25
-        SetMicChunkSizeLbl.Text = "Microhpone Chunk Size (?):"
+        SetMicChunkSizeLbl.Text = "Microphone Chunk Size (?):"
         ' 
         ' PhraseTimeOutCheckbox
         ' 
@@ -920,7 +920,7 @@ Partial Class MainUI
         TabPage3.Location = New Point(4, 27)
         TabPage3.Name = "TabPage3"
         TabPage3.Padding = New Padding(3)
-        TabPage3.Size = New Size(583, 345)
+        TabPage3.Size = New Size(583, 376)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Generate Captions"
         ' 
@@ -1082,7 +1082,7 @@ Partial Class MainUI
         TabPage4.Location = New Point(4, 27)
         TabPage4.Name = "TabPage4"
         TabPage4.Padding = New Padding(3)
-        TabPage4.Size = New Size(583, 345)
+        TabPage4.Size = New Size(583, 376)
         TabPage4.TabIndex = 3
         TabPage4.Text = "Model Settings"
         ' 
@@ -1090,9 +1090,9 @@ Partial Class MainUI
         ' 
         Label17.AutoSize = True
         Label17.Font = New Font("Segoe UI", 12.0F)
-        Label17.Location = New Point(6, 88)
+        Label17.Location = New Point(6, 69)
         Label17.Name = "Label17"
-        Label17.Size = New Size(565, 231)
+        Label17.Size = New Size(552, 294)
         Label17.TabIndex = 9
         Label17.Text = resources.GetString("Label17.Text")
         ' 
@@ -1158,7 +1158,7 @@ Partial Class MainUI
         TabPage5.Location = New Point(4, 27)
         TabPage5.Name = "TabPage5"
         TabPage5.Padding = New Padding(3)
-        TabPage5.Size = New Size(583, 345)
+        TabPage5.Size = New Size(583, 376)
         TabPage5.TabIndex = 4
         TabPage5.Text = "Configuration"
         ' 
@@ -1421,7 +1421,7 @@ Partial Class MainUI
         ' PictureItch
         ' 
         PictureItch.Image = My.Resources.Resources.itch_io_icon_256x256_0aig5hor
-        PictureItch.Location = New Point(1131, 387)
+        PictureItch.Location = New Point(1131, 441)
         PictureItch.Name = "PictureItch"
         PictureItch.Size = New Size(48, 48)
         PictureItch.SizeMode = PictureBoxSizeMode.Zoom
@@ -1432,7 +1432,7 @@ Partial Class MainUI
         ' GitHubPicture
         ' 
         GitHubPicture.Image = My.Resources.Resources._25231
-        GitHubPicture.Location = New Point(899, 387)
+        GitHubPicture.Location = New Point(899, 441)
         GitHubPicture.Name = "GitHubPicture"
         GitHubPicture.Size = New Size(48, 48)
         GitHubPicture.SizeMode = PictureBoxSizeMode.Zoom
@@ -1458,7 +1458,7 @@ Partial Class MainUI
         ' KoFiPicture
         ' 
         KoFiPicture.Image = CType(resources.GetObject("KoFiPicture.Image"), Image)
-        KoFiPicture.Location = New Point(1077, 387)
+        KoFiPicture.Location = New Point(1077, 441)
         KoFiPicture.Name = "KoFiPicture"
         KoFiPicture.Size = New Size(48, 48)
         KoFiPicture.SizeMode = PictureBoxSizeMode.Zoom
@@ -1474,9 +1474,9 @@ Partial Class MainUI
         CheckBoxCMDBLock.Margin = New Padding(3, 2, 3, 2)
         CheckBoxCMDBLock.Name = "CheckBoxCMDBLock"
         CheckBoxCMDBLock.RightToLeft = RightToLeft.No
-        CheckBoxCMDBLock.Size = New Size(172, 49)
+        CheckBoxCMDBLock.Size = New Size(166, 49)
         CheckBoxCMDBLock.TabIndex = 28
-        CheckBoxCMDBLock.Text = "Unhide command block" & vbCrLf & "If you have a weebhook set," & vbCrLf & "best to keep hidden."
+        CheckBoxCMDBLock.Text = "Unhide command block" & vbCrLf & "If you have a webhook set," & vbCrLf & "best to keep hidden."
         CheckBoxCMDBLock.UseVisualStyleBackColor = True
         ' 
         ' CaptionsInputFile
@@ -1562,7 +1562,7 @@ Partial Class MainUI
         ' JetBrainsLogoImg
         ' 
         JetBrainsLogoImg.Image = My.Resources.Resources.PyCharm_Icon_svg
-        JetBrainsLogoImg.Location = New Point(626, 387)
+        JetBrainsLogoImg.Location = New Point(626, 441)
         JetBrainsLogoImg.Name = "JetBrainsLogoImg"
         JetBrainsLogoImg.Size = New Size(48, 48)
         JetBrainsLogoImg.SizeMode = PictureBoxSizeMode.StretchImage
@@ -1572,7 +1572,7 @@ Partial Class MainUI
         ' Label19
         ' 
         Label19.AutoSize = True
-        Label19.Location = New Point(680, 387)
+        Label19.Location = New Point(680, 441)
         Label19.Name = "Label19"
         Label19.Size = New Size(133, 45)
         Label19.TabIndex = 40
@@ -1581,7 +1581,7 @@ Partial Class MainUI
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Location = New Point(819, 387)
+        Label7.Location = New Point(819, 441)
         Label7.Name = "Label7"
         Label7.Size = New Size(74, 15)
         Label7.TabIndex = 41
@@ -1590,7 +1590,7 @@ Partial Class MainUI
         ' Label21
         ' 
         Label21.AutoSize = True
-        Label21.Location = New Point(953, 388)
+        Label21.Location = New Point(953, 442)
         Label21.Name = "Label21"
         Label21.Size = New Size(270, 105)
         Label21.TabIndex = 41
