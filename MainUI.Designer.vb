@@ -153,6 +153,7 @@ Partial Class MainUI
         Label21 = New Label()
         demucs_model_jobs = New NumericUpDown()
         Label23 = New Label()
+        print_srt_to_console = New CheckBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -242,7 +243,7 @@ Partial Class MainUI
         SaveConfigToFileButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfigToFileButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfigToFileButton.FlatStyle = FlatStyle.Popup
-        SaveConfigToFileButton.Font = New Font("Segoe UI", 12.0F)
+        SaveConfigToFileButton.Font = New Font("Segoe UI", 12F)
         SaveConfigToFileButton.Location = New Point(522, 478)
         SaveConfigToFileButton.Margin = New Padding(3, 2, 3, 2)
         SaveConfigToFileButton.Name = "SaveConfigToFileButton"
@@ -373,7 +374,7 @@ Partial Class MainUI
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Font = New Font("Segoe UI", 10.0F)
+        Label14.Font = New Font("Segoe UI", 10F)
         Label14.Location = New Point(6, 77)
         Label14.Name = "Label14"
         Label14.Size = New Size(423, 95)
@@ -587,7 +588,7 @@ Partial Class MainUI
         ' 
         ConfigTextBox.BackColor = Color.SlateBlue
         ConfigTextBox.BorderStyle = BorderStyle.FixedSingle
-        ConfigTextBox.Font = New Font("Segoe UI", 13.0F)
+        ConfigTextBox.Font = New Font("Segoe UI", 13F)
         ConfigTextBox.Location = New Point(153, 170)
         ConfigTextBox.Margin = New Padding(3, 2, 3, 2)
         ConfigTextBox.Multiline = True
@@ -604,7 +605,7 @@ Partial Class MainUI
         GenerateConfigButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         GenerateConfigButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         GenerateConfigButton.FlatStyle = FlatStyle.Popup
-        GenerateConfigButton.Font = New Font("Segoe UI", 13.0F)
+        GenerateConfigButton.Font = New Font("Segoe UI", 13F)
         GenerateConfigButton.Location = New Point(257, 478)
         GenerateConfigButton.Margin = New Padding(3, 2, 3, 2)
         GenerateConfigButton.Name = "GenerateConfigButton"
@@ -902,6 +903,7 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
+        TabPage3.Controls.Add(print_srt_to_console)
         TabPage3.Controls.Add(compare_mode)
         TabPage3.Controls.Add(silent_duration)
         TabPage3.Controls.Add(silent_duration_lbl)
@@ -1089,7 +1091,7 @@ Partial Class MainUI
         ' Label17
         ' 
         Label17.AutoSize = True
-        Label17.Font = New Font("Segoe UI", 12.0F)
+        Label17.Font = New Font("Segoe UI", 12F)
         Label17.Location = New Point(6, 69)
         Label17.Name = "Label17"
         Label17.Size = New Size(552, 294)
@@ -1257,7 +1259,7 @@ Partial Class MainUI
         ' CookiesRefresh
         ' 
         CookiesRefresh.FlatStyle = FlatStyle.Flat
-        CookiesRefresh.Font = New Font("Segoe UI", 8.0F)
+        CookiesRefresh.Font = New Font("Segoe UI", 8F)
         CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
         CookiesRefresh.Location = New Point(550, 25)
         CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
@@ -1313,7 +1315,7 @@ Partial Class MainUI
         RunScript.FlatAppearance.MouseDownBackColor = Color.Indigo
         RunScript.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         RunScript.FlatStyle = FlatStyle.Popup
-        RunScript.Font = New Font("Segoe UI", 15.0F)
+        RunScript.Font = New Font("Segoe UI", 15F)
         RunScript.Location = New Point(153, 514)
         RunScript.Margin = New Padding(3, 2, 3, 2)
         RunScript.Name = "RunScript"
@@ -1445,7 +1447,7 @@ Partial Class MainUI
         SaveConfig.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfig.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfig.FlatStyle = FlatStyle.Popup
-        SaveConfig.Font = New Font("Segoe UI", 12.0F)
+        SaveConfig.Font = New Font("Segoe UI", 12F)
         SaveConfig.Location = New Point(153, 478)
         SaveConfig.Margin = New Padding(3, 2, 3, 2)
         SaveConfig.Name = "SaveConfig"
@@ -1614,9 +1616,19 @@ Partial Class MainUI
         Label23.TabIndex = 43
         Label23.Text = "Batch Jobs"
         ' 
+        ' print_srt_to_console
+        ' 
+        print_srt_to_console.AutoSize = True
+        print_srt_to_console.Location = New Point(142, 90)
+        print_srt_to_console.Name = "print_srt_to_console"
+        print_srt_to_console.Size = New Size(217, 19)
+        print_srt_to_console.TabIndex = 14
+        print_srt_to_console.Text = "Show SRT file in console when done."
+        print_srt_to_console.UseVisualStyleBackColor = True
+        ' 
         ' MainUI
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateBlue
         ClientSize = New Size(1226, 553)
@@ -1833,5 +1845,6 @@ Partial Class MainUI
     Friend WithEvents Label20 As Label
     Friend WithEvents demucs_model_jobs As NumericUpDown
     Friend WithEvents Label23 As Label
+    Friend WithEvents print_srt_to_console As CheckBox
 
 End Class

@@ -121,6 +121,9 @@ Public Class ConfigManager
                 ' Model Name
                 .demucs_model = settings.demucs_model.Text
                 .demucs_model_jobs = settings.demucs_model_jobs.Value
+
+                ' Print SRT to Console
+                .print_srt_to_console = settings.print_srt_to_console.Checked
             End With
             My.Settings.Save()
             If Not String.IsNullOrEmpty(settings.hlspassword.Text) Then
@@ -195,6 +198,7 @@ Public Class ConfigManager
                 form.silent_duration.Value = CDec(.silent_duration)
                 form.demucs_model.Text = .demucs_model
                 form.demucs_model_jobs.Value = .demucs_model_jobs
+                form.print_srt_to_console.Checked = .print_srt_to_console
 
                 Try
                     form.PrimaryFolder = .PrimaryFolder

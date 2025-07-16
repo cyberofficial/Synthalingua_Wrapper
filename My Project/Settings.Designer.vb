@@ -773,6 +773,18 @@ Namespace My
                 Me("demucs_model_jobs") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property print_srt_to_console() As Boolean
+            Get
+                Return CType(Me("print_srt_to_console"),Boolean)
+            End Get
+            Set
+                Me("print_srt_to_console") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
