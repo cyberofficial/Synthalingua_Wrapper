@@ -12,7 +12,7 @@
     <PackageIcon>syntha.png</PackageIcon>
     <ApplicationIcon>assets\syntha.ico</ApplicationIcon>
     <AssemblyName>SynthalinguaGUI</AssemblyName>
-    <Copyright>Build Date: Jul 13 2025 11:16 PM EDT</Copyright>
+    <Copyright>Build Date: Jul 16 2025 12:56 PM EDT</Copyright>
     <FileVersion>6</FileVersion>
     <AssemblyVersion>1.1.4.47</AssemblyVersion>
     <Version>1</Version>
@@ -24,20 +24,20 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>x64</PlatformTarget>
-    <DebugType>embedded</DebugType>
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <PlatformTarget>x64</PlatformTarget>
-    <DebugType>embedded</DebugType>
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DebugType>embedded</DebugType>
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DebugType>embedded</DebugType>
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
