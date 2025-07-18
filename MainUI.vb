@@ -267,6 +267,10 @@ Public Class MainUI
         toolTipManager.ShowMicrophoneSettingsHelp("SetMicLbl")
     End Sub
 
+    Private Sub SetMicChunkSizeLbl_MouseClick(sender As Object, e As MouseEventArgs) Handles SetMicChunkSizeLbl.MouseClick
+        toolTipManager.ShowMicrophoneSettingsHelp("SetMicChunkSizeLbl")
+    End Sub
+
     Private Sub SubWindow_Click(sender As Object, e As EventArgs) Handles SubWindow.Click
         WebManager.ShowSubtitleWindow(WebServerButton.Checked, subtitlewindow)
     End Sub

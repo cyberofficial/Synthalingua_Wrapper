@@ -67,7 +67,9 @@ Public Class ToolTipManager
             Case "SetMicLbl"
                 MessageBox.Show("Set the microphone to use, click Get IDs and set the ID of the microphone.")
             Case "SetMicChunkSizeLbl"
-                MessageBox.Show("Number of audio chunks to collect before processing when using microphone with --paddedaudio. Default is 1 (process each chunk immediately).")
+                MessageBox.Show("Mic Chunk Size: Setting 3 for example is how many recordings to capture per record time out before start translating/transcribing." & vbCrLf & vbCrLf & _
+                                "So a record time out of 5 with mic chunk of 3 + 1 padded audio will be 5 seconds * 4 (( The 3+ 1 )) so that will be 20 seconds of audio being record, so basically a 20 second delay. You should try lowering the record time per chunk or lower the chunks saved." & vbCrLf & vbCrLf & _
+                                "So 2 Record Timeout * 3 Chunks + 1 Padded chunk is 2*(3+1) = 8 Seconds of audio, if you disable padded chunk, then it'll be 2*3, which is 6 seconds of audio.")
         End Select
     End Sub
 End Class
