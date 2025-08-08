@@ -26,7 +26,7 @@ Public Class CommandGenerator
             Throw New Exception($"Unknown demucs model: {settings.demucs_model.Text}")
         End If
 
-        settings.ShortCutType = If(settings.ScriptFileLocation.Text.Contains("transcribe_audio.py"), "Source", "Portable")
+        settings.ShortCutType = If(settings.ScriptFileLocation.Text.Contains("synthalingua.py"), "Source", "Portable")
         settings.PrimaryFolder = Path.GetDirectoryName(settings.ScriptFileLocation.Text)
 
         ' Basic setup
@@ -40,9 +40,9 @@ Public Class CommandGenerator
         ' Script execution command
         If settings.ShortCutType = "Source" Then
             builder.AppendLine($"call ""{settings.PrimaryFolder}\data_whisper\Scripts\activate.bat""")
-            builder.Append($"python ""{settings.PrimaryFolder}\transcribe_audio.py"" ")
+            builder.Append($"python ""{settings.PrimaryFolder}\synthalingua.py"" ")
         Else
-            builder.Append($"""{settings.PrimaryFolder}\transcribe_audio.exe"" ")
+            builder.Append($"""{settings.PrimaryFolder}\Synthalingua.exe"" ")
         End If
 
         AppendRamSettings()
@@ -50,6 +50,7 @@ Public Class CommandGenerator
         AppendLanguageSettings()
         AppendDeviceSettings()
         AppendAdditionalSettings()
+        AppendModelSource()
 
         builder.AppendLine().AppendLine("pause")
         Return builder.ToString()
@@ -58,6 +59,20 @@ Public Class CommandGenerator
     Private Sub AppendRamSettings()
         builder.Append($"--ram {settings.RamSize.Text} ")
         If settings.ForceRam.Checked Then builder.Append("--ramforce ")
+    End Sub
+
+    Private Sub AppendModelSource()
+        ' check to see which radio button is checked and apply the appropriate model source with "--model_source {value}"
+        ' model_openvino = openvino, model_whisper = whisper, model_fasterwhisper = fasterwhisper
+        If settings.model_openvino.Checked Then
+            builder.Append("--model_source openvino ")
+        ElseIf settings.model_whisper.Checked Then
+            builder.Append("--model_source whisper ")
+        ElseIf settings.model_fasterwhisper.Checked Then
+            builder.Append("--model_source fasterwhisper ")
+        End If
+
+
     End Sub
 
     Private Sub AppendAudioSourceSettings()
@@ -79,17 +94,20 @@ Public Class CommandGenerator
             If settings.silent_detect.Checked AndAlso settings.demucs_model.Text <> "DEFAULT" Then
                 builder.Append($"--demucs_model {settings.demucs_model.Text} ")
             End If
+            If settings.intelligent_mode.Checked Then
+                builder.Append("--intelligent_mode ")
+            End If
         ElseIf settings.MIC_RadioButton.Checked Then
-            builder.Append("--microphone_enabled true ")
-            If settings.MicEnCheckBox.Checked Then builder.Append($"--energy_threshold {settings.EnThreshValue.Value} ")
-            If settings.MicCaliCheckBox.Checked Then builder.Append($"--mic_calibration_time {settings.MicCaliTime.Value} ")
-            If settings.RecordTimeOutCHeckBox.Checked Then builder.Append($"--record_timeout {settings.RecordTimeout.Value} ")
-            If settings.PhraseTimeOutCheckbox.Checked Then builder.Append($"--phrase_timeout {settings.PhraseTimeout.Value} ")
-            builder.Append($"--set_microphone {settings.MicID.Value} ")
-            builder.Append($"--mic_chunk_size {settings.mic_chunk_size.Value} ")
-            If settings.paddedaudio.Checked Then builder.Append($"--paddedaudio {settings.paddedaudio_value.Value} ")
-        ElseIf settings.HSL_RadioButton.Checked Then
-            If settings.ShowOriginalText.Checked Then builder.Append("--stream_original_text ")
+                builder.Append("--microphone_enabled true ")
+                If settings.MicEnCheckBox.Checked Then builder.Append($"--energy_threshold {settings.EnThreshValue.Value} ")
+                If settings.MicCaliCheckBox.Checked Then builder.Append($"--mic_calibration_time {settings.MicCaliTime.Value} ")
+                If settings.RecordTimeOutCHeckBox.Checked Then builder.Append($"--record_timeout {settings.RecordTimeout.Value} ")
+                If settings.PhraseTimeOutCheckbox.Checked Then builder.Append($"--phrase_timeout {settings.PhraseTimeout.Value} ")
+                builder.Append($"--set_microphone {settings.MicID.Value} ")
+                builder.Append($"--mic_chunk_size {settings.mic_chunk_size.Value} ")
+                If settings.paddedaudio.Checked Then builder.Append($"--paddedaudio {settings.paddedaudio_value.Value} ")
+            ElseIf settings.HSL_RadioButton.Checked Then
+                If settings.ShowOriginalText.Checked Then builder.Append("--stream_original_text ")
             builder.Append($"--stream ""{settings.HLS_URL.Text}"" ")
             builder.Append($"--stream_chunks {settings.ChunkSizeTrackBar.Value} ")
             If settings.paddedaudio.Checked Then builder.Append($"--paddedaudio {settings.paddedaudio_value.Value} ")

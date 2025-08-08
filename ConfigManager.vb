@@ -124,6 +124,18 @@ Public Class ConfigManager
 
                 ' Print SRT to Console
                 .print_srt_to_console = settings.print_srt_to_console.Checked
+
+                ' Intelligent Mode
+                .intelligent_mode = settings.intelligent_mode.Checked
+
+                ' Model Source
+                If settings.model_openvino.Checked Then
+                    .model_source = "openvino"
+                ElseIf settings.model_whisper.Checked Then
+                    .model_source = "whisper"
+                ElseIf settings.model_fasterwhisper.Checked Then
+                    .model_source = "fasterwhisper"
+                End If
             End With
             My.Settings.Save()
             If Not String.IsNullOrEmpty(settings.hlspassword.Text) Then
@@ -199,6 +211,21 @@ Public Class ConfigManager
                 form.demucs_model.Text = .demucs_model
                 form.demucs_model_jobs.Value = .demucs_model_jobs
                 form.print_srt_to_console.Checked = .print_srt_to_console
+                form.intelligent_mode.Checked = .intelligent_mode
+                ' depending on the model_source stored, we set radio buttons accordingly, model_openvino, model_whisper, model_fasterwhisper
+                If .model_source = "openvino" Then
+                    form.model_openvino.Checked = True
+                    form.model_whisper.Checked = False
+                    form.model_fasterwhisper.Checked = False
+                ElseIf .model_source = "whisper" Then
+                    form.model_openvino.Checked = False
+                    form.model_whisper.Checked = True
+                    form.model_fasterwhisper.Checked = False
+                ElseIf .model_source = "fasterwhisper" Then
+                    form.model_openvino.Checked = False
+                    form.model_whisper.Checked = False
+                    form.model_fasterwhisper.Checked = True
+                End If
 
                 Try
                     form.PrimaryFolder = .PrimaryFolder

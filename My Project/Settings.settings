@@ -185,5 +185,11 @@
     <Setting Name="print_srt_to_console" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="intelligent_mode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="model_source" Type="System.String" Scope="User">
+      <Value Profile="(Default)">whisper</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

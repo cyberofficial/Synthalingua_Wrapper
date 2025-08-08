@@ -88,6 +88,8 @@ Partial Class MainUI
         MicCaliLbl = New Label()
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
+        intelligent_mode = New CheckBox()
+        print_srt_to_console = New CheckBox()
         compare_mode = New CheckBox()
         silent_duration = New NumericUpDown()
         silent_duration_lbl = New Label()
@@ -110,6 +112,10 @@ Partial Class MainUI
         modelDIr = New TextBox()
         modelDirPicker = New Button()
         TabPage5 = New TabPage()
+        GroupBox8 = New GroupBox()
+        model_openvino = New RadioButton()
+        model_fasterwhisper = New RadioButton()
+        model_whisper = New RadioButton()
         Label20 = New Label()
         WipeSettings = New Button()
         EraseCheckBox = New CheckBox()
@@ -153,7 +159,6 @@ Partial Class MainUI
         Label21 = New Label()
         demucs_model_jobs = New NumericUpDown()
         Label23 = New Label()
-        print_srt_to_console = New CheckBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -175,6 +180,7 @@ Partial Class MainUI
         CType(silent_threshold, ComponentModel.ISupportInitialize).BeginInit()
         TabPage4.SuspendLayout()
         TabPage5.SuspendLayout()
+        GroupBox8.SuspendLayout()
         CType(paddedaudio_value, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox5.SuspendLayout()
         CType(PictureItch, ComponentModel.ISupportInitialize).BeginInit()
@@ -243,7 +249,7 @@ Partial Class MainUI
         SaveConfigToFileButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfigToFileButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfigToFileButton.FlatStyle = FlatStyle.Popup
-        SaveConfigToFileButton.Font = New Font("Segoe UI", 12F)
+        SaveConfigToFileButton.Font = New Font("Segoe UI", 12.0F)
         SaveConfigToFileButton.Location = New Point(522, 478)
         SaveConfigToFileButton.Margin = New Padding(3, 2, 3, 2)
         SaveConfigToFileButton.Name = "SaveConfigToFileButton"
@@ -374,7 +380,7 @@ Partial Class MainUI
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Font = New Font("Segoe UI", 10F)
+        Label14.Font = New Font("Segoe UI", 10.0F)
         Label14.Location = New Point(6, 77)
         Label14.Name = "Label14"
         Label14.Size = New Size(423, 95)
@@ -588,7 +594,7 @@ Partial Class MainUI
         ' 
         ConfigTextBox.BackColor = Color.SlateBlue
         ConfigTextBox.BorderStyle = BorderStyle.FixedSingle
-        ConfigTextBox.Font = New Font("Segoe UI", 13F)
+        ConfigTextBox.Font = New Font("Segoe UI", 13.0F)
         ConfigTextBox.Location = New Point(153, 170)
         ConfigTextBox.Margin = New Padding(3, 2, 3, 2)
         ConfigTextBox.Multiline = True
@@ -605,7 +611,7 @@ Partial Class MainUI
         GenerateConfigButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         GenerateConfigButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         GenerateConfigButton.FlatStyle = FlatStyle.Popup
-        GenerateConfigButton.Font = New Font("Segoe UI", 13F)
+        GenerateConfigButton.Font = New Font("Segoe UI", 13.0F)
         GenerateConfigButton.Location = New Point(257, 478)
         GenerateConfigButton.Margin = New Padding(3, 2, 3, 2)
         GenerateConfigButton.Name = "GenerateConfigButton"
@@ -903,6 +909,7 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
+        TabPage3.Controls.Add(intelligent_mode)
         TabPage3.Controls.Add(print_srt_to_console)
         TabPage3.Controls.Add(compare_mode)
         TabPage3.Controls.Add(silent_duration)
@@ -926,10 +933,30 @@ Partial Class MainUI
         TabPage3.TabIndex = 2
         TabPage3.Text = "Generate Captions"
         ' 
+        ' intelligent_mode
+        ' 
+        intelligent_mode.AutoSize = True
+        intelligent_mode.Location = New Point(10, 174)
+        intelligent_mode.Name = "intelligent_mode"
+        intelligent_mode.Size = New Size(113, 19)
+        intelligent_mode.TabIndex = 15
+        intelligent_mode.Text = "Intelligent mode"
+        intelligent_mode.UseVisualStyleBackColor = True
+        ' 
+        ' print_srt_to_console
+        ' 
+        print_srt_to_console.AutoSize = True
+        print_srt_to_console.Location = New Point(142, 90)
+        print_srt_to_console.Name = "print_srt_to_console"
+        print_srt_to_console.Size = New Size(217, 19)
+        print_srt_to_console.TabIndex = 14
+        print_srt_to_console.Text = "Show SRT file in console when done."
+        print_srt_to_console.UseVisualStyleBackColor = True
+        ' 
         ' compare_mode
         ' 
         compare_mode.AutoSize = True
-        compare_mode.Location = New Point(6, 174)
+        compare_mode.Location = New Point(6, 306)
         compare_mode.Name = "compare_mode"
         compare_mode.Size = New Size(438, 64)
         compare_mode.TabIndex = 13
@@ -1091,7 +1118,7 @@ Partial Class MainUI
         ' Label17
         ' 
         Label17.AutoSize = True
-        Label17.Font = New Font("Segoe UI", 12F)
+        Label17.Font = New Font("Segoe UI", 12.0F)
         Label17.Location = New Point(6, 69)
         Label17.Name = "Label17"
         Label17.Size = New Size(552, 294)
@@ -1144,6 +1171,7 @@ Partial Class MainUI
         ' TabPage5
         ' 
         TabPage5.BackColor = Color.DarkSlateBlue
+        TabPage5.Controls.Add(GroupBox8)
         TabPage5.Controls.Add(Label20)
         TabPage5.Controls.Add(GroupBox3)
         TabPage5.Controls.Add(GroupBox4)
@@ -1163,6 +1191,51 @@ Partial Class MainUI
         TabPage5.Size = New Size(583, 376)
         TabPage5.TabIndex = 4
         TabPage5.Text = "Configuration"
+        ' 
+        ' GroupBox8
+        ' 
+        GroupBox8.Controls.Add(model_openvino)
+        GroupBox8.Controls.Add(model_fasterwhisper)
+        GroupBox8.Controls.Add(model_whisper)
+        GroupBox8.ForeColor = Color.FloralWhite
+        GroupBox8.Location = New Point(6, 192)
+        GroupBox8.Name = "GroupBox8"
+        GroupBox8.Size = New Size(125, 100)
+        GroupBox8.TabIndex = 41
+        GroupBox8.TabStop = False
+        GroupBox8.Text = "Model Source"
+        ' 
+        ' model_openvino
+        ' 
+        model_openvino.AutoSize = True
+        model_openvino.Location = New Point(6, 72)
+        model_openvino.Name = "model_openvino"
+        model_openvino.Size = New Size(109, 19)
+        model_openvino.TabIndex = 2
+        model_openvino.Text = "Intel (openvino)"
+        model_openvino.UseVisualStyleBackColor = True
+        ' 
+        ' model_fasterwhisper
+        ' 
+        model_fasterwhisper.AutoSize = True
+        model_fasterwhisper.Location = New Point(6, 47)
+        model_fasterwhisper.Name = "model_fasterwhisper"
+        model_fasterwhisper.Size = New Size(102, 19)
+        model_fasterwhisper.TabIndex = 1
+        model_fasterwhisper.Text = "Faster Whisper"
+        model_fasterwhisper.UseVisualStyleBackColor = True
+        ' 
+        ' model_whisper
+        ' 
+        model_whisper.AutoSize = True
+        model_whisper.Checked = True
+        model_whisper.Location = New Point(6, 22)
+        model_whisper.Name = "model_whisper"
+        model_whisper.Size = New Size(68, 19)
+        model_whisper.TabIndex = 0
+        model_whisper.TabStop = True
+        model_whisper.Text = "Whisper"
+        model_whisper.UseVisualStyleBackColor = True
         ' 
         ' Label20
         ' 
@@ -1259,7 +1332,7 @@ Partial Class MainUI
         ' CookiesRefresh
         ' 
         CookiesRefresh.FlatStyle = FlatStyle.Flat
-        CookiesRefresh.Font = New Font("Segoe UI", 8F)
+        CookiesRefresh.Font = New Font("Segoe UI", 8.0F)
         CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
         CookiesRefresh.Location = New Point(550, 25)
         CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
@@ -1315,7 +1388,7 @@ Partial Class MainUI
         RunScript.FlatAppearance.MouseDownBackColor = Color.Indigo
         RunScript.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         RunScript.FlatStyle = FlatStyle.Popup
-        RunScript.Font = New Font("Segoe UI", 15F)
+        RunScript.Font = New Font("Segoe UI", 15.0F)
         RunScript.Location = New Point(153, 514)
         RunScript.Margin = New Padding(3, 2, 3, 2)
         RunScript.Name = "RunScript"
@@ -1447,7 +1520,7 @@ Partial Class MainUI
         SaveConfig.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfig.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfig.FlatStyle = FlatStyle.Popup
-        SaveConfig.Font = New Font("Segoe UI", 12F)
+        SaveConfig.Font = New Font("Segoe UI", 12.0F)
         SaveConfig.Location = New Point(153, 478)
         SaveConfig.Margin = New Padding(3, 2, 3, 2)
         SaveConfig.Name = "SaveConfig"
@@ -1616,19 +1689,9 @@ Partial Class MainUI
         Label23.TabIndex = 43
         Label23.Text = "Batch Jobs"
         ' 
-        ' print_srt_to_console
-        ' 
-        print_srt_to_console.AutoSize = True
-        print_srt_to_console.Location = New Point(142, 90)
-        print_srt_to_console.Name = "print_srt_to_console"
-        print_srt_to_console.Size = New Size(217, 19)
-        print_srt_to_console.TabIndex = 14
-        print_srt_to_console.Text = "Show SRT file in console when done."
-        print_srt_to_console.UseVisualStyleBackColor = True
-        ' 
         ' MainUI
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateBlue
         ClientSize = New Size(1226, 553)
@@ -1702,6 +1765,8 @@ Partial Class MainUI
         TabPage4.PerformLayout()
         TabPage5.ResumeLayout(False)
         TabPage5.PerformLayout()
+        GroupBox8.ResumeLayout(False)
+        GroupBox8.PerformLayout()
         CType(paddedaudio_value, ComponentModel.ISupportInitialize).EndInit()
         GroupBox5.ResumeLayout(False)
         GroupBox5.PerformLayout()
@@ -1846,5 +1911,10 @@ Partial Class MainUI
     Friend WithEvents demucs_model_jobs As NumericUpDown
     Friend WithEvents Label23 As Label
     Friend WithEvents print_srt_to_console As CheckBox
+    Friend WithEvents intelligent_mode As CheckBox
+    Friend WithEvents GroupBox8 As GroupBox
+    Friend WithEvents model_openvino As RadioButton
+    Friend WithEvents model_fasterwhisper As RadioButton
+    Friend WithEvents model_whisper As RadioButton
 
 End Class
