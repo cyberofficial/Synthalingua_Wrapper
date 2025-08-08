@@ -124,8 +124,8 @@ Public Class CommandGenerator
             builder.Append($"--{prefix}translate ")
         End If
         If settings.SecondaryTranslation.Checked Then
-            builder.Append($"--{prefix}transcribe ")
-            builder.Append($"--{prefix}target_language {settings.SecondaryTranslationLanguage.Text} ")
+            ' builder.Append($"--{prefix}transcribe ")
+            builder.Append($"--{prefix}transcribe {settings.SecondaryTranslationLanguage.Text} ")
         End If
     End Sub
 
