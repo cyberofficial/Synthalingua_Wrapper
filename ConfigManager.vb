@@ -136,6 +136,18 @@ Public Class ConfigManager
                 ElseIf settings.model_fasterwhisper.Checked Then
                     .model_source = "fasterwhisper"
                 End If
+
+                ' Batch Jobs
+                If settings.batchjobs.Value > 1 Then
+                    .batchjobs = settings.batchjobs.Value
+                Else
+                    .batchjobs = 1 ' Default to 1 if not set
+                End If
+
+                ' Timeout
+                .timeout = settings.timeout.Value
+
+
             End With
             My.Settings.Save()
             If Not String.IsNullOrEmpty(settings.hlspassword.Text) Then
@@ -232,6 +244,8 @@ Public Class ConfigManager
                 Catch ex As Exception
                     form.PrimaryFolder = ""
                 End Try
+                form.timeout.Value = .timeout
+                form.batchjobs.Value = If(.batchjobs > 1, .batchjobs, 1) ' Default to 1 if not set
             End With
             Return True
         Catch ex As Exception

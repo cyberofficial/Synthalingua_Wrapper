@@ -84,32 +84,34 @@ Public Class CommandGenerator
                 builder.Append($"--makecaptions --file_input=""{settings.CaptionsInput.Text}"" --file_output=""{settings.CaptionsOutput.Text}"" --file_output_name=""{settings.CaptionsName.Text}"" ")
             End If
             ' Add this block for print_srt_to_console
-            If settings.print_srt_to_console IsNot Nothing AndAlso settings.print_srt_to_console.Checked Then
-                builder.Append("--print_srt_to_console ")
-            End If
+            If settings.print_srt_to_console IsNot Nothing AndAlso settings.print_srt_to_console.Checked Then builder.Append("--print_srt_to_console ")
             If settings.silent_detect.Checked Then builder.Append("--silent_detect ")
             If settings.silent_threshold.Value <> -35 Then builder.Append($"--silent_threshold {settings.silent_threshold.Value} ")
             If settings.silent_duration.Value <> 0.5 Then builder.Append($"--silent_duration {settings.silent_duration.Value} ")
-            ' if "silent_detect" is checked and value from "demucs_model" is not DEFAULT then we add the value from the dropdown "demucs_model" to the command builder and it'll be "--demucs_model {value}"
-            If settings.silent_detect.Checked AndAlso settings.demucs_model.Text <> "DEFAULT" Then
-                builder.Append($"--demucs_model {settings.demucs_model.Text} ")
-            End If
-            If settings.intelligent_mode.Checked Then
-                builder.Append("--intelligent_mode ")
-            End If
-        ElseIf settings.MIC_RadioButton.Checked Then
-                builder.Append("--microphone_enabled true ")
-                If settings.MicEnCheckBox.Checked Then builder.Append($"--energy_threshold {settings.EnThreshValue.Value} ")
-                If settings.MicCaliCheckBox.Checked Then builder.Append($"--mic_calibration_time {settings.MicCaliTime.Value} ")
-                If settings.RecordTimeOutCHeckBox.Checked Then builder.Append($"--record_timeout {settings.RecordTimeout.Value} ")
-                If settings.PhraseTimeOutCheckbox.Checked Then builder.Append($"--phrase_timeout {settings.PhraseTimeout.Value} ")
-                builder.Append($"--set_microphone {settings.MicID.Value} ")
-                builder.Append($"--mic_chunk_size {settings.mic_chunk_size.Value} ")
-                If settings.paddedaudio.Checked Then builder.Append($"--paddedaudio {settings.paddedaudio_value.Value} ")
-            ElseIf settings.HSL_RadioButton.Checked Then
-                If settings.ShowOriginalText.Checked Then builder.Append("--stream_original_text ")
+            If settings.intelligent_mode.Checked Then builder.Append("--intelligent_mode ")
+            If settings.batchjobs.Value > 1 Then builder.Append($"--batchjobs {settings.batchjobs.Value} ")
+            ' if timeout's value is greater than 0, append "--timeout {value}"
+            If settings.timeout.Value > 0 And settings.batchjobs.Value > 1 Then builder.Append($"--timeout {settings.timeout.Value} ")
+            If settings.word_timestamps.Checked Then builder.Append("--word_timestamps ")
+            If settings.silent_detect.Checked AndAlso settings.demucs_model.Text <> "DEFAULT" Then builder.Append($"--demucs_model {settings.demucs_model.Text} ")
+        ElseIf settings.HSL_RadioButton.Checked = True Then
+            If Not String.IsNullOrEmpty(settings.CookiesName.Text) Then builder.Append($"--cookies {settings.CookiesName.Text} ")
+            If settings.cb_halspassword.Checked Then builder.Append($"--remote_hls_password_id {settings.hlspassid.Text} --remote_hls_password {settings.hlspassword.Text} ")
+            If settings.AutoHLS_Checkbox.Checked Then builder.Append("--auto_hls ")
+            If settings.SelectSource.Checked Then builder.Append("--selectsource ")
+            If settings.ShowOriginalText.Checked Then builder.Append("--stream_original_text ")
             builder.Append($"--stream ""{settings.HLS_URL.Text}"" ")
             builder.Append($"--stream_chunks {settings.ChunkSizeTrackBar.Value} ")
+            If settings.paddedaudio.Checked Then builder.Append($"--paddedaudio {settings.paddedaudio_value.Value} ")
+            If settings.demucs_model.Text <> "DEFAULT" Then builder.Append($"--demucs_model {settings.demucs_model.Text} ")
+        ElseIf settings.MIC_RadioButton.Checked Then
+            builder.Append("--microphone_enabled true ")
+            If settings.MicEnCheckBox.Checked Then builder.Append($"--energy_threshold {settings.EnThreshValue.Value} ")
+            If settings.MicCaliCheckBox.Checked Then builder.Append($"--mic_calibration_time {settings.MicCaliTime.Value} ")
+            If settings.RecordTimeOutCHeckBox.Checked Then builder.Append($"--record_timeout {settings.RecordTimeout.Value} ")
+            If settings.PhraseTimeOutCheckbox.Checked Then builder.Append($"--phrase_timeout {settings.PhraseTimeout.Value} ")
+            builder.Append($"--set_microphone {settings.MicID.Value} ")
+            builder.Append($"--mic_chunk_size {settings.mic_chunk_size.Value} ")
             If settings.paddedaudio.Checked Then builder.Append($"--paddedaudio {settings.paddedaudio_value.Value} ")
         End If
     End Sub
@@ -138,18 +140,13 @@ Public Class CommandGenerator
     End Sub
 
     Private Sub AppendAdditionalSettings()
-        If Not String.IsNullOrEmpty(settings.CookiesName.Text) Then builder.Append($"--cookies {settings.CookiesName.Text} ")
         If settings.WordBlockList.Checked Then builder.Append($"--ignorelist ""{settings.WordBlockListLocation}"" ")
         If settings.WebServerButton.Checked Then builder.Append($"--portnumber {settings.PortNumber.Value} ")
         If settings.RepeatProtection.Checked Then builder.Append("--condition_on_previous_text ")
-        If settings.cb_halspassword.Checked Then builder.Append($"--remote_hls_password_id {settings.hlspassid.Text} --remote_hls_password {settings.hlspassword.Text} ")
         If Not String.IsNullOrEmpty(settings.DiscordWebHook.Text) Then builder.Append($"--discord_webhook ""{settings.DiscordWebHook.Text}"" ")
         If Not String.IsNullOrEmpty(settings.modelDIr.Text) Then builder.Append($"--model_dir ""{settings.modelDIr.Text}"" ")
         If settings.PrecisionCheckBox.Checked Then builder.Append("--fp16 ")
-        If settings.AutoHLS_Checkbox.Checked Then builder.Append("--auto_hls ")
         If settings.auto_blocklist.Checked Then builder.Append("--auto_blocklist ")
-        If settings.SelectSource.Checked Then builder.Append("--selectsource ")
-        If settings.word_timestamps.Checked Then builder.Append("--word_timestamps ")
         If settings.isolate_vocals.Checked Then
             builder.Append("--isolate_vocals ")
             ' Add demucs_model_jobs value if greater than 0, directly after --isolate_vocals
@@ -157,5 +154,6 @@ Public Class CommandGenerator
                 builder.Append($"{settings.demucs_model_jobs.Value} ")
             End If
         End If
+
     End Sub
 End Class

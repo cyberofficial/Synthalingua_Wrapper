@@ -809,6 +809,30 @@ Namespace My
                 Me("model_source") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property batchjobs() As Integer
+            Get
+                Return CType(Me("batchjobs"),Integer)
+            End Get
+            Set
+                Me("batchjobs") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property timeout() As Integer
+            Get
+                Return CType(Me("timeout"),Integer)
+            End Get
+            Set
+                Me("timeout") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

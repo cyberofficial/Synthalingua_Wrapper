@@ -88,6 +88,10 @@ Partial Class MainUI
         MicCaliLbl = New Label()
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
+        timeout = New NumericUpDown()
+        Label22 = New Label()
+        batchjobs_lbl = New Label()
+        batchjobs = New TrackBar()
         intelligent_mode = New CheckBox()
         print_srt_to_console = New CheckBox()
         compare_mode = New CheckBox()
@@ -176,6 +180,8 @@ Partial Class MainUI
         CType(MicCaliTime, ComponentModel.ISupportInitialize).BeginInit()
         CType(EnThreshValue, ComponentModel.ISupportInitialize).BeginInit()
         TabPage3.SuspendLayout()
+        CType(timeout, ComponentModel.ISupportInitialize).BeginInit()
+        CType(batchjobs, ComponentModel.ISupportInitialize).BeginInit()
         CType(silent_duration, ComponentModel.ISupportInitialize).BeginInit()
         CType(silent_threshold, ComponentModel.ISupportInitialize).BeginInit()
         TabPage4.SuspendLayout()
@@ -909,6 +915,10 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
+        TabPage3.Controls.Add(timeout)
+        TabPage3.Controls.Add(Label22)
+        TabPage3.Controls.Add(batchjobs_lbl)
+        TabPage3.Controls.Add(batchjobs)
         TabPage3.Controls.Add(intelligent_mode)
         TabPage3.Controls.Add(print_srt_to_console)
         TabPage3.Controls.Add(compare_mode)
@@ -932,6 +942,43 @@ Partial Class MainUI
         TabPage3.Size = New Size(583, 376)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Generate Captions"
+        ' 
+        ' timeout
+        ' 
+        timeout.Enabled = False
+        timeout.Location = New Point(142, 253)
+        timeout.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
+        timeout.Name = "timeout"
+        timeout.Size = New Size(71, 23)
+        timeout.TabIndex = 19
+        ' 
+        ' Label22
+        ' 
+        Label22.AutoSize = True
+        Label22.Location = New Point(10, 255)
+        Label22.Name = "Label22"
+        Label22.Size = New Size(130, 30)
+        Label22.TabIndex = 18
+        Label22.Text = "Time Out (in Seconds): " & vbCrLf & "Leave 0 for no timeout."
+        ' 
+        ' batchjobs_lbl
+        ' 
+        batchjobs_lbl.AutoSize = True
+        batchjobs_lbl.Location = New Point(10, 202)
+        batchjobs_lbl.Name = "batchjobs_lbl"
+        batchjobs_lbl.Size = New Size(80, 15)
+        batchjobs_lbl.TabIndex = 17
+        batchjobs_lbl.Text = "Batch Jobs (1)"
+        ' 
+        ' batchjobs
+        ' 
+        batchjobs.Location = New Point(6, 220)
+        batchjobs.Maximum = 4
+        batchjobs.Minimum = 1
+        batchjobs.Name = "batchjobs"
+        batchjobs.Size = New Size(571, 45)
+        batchjobs.TabIndex = 16
+        batchjobs.Value = 1
         ' 
         ' intelligent_mode
         ' 
@@ -1759,6 +1806,8 @@ Partial Class MainUI
         CType(EnThreshValue, ComponentModel.ISupportInitialize).EndInit()
         TabPage3.ResumeLayout(False)
         TabPage3.PerformLayout()
+        CType(timeout, ComponentModel.ISupportInitialize).EndInit()
+        CType(batchjobs, ComponentModel.ISupportInitialize).EndInit()
         CType(silent_duration, ComponentModel.ISupportInitialize).EndInit()
         CType(silent_threshold, ComponentModel.ISupportInitialize).EndInit()
         TabPage4.ResumeLayout(False)
@@ -1916,5 +1965,9 @@ Partial Class MainUI
     Friend WithEvents model_openvino As RadioButton
     Friend WithEvents model_fasterwhisper As RadioButton
     Friend WithEvents model_whisper As RadioButton
+    Friend WithEvents batchjobs_lbl As Label
+    Friend WithEvents batchjobs As TrackBar
+    Friend WithEvents timeout As NumericUpDown
+    Friend WithEvents Label22 As Label
 
 End Class
