@@ -89,7 +89,7 @@ Public Class CommandGenerator
             If settings.silent_threshold.Value <> -35 Then builder.Append($"--silent_threshold {settings.silent_threshold.Value} ")
             If settings.silent_duration.Value <> 0.5 Then builder.Append($"--silent_duration {settings.silent_duration.Value} ")
             If settings.intelligent_mode.Checked Then builder.Append("--intelligent_mode ")
-            If settings.batchjobs.Value > 1 Then builder.Append($"--batchjobs {settings.batchjobs.Value} ")
+            If settings.batchjobs.Value > 1 Then builder.Append($"--batchmode {settings.batchjobs.Value} ")
             ' if timeout's value is greater than 0, append "--timeout {value}"
             If settings.timeout.Value > 0 And settings.batchjobs.Value > 1 Then builder.Append($"--timeout {settings.timeout.Value} ")
             If settings.word_timestamps.Checked Then builder.Append("--word_timestamps ")
