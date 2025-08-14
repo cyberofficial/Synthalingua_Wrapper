@@ -124,6 +124,30 @@ Public Class ConfigManager
 
                 ' Print SRT to Console
                 .print_srt_to_console = settings.print_srt_to_console.Checked
+
+                ' Intelligent Mode
+                .intelligent_mode = settings.intelligent_mode.Checked
+
+                ' Model Source
+                If settings.model_openvino.Checked Then
+                    .model_source = "openvino"
+                ElseIf settings.model_whisper.Checked Then
+                    .model_source = "whisper"
+                ElseIf settings.model_fasterwhisper.Checked Then
+                    .model_source = "fasterwhisper"
+                End If
+
+                ' Batch Jobs
+                If settings.batchjobs.Value > 1 Then
+                    .batchjobs = settings.batchjobs.Value
+                Else
+                    .batchjobs = 1 ' Default to 1 if not set
+                End If
+
+                ' Timeout
+                .timeout = settings.timeout.Value
+
+
             End With
             My.Settings.Save()
             If Not String.IsNullOrEmpty(settings.hlspassword.Text) Then
@@ -199,12 +223,29 @@ Public Class ConfigManager
                 form.demucs_model.Text = .demucs_model
                 form.demucs_model_jobs.Value = .demucs_model_jobs
                 form.print_srt_to_console.Checked = .print_srt_to_console
+                form.intelligent_mode.Checked = .intelligent_mode
+                ' depending on the model_source stored, we set radio buttons accordingly, model_openvino, model_whisper, model_fasterwhisper
+                If .model_source = "openvino" Then
+                    form.model_openvino.Checked = True
+                    form.model_whisper.Checked = False
+                    form.model_fasterwhisper.Checked = False
+                ElseIf .model_source = "whisper" Then
+                    form.model_openvino.Checked = False
+                    form.model_whisper.Checked = True
+                    form.model_fasterwhisper.Checked = False
+                ElseIf .model_source = "fasterwhisper" Then
+                    form.model_openvino.Checked = False
+                    form.model_whisper.Checked = False
+                    form.model_fasterwhisper.Checked = True
+                End If
 
                 Try
                     form.PrimaryFolder = .PrimaryFolder
                 Catch ex As Exception
                     form.PrimaryFolder = ""
                 End Try
+                form.timeout.Value = .timeout
+                form.batchjobs.Value = If(.batchjobs > 1, .batchjobs, 1) ' Default to 1 if not set
             End With
             Return True
         Catch ex As Exception

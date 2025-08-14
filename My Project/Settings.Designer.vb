@@ -785,6 +785,54 @@ Namespace My
                 Me("print_srt_to_console") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property intelligent_mode() As Boolean
+            Get
+                Return CType(Me("intelligent_mode"),Boolean)
+            End Get
+            Set
+                Me("intelligent_mode") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("whisper")>  _
+        Public Property model_source() As String
+            Get
+                Return CType(Me("model_source"),String)
+            End Get
+            Set
+                Me("model_source") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property batchjobs() As Integer
+            Get
+                Return CType(Me("batchjobs"),Integer)
+            End Get
+            Set
+                Me("batchjobs") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property timeout() As Integer
+            Get
+                Return CType(Me("timeout"),Integer)
+            End Get
+            Set
+                Me("timeout") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

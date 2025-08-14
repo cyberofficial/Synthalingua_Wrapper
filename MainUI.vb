@@ -194,14 +194,24 @@ Public Class MainUI
         FileOperations.InitializeCookiesFolder(System.IO.Directory.GetCurrentDirectory())
         FileOperations.RefreshCookiesList(CookiesName)
 
+        Dim cpuCores As Integer = Environment.ProcessorCount
+
         ' Set demucs_model_jobs minimum to 1 and maximum to CPU core count
         Try
-            Dim cpuCores As Integer = Environment.ProcessorCount
             demucs_model_jobs.Minimum = 0
             demucs_model_jobs.Maximum = cpuCores
         Catch ex As Exception
             demucs_model_jobs.Minimum = 0
             demucs_model_jobs.Maximum = 1 ' fallback default
+        End Try
+
+        ' Set batchjobs minimum to 1 and maximum to CPU core count
+        Try
+            batchjobs.Minimum = 1
+            batchjobs.Maximum = cpuCores
+        Catch ex As Exception
+            batchjobs.Minimum = 1
+            batchjobs.Maximum = 4
         End Try
 
         ' Load saved value from user settings if available
@@ -396,5 +406,16 @@ Public Class MainUI
             "  Description: Original time-domain" & vbCrLf &
             "  Recommended for: Legacy compatibility"
         MessageBox.Show(info, "Model Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub batchjobs_ValueChanged(sender As Object, e As EventArgs) Handles batchjobs.ValueChanged
+        batchjobs_lbl.Text = "Batch Jobs (" + batchjobs.Value.ToString + ")"
+        ' if batchjobs's value is greater than 1, then enable timeout, if 0 disable
+        If batchjobs.Value > 1 Then
+            timeout.Enabled = True
+        Else
+            timeout.Enabled = False
+            batchjobs_lbl.Text = "Batch Jobs (disabled)"
+        End If
     End Sub
 End Class
