@@ -833,6 +833,66 @@ Namespace My
                 Me("timeout") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property subtype_burn() As Boolean
+            Get
+                Return CType(Me("subtype_burn"),Boolean)
+            End Get
+            Set
+                Me("subtype_burn") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property subtype_embed() As Boolean
+            Get
+                Return CType(Me("subtype_embed"),Boolean)
+            End Get
+            Set
+                Me("subtype_embed") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("18")>  _
+        Public Property substyle_fontsize() As Integer
+            Get
+                Return CType(Me("substyle_fontsize"),Integer)
+            End Get
+            Set
+                Me("substyle_fontsize") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property substyle_fontname() As String
+            Get
+                Return CType(Me("substyle_fontname"),String)
+            End Get
+            Set
+                Me("substyle_fontname") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("white")>  _
+        Public Property substyle_color() As String
+            Get
+                Return CType(Me("substyle_color"),String)
+            End Get
+            Set
+                Me("substyle_color") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

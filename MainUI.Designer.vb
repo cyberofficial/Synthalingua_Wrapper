@@ -88,6 +88,17 @@ Partial Class MainUI
         MicCaliLbl = New Label()
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
+        GroupBox9 = New GroupBox()
+        substyle_fontname_refresh = New Button()
+        Label27 = New Label()
+        substyle_color = New ComboBox()
+        Label26 = New Label()
+        substyle_fontname = New ComboBox()
+        substyle_fontsize = New NumericUpDown()
+        Label25 = New Label()
+        Label24 = New Label()
+        subtype_embed = New RadioButton()
+        subtype_burn = New RadioButton()
         timeout = New NumericUpDown()
         Label22 = New Label()
         batchjobs_lbl = New Label()
@@ -180,6 +191,8 @@ Partial Class MainUI
         CType(MicCaliTime, ComponentModel.ISupportInitialize).BeginInit()
         CType(EnThreshValue, ComponentModel.ISupportInitialize).BeginInit()
         TabPage3.SuspendLayout()
+        GroupBox9.SuspendLayout()
+        CType(substyle_fontsize, ComponentModel.ISupportInitialize).BeginInit()
         CType(timeout, ComponentModel.ISupportInitialize).BeginInit()
         CType(batchjobs, ComponentModel.ISupportInitialize).BeginInit()
         CType(silent_duration, ComponentModel.ISupportInitialize).BeginInit()
@@ -256,7 +269,7 @@ Partial Class MainUI
         SaveConfigToFileButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfigToFileButton.FlatStyle = FlatStyle.Popup
         SaveConfigToFileButton.Font = New Font("Segoe UI", 12.0F)
-        SaveConfigToFileButton.Location = New Point(522, 478)
+        SaveConfigToFileButton.Location = New Point(522, 627)
         SaveConfigToFileButton.Margin = New Padding(3, 2, 3, 2)
         SaveConfigToFileButton.Name = "SaveConfigToFileButton"
         SaveConfigToFileButton.Size = New Size(98, 32)
@@ -608,7 +621,7 @@ Partial Class MainUI
         ConfigTextBox.ReadOnly = True
         ConfigTextBox.RightToLeft = RightToLeft.No
         ConfigTextBox.ScrollBars = ScrollBars.Vertical
-        ConfigTextBox.Size = New Size(467, 304)
+        ConfigTextBox.Size = New Size(467, 453)
         ConfigTextBox.TabIndex = 10
         ConfigTextBox.Visible = False
         ' 
@@ -618,7 +631,7 @@ Partial Class MainUI
         GenerateConfigButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         GenerateConfigButton.FlatStyle = FlatStyle.Popup
         GenerateConfigButton.Font = New Font("Segoe UI", 13.0F)
-        GenerateConfigButton.Location = New Point(257, 478)
+        GenerateConfigButton.Location = New Point(257, 627)
         GenerateConfigButton.Margin = New Padding(3, 2, 3, 2)
         GenerateConfigButton.Name = "GenerateConfigButton"
         GenerateConfigButton.Size = New Size(150, 32)
@@ -694,7 +707,7 @@ Partial Class MainUI
         SettingsTabs.Margin = New Padding(3, 2, 3, 2)
         SettingsTabs.Name = "SettingsTabs"
         SettingsTabs.SelectedIndex = 0
-        SettingsTabs.Size = New Size(591, 407)
+        SettingsTabs.Size = New Size(591, 576)
         SettingsTabs.TabIndex = 19
         ' 
         ' TabPage1
@@ -705,7 +718,7 @@ Partial Class MainUI
         TabPage1.Margin = New Padding(3, 2, 3, 2)
         TabPage1.Name = "TabPage1"
         TabPage1.Padding = New Padding(3, 2, 3, 2)
-        TabPage1.Size = New Size(583, 376)
+        TabPage1.Size = New Size(583, 545)
         TabPage1.TabIndex = 0
         TabPage1.Text = "Stream Mode Settings"
         ' 
@@ -733,7 +746,7 @@ Partial Class MainUI
         TabPage2.Margin = New Padding(3, 2, 3, 2)
         TabPage2.Name = "TabPage2"
         TabPage2.Padding = New Padding(3, 2, 3, 2)
-        TabPage2.Size = New Size(583, 376)
+        TabPage2.Size = New Size(583, 545)
         TabPage2.TabIndex = 1
         TabPage2.Text = "Microphone Settings"
         ' 
@@ -915,6 +928,7 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
+        TabPage3.Controls.Add(GroupBox9)
         TabPage3.Controls.Add(timeout)
         TabPage3.Controls.Add(Label22)
         TabPage3.Controls.Add(batchjobs_lbl)
@@ -939,9 +953,128 @@ Partial Class MainUI
         TabPage3.Location = New Point(4, 27)
         TabPage3.Name = "TabPage3"
         TabPage3.Padding = New Padding(3)
-        TabPage3.Size = New Size(583, 376)
+        TabPage3.Size = New Size(583, 545)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Generate Captions"
+        ' 
+        ' GroupBox9
+        ' 
+        GroupBox9.Controls.Add(substyle_fontname_refresh)
+        GroupBox9.Controls.Add(Label27)
+        GroupBox9.Controls.Add(substyle_color)
+        GroupBox9.Controls.Add(Label26)
+        GroupBox9.Controls.Add(substyle_fontname)
+        GroupBox9.Controls.Add(substyle_fontsize)
+        GroupBox9.Controls.Add(Label25)
+        GroupBox9.Controls.Add(Label24)
+        GroupBox9.Controls.Add(subtype_embed)
+        GroupBox9.Controls.Add(subtype_burn)
+        GroupBox9.ForeColor = Color.FloralWhite
+        GroupBox9.Location = New Point(6, 376)
+        GroupBox9.Name = "GroupBox9"
+        GroupBox9.Size = New Size(571, 163)
+        GroupBox9.TabIndex = 20
+        GroupBox9.TabStop = False
+        GroupBox9.Text = "Sub Title Settings"
+        ' 
+        ' substyle_fontname_refresh
+        ' 
+        substyle_fontname_refresh.BackColor = Color.DarkSlateBlue
+        substyle_fontname_refresh.ForeColor = Color.FloralWhite
+        substyle_fontname_refresh.Location = New Point(257, 87)
+        substyle_fontname_refresh.Name = "substyle_fontname_refresh"
+        substyle_fontname_refresh.Size = New Size(61, 23)
+        substyle_fontname_refresh.TabIndex = 9
+        substyle_fontname_refresh.Text = "Refresh"
+        substyle_fontname_refresh.UseVisualStyleBackColor = False
+        ' 
+        ' Label27
+        ' 
+        Label27.AutoSize = True
+        Label27.Location = New Point(324, 87)
+        Label27.Name = "Label27"
+        Label27.Size = New Size(218, 45)
+        Label27.TabIndex = 8
+        Label27.Text = "Place fonts into the ""fonts"" folder" & vbCrLf & "in the same app directory. Press the" & vbCrLf & "Refresh button to check for newer items"
+        ' 
+        ' substyle_color
+        ' 
+        substyle_color.DropDownStyle = ComboBoxStyle.DropDownList
+        substyle_color.FormattingEnabled = True
+        substyle_color.Items.AddRange(New Object() {"black", "blue", "cyan", "green", "magenta", "orange", "red", "white", "yellow"})
+        substyle_color.Location = New Point(72, 115)
+        substyle_color.Name = "substyle_color"
+        substyle_color.Size = New Size(179, 23)
+        substyle_color.Sorted = True
+        substyle_color.TabIndex = 7
+        ' 
+        ' Label26
+        ' 
+        Label26.AutoSize = True
+        Label26.Location = New Point(24, 118)
+        Label26.Name = "Label26"
+        Label26.Size = New Size(42, 15)
+        Label26.TabIndex = 6
+        Label26.Text = "Color: "
+        ' 
+        ' substyle_fontname
+        ' 
+        substyle_fontname.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        substyle_fontname.FormattingEnabled = True
+        substyle_fontname.Location = New Point(72, 87)
+        substyle_fontname.Name = "substyle_fontname"
+        substyle_fontname.Size = New Size(179, 23)
+        substyle_fontname.TabIndex = 5
+        ' 
+        ' substyle_fontsize
+        ' 
+        substyle_fontsize.Location = New Point(72, 60)
+        substyle_fontsize.Maximum = New Decimal(New Integer() {64, 0, 0, 0})
+        substyle_fontsize.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        substyle_fontsize.Name = "substyle_fontsize"
+        substyle_fontsize.Size = New Size(45, 23)
+        substyle_fontsize.TabIndex = 4
+        substyle_fontsize.Value = New Decimal(New Integer() {18, 0, 0, 0})
+        ' 
+        ' Label25
+        ' 
+        Label25.AutoSize = True
+        Label25.Location = New Point(29, 90)
+        Label25.Name = "Label25"
+        Label25.Size = New Size(37, 15)
+        Label25.TabIndex = 3
+        Label25.Text = "Font: "
+        ' 
+        ' Label24
+        ' 
+        Label24.AutoSize = True
+        Label24.Location = New Point(6, 62)
+        Label24.Name = "Label24"
+        Label24.Size = New Size(60, 15)
+        Label24.TabIndex = 2
+        Label24.Text = "Font Size: "
+        ' 
+        ' subtype_embed
+        ' 
+        subtype_embed.AutoSize = True
+        subtype_embed.Location = New Point(62, 22)
+        subtype_embed.Name = "subtype_embed"
+        subtype_embed.Size = New Size(62, 19)
+        subtype_embed.TabIndex = 1
+        subtype_embed.Text = "Embed"
+        subtype_embed.UseVisualStyleBackColor = True
+        ' 
+        ' subtype_burn
+        ' 
+        subtype_burn.AutoSize = True
+        subtype_burn.Checked = True
+        subtype_burn.Location = New Point(6, 22)
+        subtype_burn.Name = "subtype_burn"
+        subtype_burn.Size = New Size(50, 19)
+        subtype_burn.TabIndex = 0
+        subtype_burn.TabStop = True
+        subtype_burn.Text = "Burn"
+        subtype_burn.UseVisualStyleBackColor = True
         ' 
         ' timeout
         ' 
@@ -1158,7 +1291,7 @@ Partial Class MainUI
         TabPage4.Location = New Point(4, 27)
         TabPage4.Name = "TabPage4"
         TabPage4.Padding = New Padding(3)
-        TabPage4.Size = New Size(583, 376)
+        TabPage4.Size = New Size(583, 545)
         TabPage4.TabIndex = 3
         TabPage4.Text = "Model Settings"
         ' 
@@ -1235,7 +1368,7 @@ Partial Class MainUI
         TabPage5.Location = New Point(4, 27)
         TabPage5.Name = "TabPage5"
         TabPage5.Padding = New Padding(3)
-        TabPage5.Size = New Size(583, 376)
+        TabPage5.Size = New Size(583, 545)
         TabPage5.TabIndex = 4
         TabPage5.Text = "Configuration"
         ' 
@@ -1436,7 +1569,7 @@ Partial Class MainUI
         RunScript.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         RunScript.FlatStyle = FlatStyle.Popup
         RunScript.Font = New Font("Segoe UI", 15.0F)
-        RunScript.Location = New Point(153, 514)
+        RunScript.Location = New Point(153, 663)
         RunScript.Margin = New Padding(3, 2, 3, 2)
         RunScript.Name = "RunScript"
         RunScript.Size = New Size(467, 34)
@@ -1543,7 +1676,7 @@ Partial Class MainUI
         ' PictureItch
         ' 
         PictureItch.Image = My.Resources.Resources.itch_io_icon_256x256_0aig5hor
-        PictureItch.Location = New Point(1131, 441)
+        PictureItch.Location = New Point(1126, 587)
         PictureItch.Name = "PictureItch"
         PictureItch.Size = New Size(48, 48)
         PictureItch.SizeMode = PictureBoxSizeMode.Zoom
@@ -1554,7 +1687,7 @@ Partial Class MainUI
         ' GitHubPicture
         ' 
         GitHubPicture.Image = My.Resources.Resources._25231
-        GitHubPicture.Location = New Point(899, 441)
+        GitHubPicture.Location = New Point(894, 587)
         GitHubPicture.Name = "GitHubPicture"
         GitHubPicture.Size = New Size(48, 48)
         GitHubPicture.SizeMode = PictureBoxSizeMode.Zoom
@@ -1568,7 +1701,7 @@ Partial Class MainUI
         SaveConfig.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfig.FlatStyle = FlatStyle.Popup
         SaveConfig.Font = New Font("Segoe UI", 12.0F)
-        SaveConfig.Location = New Point(153, 478)
+        SaveConfig.Location = New Point(153, 627)
         SaveConfig.Margin = New Padding(3, 2, 3, 2)
         SaveConfig.Name = "SaveConfig"
         SaveConfig.Size = New Size(98, 32)
@@ -1580,7 +1713,7 @@ Partial Class MainUI
         ' KoFiPicture
         ' 
         KoFiPicture.Image = CType(resources.GetObject("KoFiPicture.Image"), Image)
-        KoFiPicture.Location = New Point(1077, 441)
+        KoFiPicture.Location = New Point(1072, 587)
         KoFiPicture.Name = "KoFiPicture"
         KoFiPicture.Size = New Size(48, 48)
         KoFiPicture.SizeMode = PictureBoxSizeMode.Zoom
@@ -1684,7 +1817,7 @@ Partial Class MainUI
         ' JetBrainsLogoImg
         ' 
         JetBrainsLogoImg.Image = My.Resources.Resources.PyCharm_Icon_svg
-        JetBrainsLogoImg.Location = New Point(626, 441)
+        JetBrainsLogoImg.Location = New Point(621, 587)
         JetBrainsLogoImg.Name = "JetBrainsLogoImg"
         JetBrainsLogoImg.Size = New Size(48, 48)
         JetBrainsLogoImg.SizeMode = PictureBoxSizeMode.StretchImage
@@ -1694,7 +1827,7 @@ Partial Class MainUI
         ' Label19
         ' 
         Label19.AutoSize = True
-        Label19.Location = New Point(680, 441)
+        Label19.Location = New Point(675, 587)
         Label19.Name = "Label19"
         Label19.Size = New Size(133, 45)
         Label19.TabIndex = 40
@@ -1703,7 +1836,7 @@ Partial Class MainUI
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Location = New Point(819, 441)
+        Label7.Location = New Point(814, 587)
         Label7.Name = "Label7"
         Label7.Size = New Size(74, 15)
         Label7.TabIndex = 41
@@ -1712,7 +1845,7 @@ Partial Class MainUI
         ' Label21
         ' 
         Label21.AutoSize = True
-        Label21.Location = New Point(953, 442)
+        Label21.Location = New Point(948, 588)
         Label21.Name = "Label21"
         Label21.Size = New Size(270, 105)
         Label21.TabIndex = 41
@@ -1741,7 +1874,7 @@ Partial Class MainUI
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateBlue
-        ClientSize = New Size(1226, 553)
+        ClientSize = New Size(1226, 702)
         Controls.Add(Label23)
         Controls.Add(demucs_model_jobs)
         Controls.Add(isolate_vocals)
@@ -1806,6 +1939,9 @@ Partial Class MainUI
         CType(EnThreshValue, ComponentModel.ISupportInitialize).EndInit()
         TabPage3.ResumeLayout(False)
         TabPage3.PerformLayout()
+        GroupBox9.ResumeLayout(False)
+        GroupBox9.PerformLayout()
+        CType(substyle_fontsize, ComponentModel.ISupportInitialize).EndInit()
         CType(timeout, ComponentModel.ISupportInitialize).EndInit()
         CType(batchjobs, ComponentModel.ISupportInitialize).EndInit()
         CType(silent_duration, ComponentModel.ISupportInitialize).EndInit()
@@ -1969,5 +2105,16 @@ Partial Class MainUI
     Friend WithEvents batchjobs As TrackBar
     Friend WithEvents timeout As NumericUpDown
     Friend WithEvents Label22 As Label
+    Friend WithEvents GroupBox9 As GroupBox
+    Friend WithEvents subtype_embed As RadioButton
+    Friend WithEvents subtype_burn As RadioButton
+    Friend WithEvents Label27 As Label
+    Friend WithEvents substyle_color As ComboBox
+    Friend WithEvents Label26 As Label
+    Friend WithEvents substyle_fontname As ComboBox
+    Friend WithEvents substyle_fontsize As NumericUpDown
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents substyle_fontname_refresh As Button
 
 End Class

@@ -147,6 +147,23 @@ Public Class ConfigManager
                 ' Timeout
                 .timeout = settings.timeout.Value
 
+                ' Sub Type, if subtype_burn is checked set subtype_burn to true, else false, and if subtype_embed is checked set subtype_embed to true, else false
+                .subtype_burn = settings.subtype_burn.Checked
+                .subtype_embed = settings.subtype_embed.Checked
+                ' Only one can be true if both are check then check burn by default and uncheck embed
+                If .subtype_burn And .subtype_embed Then
+                    .subtype_burn = True
+                    .subtype_embed = False
+                End If
+
+                ' substyle_fontsize settings is an int
+                .substyle_fontsize = settings.substyle_fontsize.Value
+
+                .substyle_fontname = settings.substyle_fontname.Text
+
+                .substyle_color = settings.substyle_color.Text
+
+
 
             End With
             My.Settings.Save()
@@ -246,6 +263,11 @@ Public Class ConfigManager
                 End Try
                 form.timeout.Value = .timeout
                 form.batchjobs.Value = If(.batchjobs > 1, .batchjobs, 1) ' Default to 1 if not set
+                form.subtype_burn.Checked = .subtype_burn
+                form.subtype_embed.Checked = .subtype_embed
+                form.substyle_fontsize.Value = .substyle_fontsize
+                form.substyle_fontname.Text = .substyle_fontname
+                form.substyle_color.Text = .substyle_color
             End With
             Return True
         Catch ex As Exception

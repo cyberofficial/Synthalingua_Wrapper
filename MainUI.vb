@@ -232,6 +232,21 @@ Public Class MainUI
 
         toolTipManager.SetupTooltips(Me)
 
+        ' Check if the folder 'fonts' exists in the current directory, if not create it
+        Dim fontsFolder As String = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "fonts")
+
+        ' Check the fonts folder and add to "substyle_fontname" drop down each filename with extension
+        If Not Directory.Exists(fontsFolder) Then
+            Directory.CreateDirectory(fontsFolder)
+        Else
+            Dim fontFiles = Directory.GetFiles(fontsFolder, "*.*").Select(Function(f) Path.GetFileName(f)).ToArray()
+            substyle_fontname.Items.Clear()
+            substyle_fontname.Items.AddRange(fontFiles)
+            If fontFiles.Length > 0 Then
+                substyle_fontname.SelectedIndex = 0 ' Select the first font by default if available
+            End If
+        End If
+
         If Not createdNew Then
             MessageBox.Show("This application is already running. Please change the port number if you plan to use multiple instances.", "Instance Already Running", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
@@ -416,6 +431,21 @@ Public Class MainUI
         Else
             timeout.Enabled = False
             batchjobs_lbl.Text = "Batch Jobs (disabled)"
+        End If
+    End Sub
+
+    Private Sub substyle_fontname_refresh_Click(sender As Object, e As EventArgs) Handles substyle_fontname_refresh.Click
+        ' Refresh the font list from the fonts folder
+        Dim fontsFolder As String = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "fonts")
+        If Directory.Exists(fontsFolder) Then
+            Dim fontFiles = Directory.GetFiles(fontsFolder, "*.*").Select(Function(f) Path.GetFileName(f)).ToArray()
+            substyle_fontname.Items.Clear()
+            substyle_fontname.Items.AddRange(fontFiles)
+            If fontFiles.Length > 0 Then
+                substyle_fontname.SelectedIndex = 0 ' Select the first font by default if available
+            End If
+        Else
+            MessageBox.Show("Fonts folder does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 End Class
