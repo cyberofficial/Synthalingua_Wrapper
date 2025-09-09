@@ -94,16 +94,18 @@ Public Class CommandGenerator
             If settings.timeout.Value > 0 And settings.batchjobs.Value > 1 Then builder.Append($"--timeout {settings.timeout.Value} ")
             If settings.word_timestamps.Checked Then builder.Append("--word_timestamps ")
             If settings.silent_detect.Checked AndAlso settings.demucs_model.Text <> "DEFAULT" Then builder.Append($"--demucs_model {settings.demucs_model.Text} ")
-            If settings.subtype_burn.Checked Then builder.Append("--subtype burn ")
-            If settings.subtype_burn.Checked Then
-                ' Build substyle parameter based on fontname availability
-                If Not String.IsNullOrEmpty(settings.substyle_fontname.Text) Then
-                    builder.Append($"--substyle {settings.substyle_fontname.Text},{settings.substyle_fontsize.Value},{settings.substyle_color.Text} ")
-                Else
-                    builder.Append($"--substyle {settings.substyle_fontsize.Value},{settings.substyle_color.Text} ")
+            If settings.add_subs.Checked Then
+                If settings.subtype_burn.Checked Then builder.Append("--subtype burn ")
+                If settings.subtype_burn.Checked Then
+                    ' Build substyle parameter based on fontname availability
+                    If Not String.IsNullOrEmpty(settings.substyle_fontname.Text) Then
+                        builder.Append($"--substyle {settings.substyle_fontname.Text},{settings.substyle_fontsize.Value},{settings.substyle_color.Text} ")
+                    Else
+                        builder.Append($"--substyle {settings.substyle_fontsize.Value},{settings.substyle_color.Text} ")
+                    End If
                 End If
+                If settings.subtype_embed.Checked Then builder.Append("--subtype embed ")
             End If
-            If settings.subtype_embed.Checked Then builder.Append("--subtype embed ")
         ElseIf settings.HSL_RadioButton.Checked = True Then
             If Not String.IsNullOrEmpty(settings.CookiesName.Text) Then builder.Append($"--cookies {settings.CookiesName.Text} ")
             If settings.cb_halspassword.Checked Then builder.Append($"--remote_hls_password_id {settings.hlspassid.Text} --remote_hls_password {settings.hlspassword.Text} ")

@@ -247,6 +247,11 @@ Public Class MainUI
             End If
         End If
 
+        ' if settings for "substyle_color" is not set, make the dropdown item "white"
+        If String.IsNullOrEmpty(substyle_color.Text) Then
+            substyle_color.Text = "white"
+        End If
+
         If Not createdNew Then
             MessageBox.Show("This application is already running. Please change the port number if you plan to use multiple instances.", "Instance Already Running", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If

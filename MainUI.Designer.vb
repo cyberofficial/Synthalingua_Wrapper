@@ -89,6 +89,10 @@ Partial Class MainUI
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
         GroupBox9 = New GroupBox()
+        GroupBox10 = New GroupBox()
+        subtype_burn = New RadioButton()
+        subtype_embed = New RadioButton()
+        add_subs = New CheckBox()
         substyle_fontname_refresh = New Button()
         Label27 = New Label()
         substyle_color = New ComboBox()
@@ -97,8 +101,6 @@ Partial Class MainUI
         substyle_fontsize = New NumericUpDown()
         Label25 = New Label()
         Label24 = New Label()
-        subtype_embed = New RadioButton()
-        subtype_burn = New RadioButton()
         timeout = New NumericUpDown()
         Label22 = New Label()
         batchjobs_lbl = New Label()
@@ -192,6 +194,7 @@ Partial Class MainUI
         CType(EnThreshValue, ComponentModel.ISupportInitialize).BeginInit()
         TabPage3.SuspendLayout()
         GroupBox9.SuspendLayout()
+        GroupBox10.SuspendLayout()
         CType(substyle_fontsize, ComponentModel.ISupportInitialize).BeginInit()
         CType(timeout, ComponentModel.ISupportInitialize).BeginInit()
         CType(batchjobs, ComponentModel.ISupportInitialize).BeginInit()
@@ -959,6 +962,8 @@ Partial Class MainUI
         ' 
         ' GroupBox9
         ' 
+        GroupBox9.Controls.Add(GroupBox10)
+        GroupBox9.Controls.Add(add_subs)
         GroupBox9.Controls.Add(substyle_fontname_refresh)
         GroupBox9.Controls.Add(Label27)
         GroupBox9.Controls.Add(substyle_color)
@@ -967,15 +972,57 @@ Partial Class MainUI
         GroupBox9.Controls.Add(substyle_fontsize)
         GroupBox9.Controls.Add(Label25)
         GroupBox9.Controls.Add(Label24)
-        GroupBox9.Controls.Add(subtype_embed)
-        GroupBox9.Controls.Add(subtype_burn)
         GroupBox9.ForeColor = Color.FloralWhite
         GroupBox9.Location = New Point(6, 376)
         GroupBox9.Name = "GroupBox9"
         GroupBox9.Size = New Size(571, 163)
         GroupBox9.TabIndex = 20
         GroupBox9.TabStop = False
-        GroupBox9.Text = "Sub Title Settings"
+        GroupBox9.Text = "Subtitle Settings"
+        ' 
+        ' GroupBox10
+        ' 
+        GroupBox10.Controls.Add(subtype_burn)
+        GroupBox10.Controls.Add(subtype_embed)
+        GroupBox10.ForeColor = Color.FloralWhite
+        GroupBox10.Location = New Point(424, 13)
+        GroupBox10.Name = "GroupBox10"
+        GroupBox10.Size = New Size(141, 55)
+        GroupBox10.TabIndex = 11
+        GroupBox10.TabStop = False
+        GroupBox10.Text = "Subtitle Type"
+        ' 
+        ' subtype_burn
+        ' 
+        subtype_burn.AutoSize = True
+        subtype_burn.Checked = True
+        subtype_burn.Location = New Point(11, 22)
+        subtype_burn.Name = "subtype_burn"
+        subtype_burn.Size = New Size(50, 19)
+        subtype_burn.TabIndex = 0
+        subtype_burn.TabStop = True
+        subtype_burn.Text = "Burn"
+        subtype_burn.UseVisualStyleBackColor = True
+        ' 
+        ' subtype_embed
+        ' 
+        subtype_embed.AutoSize = True
+        subtype_embed.Location = New Point(67, 22)
+        subtype_embed.Name = "subtype_embed"
+        subtype_embed.Size = New Size(62, 19)
+        subtype_embed.TabIndex = 1
+        subtype_embed.Text = "Embed"
+        subtype_embed.UseVisualStyleBackColor = True
+        ' 
+        ' add_subs
+        ' 
+        add_subs.AutoSize = True
+        add_subs.Location = New Point(6, 22)
+        add_subs.Name = "add_subs"
+        add_subs.Size = New Size(232, 19)
+        add_subs.TabIndex = 10
+        add_subs.Text = "Add Subtitles to video after processing."
+        add_subs.UseVisualStyleBackColor = True
         ' 
         ' substyle_fontname_refresh
         ' 
@@ -1053,28 +1100,6 @@ Partial Class MainUI
         Label24.Size = New Size(60, 15)
         Label24.TabIndex = 2
         Label24.Text = "Font Size: "
-        ' 
-        ' subtype_embed
-        ' 
-        subtype_embed.AutoSize = True
-        subtype_embed.Location = New Point(62, 22)
-        subtype_embed.Name = "subtype_embed"
-        subtype_embed.Size = New Size(62, 19)
-        subtype_embed.TabIndex = 1
-        subtype_embed.Text = "Embed"
-        subtype_embed.UseVisualStyleBackColor = True
-        ' 
-        ' subtype_burn
-        ' 
-        subtype_burn.AutoSize = True
-        subtype_burn.Checked = True
-        subtype_burn.Location = New Point(6, 22)
-        subtype_burn.Name = "subtype_burn"
-        subtype_burn.Size = New Size(50, 19)
-        subtype_burn.TabIndex = 0
-        subtype_burn.TabStop = True
-        subtype_burn.Text = "Burn"
-        subtype_burn.UseVisualStyleBackColor = True
         ' 
         ' timeout
         ' 
@@ -1941,6 +1966,8 @@ Partial Class MainUI
         TabPage3.PerformLayout()
         GroupBox9.ResumeLayout(False)
         GroupBox9.PerformLayout()
+        GroupBox10.ResumeLayout(False)
+        GroupBox10.PerformLayout()
         CType(substyle_fontsize, ComponentModel.ISupportInitialize).EndInit()
         CType(timeout, ComponentModel.ISupportInitialize).EndInit()
         CType(batchjobs, ComponentModel.ISupportInitialize).EndInit()
@@ -2116,5 +2143,7 @@ Partial Class MainUI
     Friend WithEvents Label25 As Label
     Friend WithEvents Label24 As Label
     Friend WithEvents substyle_fontname_refresh As Button
+    Friend WithEvents add_subs As CheckBox
+    Friend WithEvents GroupBox10 As GroupBox
 
 End Class
