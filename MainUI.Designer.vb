@@ -69,7 +69,9 @@ Partial Class MainUI
         GroupBox4 = New GroupBox()
         SettingsTabs = New TabControl()
         TabPage1 = New TabPage()
+        SynthalinguaChan_IMG_2 = New PictureBox()
         TabPage2 = New TabPage()
+        SynthalinguaChan_IMG_3 = New PictureBox()
         mic_chunk_size = New NumericUpDown()
         SetMicChunkSizeLbl = New Label()
         PhraseTimeOutCheckbox = New CheckBox()
@@ -122,13 +124,19 @@ Partial Class MainUI
         CaptionsOutputBtn = New Button()
         Label9 = New Label()
         CaptionsInputBtn = New Button()
+        SynthalinguaChan_IMG_4 = New PictureBox()
         TabPage4 = New TabPage()
         Label17 = New Label()
         PrecisionCheckBox = New CheckBox()
         Label16 = New Label()
         modelDIr = New TextBox()
         modelDirPicker = New Button()
+        SynthalinguaChan_IMG_5 = New PictureBox()
         TabPage5 = New TabPage()
+        SynthalinguaChan_IMG_9 = New PictureBox()
+        SynthalinguaChan_IMG_8 = New PictureBox()
+        DisableSynthalinguaChan = New CheckBox()
+        SynthalinguaChan_IMG_6 = New PictureBox()
         GroupBox8 = New GroupBox()
         model_openvino = New RadioButton()
         model_fasterwhisper = New RadioButton()
@@ -143,6 +151,7 @@ Partial Class MainUI
         CookiesName = New ComboBox()
         paddedaudio = New CheckBox()
         CookiesRefresh = New Button()
+        SynthalinguaChan_IMG_7 = New PictureBox()
         WhatModelsBtn = New Label()
         demucs_model = New ComboBox()
         isolate_vocals = New CheckBox()
@@ -176,6 +185,8 @@ Partial Class MainUI
         Label21 = New Label()
         demucs_model_jobs = New NumericUpDown()
         Label23 = New Label()
+        SynthalinguaChan_IMG_1 = New PictureBox()
+        SynthalinguaChan_IMG_10 = New PictureBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -185,7 +196,9 @@ Partial Class MainUI
         GroupBox4.SuspendLayout()
         SettingsTabs.SuspendLayout()
         TabPage1.SuspendLayout()
+        CType(SynthalinguaChan_IMG_2, ComponentModel.ISupportInitialize).BeginInit()
         TabPage2.SuspendLayout()
+        CType(SynthalinguaChan_IMG_3, ComponentModel.ISupportInitialize).BeginInit()
         CType(mic_chunk_size, ComponentModel.ISupportInitialize).BeginInit()
         CType(MicID, ComponentModel.ISupportInitialize).BeginInit()
         CType(PhraseTimeout, ComponentModel.ISupportInitialize).BeginInit()
@@ -200,10 +213,16 @@ Partial Class MainUI
         CType(batchjobs, ComponentModel.ISupportInitialize).BeginInit()
         CType(silent_duration, ComponentModel.ISupportInitialize).BeginInit()
         CType(silent_threshold, ComponentModel.ISupportInitialize).BeginInit()
+        CType(SynthalinguaChan_IMG_4, ComponentModel.ISupportInitialize).BeginInit()
         TabPage4.SuspendLayout()
+        CType(SynthalinguaChan_IMG_5, ComponentModel.ISupportInitialize).BeginInit()
         TabPage5.SuspendLayout()
+        CType(SynthalinguaChan_IMG_9, ComponentModel.ISupportInitialize).BeginInit()
+        CType(SynthalinguaChan_IMG_8, ComponentModel.ISupportInitialize).BeginInit()
+        CType(SynthalinguaChan_IMG_6, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox8.SuspendLayout()
         CType(paddedaudio_value, ComponentModel.ISupportInitialize).BeginInit()
+        CType(SynthalinguaChan_IMG_7, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox5.SuspendLayout()
         CType(PictureItch, ComponentModel.ISupportInitialize).BeginInit()
         CType(GitHubPicture, ComponentModel.ISupportInitialize).BeginInit()
@@ -211,6 +230,8 @@ Partial Class MainUI
         GroupBox6.SuspendLayout()
         CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).BeginInit()
         CType(demucs_model_jobs, ComponentModel.ISupportInitialize).BeginInit()
+        CType(SynthalinguaChan_IMG_1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(SynthalinguaChan_IMG_10, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' GroupBox1
@@ -271,7 +292,7 @@ Partial Class MainUI
         SaveConfigToFileButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfigToFileButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfigToFileButton.FlatStyle = FlatStyle.Popup
-        SaveConfigToFileButton.Font = New Font("Segoe UI", 12.0F)
+        SaveConfigToFileButton.Font = New Font("Segoe UI", 12F)
         SaveConfigToFileButton.Location = New Point(522, 627)
         SaveConfigToFileButton.Margin = New Padding(3, 2, 3, 2)
         SaveConfigToFileButton.Name = "SaveConfigToFileButton"
@@ -364,7 +385,7 @@ Partial Class MainUI
         GroupBox2.Margin = New Padding(3, 2, 3, 2)
         GroupBox2.Name = "GroupBox2"
         GroupBox2.Padding = New Padding(3, 2, 3, 2)
-        GroupBox2.Size = New Size(668, 399)
+        GroupBox2.Size = New Size(572, 345)
         GroupBox2.TabIndex = 8
         GroupBox2.TabStop = False
         GroupBox2.Text = "HLS Info"
@@ -402,7 +423,7 @@ Partial Class MainUI
         ' Label14
         ' 
         Label14.AutoSize = True
-        Label14.Font = New Font("Segoe UI", 10.0F)
+        Label14.Font = New Font("Segoe UI", 10F)
         Label14.Location = New Point(6, 77)
         Label14.Name = "Label14"
         Label14.Size = New Size(423, 95)
@@ -616,7 +637,7 @@ Partial Class MainUI
         ' 
         ConfigTextBox.BackColor = Color.SlateBlue
         ConfigTextBox.BorderStyle = BorderStyle.FixedSingle
-        ConfigTextBox.Font = New Font("Segoe UI", 13.0F)
+        ConfigTextBox.Font = New Font("Segoe UI", 13F)
         ConfigTextBox.Location = New Point(153, 170)
         ConfigTextBox.Margin = New Padding(3, 2, 3, 2)
         ConfigTextBox.Multiline = True
@@ -633,7 +654,7 @@ Partial Class MainUI
         GenerateConfigButton.FlatAppearance.MouseDownBackColor = Color.Indigo
         GenerateConfigButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         GenerateConfigButton.FlatStyle = FlatStyle.Popup
-        GenerateConfigButton.Font = New Font("Segoe UI", 13.0F)
+        GenerateConfigButton.Font = New Font("Segoe UI", 13F)
         GenerateConfigButton.Location = New Point(257, 627)
         GenerateConfigButton.Margin = New Padding(3, 2, 3, 2)
         GenerateConfigButton.Name = "GenerateConfigButton"
@@ -716,6 +737,7 @@ Partial Class MainUI
         ' TabPage1
         ' 
         TabPage1.BackColor = Color.DarkSlateBlue
+        TabPage1.Controls.Add(SynthalinguaChan_IMG_2)
         TabPage1.Controls.Add(GroupBox2)
         TabPage1.Location = New Point(4, 27)
         TabPage1.Margin = New Padding(3, 2, 3, 2)
@@ -725,9 +747,20 @@ Partial Class MainUI
         TabPage1.TabIndex = 0
         TabPage1.Text = "Stream Mode Settings"
         ' 
+        ' SynthalinguaChan_IMG_2
+        ' 
+        SynthalinguaChan_IMG_2.Image = My.Resources.Resources.Synthalingua_Chan_02
+        SynthalinguaChan_IMG_2.Location = New Point(118, 359)
+        SynthalinguaChan_IMG_2.Name = "SynthalinguaChan_IMG_2"
+        SynthalinguaChan_IMG_2.Size = New Size(354, 181)
+        SynthalinguaChan_IMG_2.SizeMode = PictureBoxSizeMode.Zoom
+        SynthalinguaChan_IMG_2.TabIndex = 9
+        SynthalinguaChan_IMG_2.TabStop = False
+        ' 
         ' TabPage2
         ' 
         TabPage2.BackColor = Color.DarkSlateBlue
+        TabPage2.Controls.Add(SynthalinguaChan_IMG_3)
         TabPage2.Controls.Add(mic_chunk_size)
         TabPage2.Controls.Add(SetMicChunkSizeLbl)
         TabPage2.Controls.Add(PhraseTimeOutCheckbox)
@@ -752,6 +785,16 @@ Partial Class MainUI
         TabPage2.Size = New Size(583, 545)
         TabPage2.TabIndex = 1
         TabPage2.Text = "Microphone Settings"
+        ' 
+        ' SynthalinguaChan_IMG_3
+        ' 
+        SynthalinguaChan_IMG_3.Image = My.Resources.Resources.Synthalingua_Chan_03
+        SynthalinguaChan_IMG_3.Location = New Point(366, 156)
+        SynthalinguaChan_IMG_3.Name = "SynthalinguaChan_IMG_3"
+        SynthalinguaChan_IMG_3.Size = New Size(211, 384)
+        SynthalinguaChan_IMG_3.SizeMode = PictureBoxSizeMode.Zoom
+        SynthalinguaChan_IMG_3.TabIndex = 27
+        SynthalinguaChan_IMG_3.TabStop = False
         ' 
         ' mic_chunk_size
         ' 
@@ -953,6 +996,7 @@ Partial Class MainUI
         TabPage3.Controls.Add(CaptionsOutputBtn)
         TabPage3.Controls.Add(Label9)
         TabPage3.Controls.Add(CaptionsInputBtn)
+        TabPage3.Controls.Add(SynthalinguaChan_IMG_4)
         TabPage3.Location = New Point(4, 27)
         TabPage3.Name = "TabPage3"
         TabPage3.Padding = New Padding(3)
@@ -1302,6 +1346,16 @@ Partial Class MainUI
         CaptionsInputBtn.Text = "..."
         CaptionsInputBtn.UseVisualStyleBackColor = True
         ' 
+        ' SynthalinguaChan_IMG_4
+        ' 
+        SynthalinguaChan_IMG_4.Image = My.Resources.Resources.Synthalingua_Chan_04
+        SynthalinguaChan_IMG_4.Location = New Point(409, -4)
+        SynthalinguaChan_IMG_4.Name = "SynthalinguaChan_IMG_4"
+        SynthalinguaChan_IMG_4.Size = New Size(174, 235)
+        SynthalinguaChan_IMG_4.SizeMode = PictureBoxSizeMode.Zoom
+        SynthalinguaChan_IMG_4.TabIndex = 21
+        SynthalinguaChan_IMG_4.TabStop = False
+        ' 
         ' TabPage4
         ' 
         TabPage4.BackColor = Color.DarkSlateBlue
@@ -1313,6 +1367,7 @@ Partial Class MainUI
         TabPage4.Controls.Add(ForceRam)
         TabPage4.Controls.Add(modelDIr)
         TabPage4.Controls.Add(modelDirPicker)
+        TabPage4.Controls.Add(SynthalinguaChan_IMG_5)
         TabPage4.Location = New Point(4, 27)
         TabPage4.Name = "TabPage4"
         TabPage4.Padding = New Padding(3)
@@ -1323,7 +1378,8 @@ Partial Class MainUI
         ' Label17
         ' 
         Label17.AutoSize = True
-        Label17.Font = New Font("Segoe UI", 12.0F)
+        Label17.BackColor = Color.DarkSlateBlue
+        Label17.Font = New Font("Segoe UI", 12F)
         Label17.Location = New Point(6, 69)
         Label17.Name = "Label17"
         Label17.Size = New Size(552, 294)
@@ -1373,9 +1429,25 @@ Partial Class MainUI
         modelDirPicker.Text = "..."
         modelDirPicker.UseVisualStyleBackColor = False
         ' 
+        ' SynthalinguaChan_IMG_5
+        ' 
+        SynthalinguaChan_IMG_5.BackColor = Color.Transparent
+        SynthalinguaChan_IMG_5.BackgroundImageLayout = ImageLayout.None
+        SynthalinguaChan_IMG_5.Image = My.Resources.Resources.Synthalingua_Chan_051
+        SynthalinguaChan_IMG_5.Location = New Point(6, 366)
+        SynthalinguaChan_IMG_5.Name = "SynthalinguaChan_IMG_5"
+        SynthalinguaChan_IMG_5.Size = New Size(571, 176)
+        SynthalinguaChan_IMG_5.SizeMode = PictureBoxSizeMode.Zoom
+        SynthalinguaChan_IMG_5.TabIndex = 10
+        SynthalinguaChan_IMG_5.TabStop = False
+        ' 
         ' TabPage5
         ' 
         TabPage5.BackColor = Color.DarkSlateBlue
+        TabPage5.Controls.Add(SynthalinguaChan_IMG_9)
+        TabPage5.Controls.Add(SynthalinguaChan_IMG_8)
+        TabPage5.Controls.Add(DisableSynthalinguaChan)
+        TabPage5.Controls.Add(SynthalinguaChan_IMG_6)
         TabPage5.Controls.Add(GroupBox8)
         TabPage5.Controls.Add(Label20)
         TabPage5.Controls.Add(GroupBox3)
@@ -1390,12 +1462,54 @@ Partial Class MainUI
         TabPage5.Controls.Add(paddedaudio)
         TabPage5.Controls.Add(Label8)
         TabPage5.Controls.Add(CookiesRefresh)
+        TabPage5.Controls.Add(SynthalinguaChan_IMG_7)
         TabPage5.Location = New Point(4, 27)
         TabPage5.Name = "TabPage5"
         TabPage5.Padding = New Padding(3)
         TabPage5.Size = New Size(583, 545)
         TabPage5.TabIndex = 4
         TabPage5.Text = "Configuration"
+        ' 
+        ' SynthalinguaChan_IMG_9
+        ' 
+        SynthalinguaChan_IMG_9.Image = My.Resources.Resources.Synthalingua_Chan_10
+        SynthalinguaChan_IMG_9.Location = New Point(364, 175)
+        SynthalinguaChan_IMG_9.Name = "SynthalinguaChan_IMG_9"
+        SynthalinguaChan_IMG_9.Size = New Size(208, 155)
+        SynthalinguaChan_IMG_9.SizeMode = PictureBoxSizeMode.Zoom
+        SynthalinguaChan_IMG_9.TabIndex = 46
+        SynthalinguaChan_IMG_9.TabStop = False
+        SynthalinguaChan_IMG_9.Visible = False
+        ' 
+        ' SynthalinguaChan_IMG_8
+        ' 
+        SynthalinguaChan_IMG_8.Image = My.Resources.Resources.Synthalingua_Chan_09
+        SynthalinguaChan_IMG_8.Location = New Point(364, 175)
+        SynthalinguaChan_IMG_8.Name = "SynthalinguaChan_IMG_8"
+        SynthalinguaChan_IMG_8.Size = New Size(208, 155)
+        SynthalinguaChan_IMG_8.SizeMode = PictureBoxSizeMode.Zoom
+        SynthalinguaChan_IMG_8.TabIndex = 45
+        SynthalinguaChan_IMG_8.TabStop = False
+        ' 
+        ' DisableSynthalinguaChan
+        ' 
+        DisableSynthalinguaChan.AutoSize = True
+        DisableSynthalinguaChan.Location = New Point(364, 334)
+        DisableSynthalinguaChan.Name = "DisableSynthalinguaChan"
+        DisableSynthalinguaChan.Size = New Size(208, 19)
+        DisableSynthalinguaChan.TabIndex = 44
+        DisableSynthalinguaChan.Text = "Disable Synthalingua-chan images"
+        DisableSynthalinguaChan.UseVisualStyleBackColor = True
+        ' 
+        ' SynthalinguaChan_IMG_6
+        ' 
+        SynthalinguaChan_IMG_6.Image = My.Resources.Resources.Synthalingua_Chan_06
+        SynthalinguaChan_IMG_6.Location = New Point(6, 298)
+        SynthalinguaChan_IMG_6.Name = "SynthalinguaChan_IMG_6"
+        SynthalinguaChan_IMG_6.Size = New Size(173, 241)
+        SynthalinguaChan_IMG_6.SizeMode = PictureBoxSizeMode.Zoom
+        SynthalinguaChan_IMG_6.TabIndex = 42
+        SynthalinguaChan_IMG_6.TabStop = False
         ' 
         ' GroupBox8
         ' 
@@ -1456,7 +1570,7 @@ Partial Class MainUI
         WipeSettings.FlatAppearance.MouseDownBackColor = Color.Indigo
         WipeSettings.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         WipeSettings.FlatStyle = FlatStyle.Popup
-        WipeSettings.Location = New Point(454, 316)
+        WipeSettings.Location = New Point(454, 516)
         WipeSettings.Name = "WipeSettings"
         WipeSettings.Size = New Size(123, 23)
         WipeSettings.TabIndex = 29
@@ -1467,7 +1581,7 @@ Partial Class MainUI
         ' EraseCheckBox
         ' 
         EraseCheckBox.AutoSize = True
-        EraseCheckBox.Location = New Point(439, 321)
+        EraseCheckBox.Location = New Point(439, 521)
         EraseCheckBox.Name = "EraseCheckBox"
         EraseCheckBox.Size = New Size(15, 14)
         EraseCheckBox.TabIndex = 30
@@ -1537,7 +1651,7 @@ Partial Class MainUI
         ' CookiesRefresh
         ' 
         CookiesRefresh.FlatStyle = FlatStyle.Flat
-        CookiesRefresh.Font = New Font("Segoe UI", 8.0F)
+        CookiesRefresh.Font = New Font("Segoe UI", 8F)
         CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
         CookiesRefresh.Location = New Point(550, 25)
         CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
@@ -1546,6 +1660,16 @@ Partial Class MainUI
         CookiesRefresh.TabIndex = 27
         CookiesRefresh.Text = "🔃"
         CookiesRefresh.UseVisualStyleBackColor = True
+        ' 
+        ' SynthalinguaChan_IMG_7
+        ' 
+        SynthalinguaChan_IMG_7.Image = My.Resources.Resources.Synthalingua_Chan_08
+        SynthalinguaChan_IMG_7.Location = New Point(347, 424)
+        SynthalinguaChan_IMG_7.Name = "SynthalinguaChan_IMG_7"
+        SynthalinguaChan_IMG_7.Size = New Size(116, 118)
+        SynthalinguaChan_IMG_7.SizeMode = PictureBoxSizeMode.Zoom
+        SynthalinguaChan_IMG_7.TabIndex = 43
+        SynthalinguaChan_IMG_7.TabStop = False
         ' 
         ' WhatModelsBtn
         ' 
@@ -1593,7 +1717,7 @@ Partial Class MainUI
         RunScript.FlatAppearance.MouseDownBackColor = Color.Indigo
         RunScript.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         RunScript.FlatStyle = FlatStyle.Popup
-        RunScript.Font = New Font("Segoe UI", 15.0F)
+        RunScript.Font = New Font("Segoe UI", 15F)
         RunScript.Location = New Point(153, 663)
         RunScript.Margin = New Padding(3, 2, 3, 2)
         RunScript.Name = "RunScript"
@@ -1725,7 +1849,7 @@ Partial Class MainUI
         SaveConfig.FlatAppearance.MouseDownBackColor = Color.Indigo
         SaveConfig.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfig.FlatStyle = FlatStyle.Popup
-        SaveConfig.Font = New Font("Segoe UI", 12.0F)
+        SaveConfig.Font = New Font("Segoe UI", 12F)
         SaveConfig.Location = New Point(153, 627)
         SaveConfig.Margin = New Padding(3, 2, 3, 2)
         SaveConfig.Name = "SaveConfig"
@@ -1894,12 +2018,35 @@ Partial Class MainUI
         Label23.TabIndex = 43
         Label23.Text = "Batch Jobs"
         ' 
+        ' SynthalinguaChan_IMG_1
+        ' 
+        SynthalinguaChan_IMG_1.BackgroundImageLayout = ImageLayout.None
+        SynthalinguaChan_IMG_1.Image = My.Resources.Resources.Synthalingua_Chan_01
+        SynthalinguaChan_IMG_1.Location = New Point(10, 490)
+        SynthalinguaChan_IMG_1.Name = "SynthalinguaChan_IMG_1"
+        SynthalinguaChan_IMG_1.Size = New Size(134, 214)
+        SynthalinguaChan_IMG_1.SizeMode = PictureBoxSizeMode.Zoom
+        SynthalinguaChan_IMG_1.TabIndex = 44
+        SynthalinguaChan_IMG_1.TabStop = False
+        ' 
+        ' SynthalinguaChan_IMG_10
+        ' 
+        SynthalinguaChan_IMG_10.Image = My.Resources.Resources.Synthalingua_Chan_11
+        SynthalinguaChan_IMG_10.Location = New Point(153, 170)
+        SynthalinguaChan_IMG_10.Name = "SynthalinguaChan_IMG_10"
+        SynthalinguaChan_IMG_10.Size = New Size(467, 453)
+        SynthalinguaChan_IMG_10.SizeMode = PictureBoxSizeMode.Zoom
+        SynthalinguaChan_IMG_10.TabIndex = 45
+        SynthalinguaChan_IMG_10.TabStop = False
+        ' 
         ' MainUI
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateBlue
         ClientSize = New Size(1226, 702)
+        Controls.Add(SynthalinguaChan_IMG_10)
+        Controls.Add(SynthalinguaChan_IMG_1)
         Controls.Add(Label23)
         Controls.Add(demucs_model_jobs)
         Controls.Add(isolate_vocals)
@@ -1954,8 +2101,10 @@ Partial Class MainUI
         GroupBox4.PerformLayout()
         SettingsTabs.ResumeLayout(False)
         TabPage1.ResumeLayout(False)
+        CType(SynthalinguaChan_IMG_2, ComponentModel.ISupportInitialize).EndInit()
         TabPage2.ResumeLayout(False)
         TabPage2.PerformLayout()
+        CType(SynthalinguaChan_IMG_3, ComponentModel.ISupportInitialize).EndInit()
         CType(mic_chunk_size, ComponentModel.ISupportInitialize).EndInit()
         CType(MicID, ComponentModel.ISupportInitialize).EndInit()
         CType(PhraseTimeout, ComponentModel.ISupportInitialize).EndInit()
@@ -1973,13 +2122,19 @@ Partial Class MainUI
         CType(batchjobs, ComponentModel.ISupportInitialize).EndInit()
         CType(silent_duration, ComponentModel.ISupportInitialize).EndInit()
         CType(silent_threshold, ComponentModel.ISupportInitialize).EndInit()
+        CType(SynthalinguaChan_IMG_4, ComponentModel.ISupportInitialize).EndInit()
         TabPage4.ResumeLayout(False)
         TabPage4.PerformLayout()
+        CType(SynthalinguaChan_IMG_5, ComponentModel.ISupportInitialize).EndInit()
         TabPage5.ResumeLayout(False)
         TabPage5.PerformLayout()
+        CType(SynthalinguaChan_IMG_9, ComponentModel.ISupportInitialize).EndInit()
+        CType(SynthalinguaChan_IMG_8, ComponentModel.ISupportInitialize).EndInit()
+        CType(SynthalinguaChan_IMG_6, ComponentModel.ISupportInitialize).EndInit()
         GroupBox8.ResumeLayout(False)
         GroupBox8.PerformLayout()
         CType(paddedaudio_value, ComponentModel.ISupportInitialize).EndInit()
+        CType(SynthalinguaChan_IMG_7, ComponentModel.ISupportInitialize).EndInit()
         GroupBox5.ResumeLayout(False)
         GroupBox5.PerformLayout()
         CType(PictureItch, ComponentModel.ISupportInitialize).EndInit()
@@ -1989,6 +2144,8 @@ Partial Class MainUI
         GroupBox6.PerformLayout()
         CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).EndInit()
         CType(demucs_model_jobs, ComponentModel.ISupportInitialize).EndInit()
+        CType(SynthalinguaChan_IMG_1, ComponentModel.ISupportInitialize).EndInit()
+        CType(SynthalinguaChan_IMG_10, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -2145,5 +2302,16 @@ Partial Class MainUI
     Friend WithEvents substyle_fontname_refresh As Button
     Friend WithEvents add_subs As CheckBox
     Friend WithEvents GroupBox10 As GroupBox
+    Friend WithEvents SynthalinguaChan_IMG_1 As PictureBox
+    Friend WithEvents SynthalinguaChan_IMG_2 As PictureBox
+    Friend WithEvents SynthalinguaChan_IMG_3 As PictureBox
+    Friend WithEvents SynthalinguaChan_IMG_4 As PictureBox
+    Friend WithEvents SynthalinguaChan_IMG_5 As PictureBox
+    Friend WithEvents SynthalinguaChan_IMG_6 As PictureBox
+    Friend WithEvents SynthalinguaChan_IMG_7 As PictureBox
+    Friend WithEvents SynthalinguaChan_IMG_8 As PictureBox
+    Friend WithEvents DisableSynthalinguaChan As CheckBox
+    Friend WithEvents SynthalinguaChan_IMG_9 As PictureBox
+    Friend WithEvents SynthalinguaChan_IMG_10 As PictureBox
 
 End Class

@@ -212,5 +212,8 @@
     <Setting Name="substyle_color" Type="System.String" Scope="User">
       <Value Profile="(Default)">white</Value>
     </Setting>
+    <Setting Name="DisableSynthalinguaChan" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

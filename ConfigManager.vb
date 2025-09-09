@@ -163,6 +163,9 @@ Public Class ConfigManager
 
                 .substyle_color = settings.substyle_color.Text
 
+                ' DisableSynthalinguaChan Checkbox
+                .DisableSynthalinguaChan = settings.DisableSynthalinguaChan.Checked
+
 
 
             End With
@@ -268,6 +271,7 @@ Public Class ConfigManager
                 form.substyle_fontsize.Value = .substyle_fontsize
                 form.substyle_fontname.Text = .substyle_fontname
                 form.substyle_color.Text = .substyle_color
+                form.DisableSynthalinguaChan.Checked = .DisableSynthalinguaChan
             End With
             Return True
         Catch ex As Exception

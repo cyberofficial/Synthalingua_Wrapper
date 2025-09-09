@@ -21,6 +21,10 @@ Public Class MainUI
         ' Attach event handlers for JetBrainsLogoImg
         AddHandler JetBrainsLogoImg.MouseHover, AddressOf JetBrainsLogoImg_MouseHover
         AddHandler JetBrainsLogoImg.Click, AddressOf JetBrainsLogoImg_Click
+
+        ' Attach event handlers for DisableSynthalinguaChan hover effects
+        AddHandler DisableSynthalinguaChan.MouseEnter, AddressOf DisableSynthalinguaChan_MouseEnter
+        AddHandler DisableSynthalinguaChan.MouseLeave, AddressOf DisableSynthalinguaChan_MouseLeave
     End Sub
     ' Show legal notice on hover
     Private Sub JetBrainsLogoImg_MouseHover(sender As Object, e As EventArgs)
@@ -275,6 +279,14 @@ Public Class MainUI
 
     Private Sub CheckBoxCMDBLock_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxCMDBLock.CheckedChanged
         ConfigTextBox.Visible = CheckBoxCMDBLock.Checked
+        ' Show or hide "SynthalinguaChan_IMG_10" based on CheckBoxCMDBLock state if checked then hide the image
+        If CheckBoxCMDBLock.Checked Then
+            SynthalinguaChan_IMG_10.Visible = False
+        Else
+            If Not DisableSynthalinguaChan.Checked Then
+                SynthalinguaChan_IMG_10.Visible = True
+            End If
+        End If
     End Sub
 
     Private Sub Energy_Threshold_MouseClick(sender As Object, e As MouseEventArgs) Handles Energy_Threshold.MouseClick
@@ -451,6 +463,57 @@ Public Class MainUI
             End If
         Else
             MessageBox.Show("Fonts folder does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub DisableSynthalinguaChan_CheckedChanged(sender As Object, e As EventArgs) Handles DisableSynthalinguaChan.CheckedChanged
+        If DisableSynthalinguaChan.Checked Then
+            ' Hide all "SynthalinguaChan_IMG_" images 1 through 9
+            SynthalinguaChan_IMG_1.Visible = False
+            SynthalinguaChan_IMG_2.Visible = False
+            SynthalinguaChan_IMG_3.Visible = False
+            SynthalinguaChan_IMG_4.Visible = False
+            SynthalinguaChan_IMG_5.Visible = False
+            SynthalinguaChan_IMG_6.Visible = False
+            SynthalinguaChan_IMG_7.Visible = False
+            SynthalinguaChan_IMG_8.Visible = False
+            SynthalinguaChan_IMG_9.Visible = False
+            SynthalinguaChan_IMG_10.Visible = False
+        Else
+            ' Show all "SynthalinguaChan_IMG_" images 1 through 9
+            SynthalinguaChan_IMG_1.Visible = True
+            SynthalinguaChan_IMG_2.Visible = True
+            SynthalinguaChan_IMG_3.Visible = True
+            SynthalinguaChan_IMG_4.Visible = True
+            SynthalinguaChan_IMG_5.Visible = True
+            SynthalinguaChan_IMG_6.Visible = True
+            SynthalinguaChan_IMG_7.Visible = True
+            SynthalinguaChan_IMG_8.Visible = True
+            SynthalinguaChan_IMG_9.Visible = False ' IMG_9 should be hidden by default when showing, IMG_8 is the happy one
+            SynthalinguaChan_IMG_10.Visible = False
+            If CheckBoxCMDBLock.Checked Then
+                SynthalinguaChan_IMG_10.Visible = False
+            Else
+                If Not DisableSynthalinguaChan.Checked Then
+                    SynthalinguaChan_IMG_10.Visible = True
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub DisableSynthalinguaChan_MouseEnter(sender As Object, e As EventArgs)
+        ' Only show the scared face (IMG_9) if the checkbox is not checked (images are visible)
+        If Not DisableSynthalinguaChan.Checked Then
+            SynthalinguaChan_IMG_8.Visible = False ' Hide happy face
+            SynthalinguaChan_IMG_9.Visible = True  ' Show scared face
+        End If
+    End Sub
+
+    Private Sub DisableSynthalinguaChan_MouseLeave(sender As Object, e As EventArgs)
+        ' Restore the happy face (IMG_8) if the checkbox is not checked (images are visible)
+        If Not DisableSynthalinguaChan.Checked Then
+            SynthalinguaChan_IMG_9.Visible = False ' Hide scared face
+            SynthalinguaChan_IMG_8.Visible = True  ' Show happy face
         End If
     End Sub
 End Class
