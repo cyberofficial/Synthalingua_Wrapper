@@ -192,14 +192,14 @@ Partial Class subtitlewindow
         ' FontFaceToolStripMenuItem
         ' 
         FontFaceToolStripMenuItem.Name = "FontFaceToolStripMenuItem"
-        FontFaceToolStripMenuItem.Size = New Size(180, 22)
+        FontFaceToolStripMenuItem.Size = New Size(169, 22)
         FontFaceToolStripMenuItem.Text = "Font Face"
         ' 
         ' TextColorToolStripMenuItem
         ' 
         TextColorToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {FrontToolStripMenuItem, BackToolStripMenuItem})
         TextColorToolStripMenuItem.Name = "TextColorToolStripMenuItem"
-        TextColorToolStripMenuItem.Size = New Size(180, 22)
+        TextColorToolStripMenuItem.Size = New Size(169, 22)
         TextColorToolStripMenuItem.Text = "Text Color"
         ' 
         ' FrontToolStripMenuItem
@@ -225,7 +225,7 @@ Partial Class subtitlewindow
         ' 
         LanguageModeToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {LeftToolStripMenuItem1, RightToLeftToolStripMenuItem})
         LanguageModeToolStripMenuItem.Name = "LanguageModeToolStripMenuItem"
-        LanguageModeToolStripMenuItem.Size = New Size(180, 22)
+        LanguageModeToolStripMenuItem.Size = New Size(169, 22)
         LanguageModeToolStripMenuItem.Text = "Language Mode"
         ' 
         ' LeftToolStripMenuItem1
@@ -244,7 +244,7 @@ Partial Class subtitlewindow
         ' 
         WordListSettingsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {WhenAPhraseIsFoundFromTheWordListTheProgramWillToolStripMenuItem})
         WordListSettingsToolStripMenuItem.Name = "WordListSettingsToolStripMenuItem"
-        WordListSettingsToolStripMenuItem.Size = New Size(180, 22)
+        WordListSettingsToolStripMenuItem.Size = New Size(169, 22)
         WordListSettingsToolStripMenuItem.Text = "Word List Settings"
         ' 
         ' WhenAPhraseIsFoundFromTheWordListTheProgramWillToolStripMenuItem
@@ -258,13 +258,13 @@ Partial Class subtitlewindow
         ' 
         convert_text_to_stars.CheckOnClick = True
         convert_text_to_stars.Name = "convert_text_to_stars"
-        convert_text_to_stars.Size = New Size(180, 22)
+        convert_text_to_stars.Size = New Size(174, 22)
         convert_text_to_stars.Text = "convert themt to *."
         ' 
         ' convert_text_to_empty
         ' 
         convert_text_to_empty.Name = "convert_text_to_empty"
-        convert_text_to_empty.Size = New Size(180, 22)
+        convert_text_to_empty.Size = New Size(174, 22)
         convert_text_to_empty.Text = "not show them."
         ' 
         ' AddRemoveSubtitleControlToolStripMenuItem

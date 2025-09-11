@@ -121,16 +121,52 @@
   <data name="25231" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\25231.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Synthalingua-Chan_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Synthalingua-Chan_051" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="syntha" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\syntha.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="syntha1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\syntha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Synthalingua-Chan_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PyCharm_Icon.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\PyCharm_Icon.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Synthalingua-Chan_03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="itch-io-icon-256x256-0aig5hor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\itch-io-icon-256x256-0aig5hor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PyCharm_Icon.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\PyCharm_Icon.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="syntha1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\syntha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Synthalingua-Chan_05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Synthalingua-Chan_04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Synthalingua-Chan_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Synthalingua-Chan_06" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Synthalingua-Chan_09" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_09.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Synthalingua-Chan_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Synthalingua-Chan_08" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_08.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Synthalingua-chan-logo-512x512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-chan-logo-512x512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

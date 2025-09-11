@@ -9,12 +9,12 @@
     <Platforms>AnyCPU;x64</Platforms>
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
     <ImportedNamespaces>System.Data=False,System.Drawing=False,System.Web=False,System.Windows.Forms=False,Microsoft.VisualBasic=True,System=True,System.Collections=True,System.Collections.Generic=True,System.Diagnostics=True,System.Linq=True,System.Xml.Linq=True,System.Threading.Tasks=True,Synthalingua_Wrapper=True</ImportedNamespaces>
-    <PackageIcon>syntha.png</PackageIcon>
-    <ApplicationIcon>assets\syntha.ico</ApplicationIcon>
+    <PackageIcon>Synthalingua-chan-logo-512x512.png</PackageIcon>
+    <ApplicationIcon>assets\Synthalingua-chan-logo.ico</ApplicationIcon>
     <AssemblyName>SynthalinguaGUI</AssemblyName>
-    <Copyright>Build Date: Aug 10 2025 4:11 AM EDT</Copyright>
-    <FileVersion>6</FileVersion>
-    <AssemblyVersion>1.2.0.2</AssemblyVersion>
+    <Copyright>Build Date: Sep 11 2025 1:30 AM EDT</Copyright>
+    <FileVersion>7</FileVersion>
+    <AssemblyVersion>1.2.2</AssemblyVersion>
     <Version>1</Version>
     <RepositoryUrl>https://github.com/cyberofficial/Synthalingua</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -41,7 +41,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="assets\syntha.ico" />
+    <Content Include="assets\Synthalingua-chan-logo.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -92,6 +92,10 @@
       <PackagePath>\</PackagePath>
     </None>
     <None Update="assets\syntha.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="assets\Synthalingua-chan-logo-512x512.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
