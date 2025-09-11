@@ -127,6 +127,9 @@
   <data name="Synthalingua-Chan_051" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Synthalingua-Chan_05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="syntha" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\syntha.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Synthalingua-Chan_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Synthalingua-Chan_02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,11 +148,11 @@
   <data name="Synthalingua-Chan_05" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Synthalingua-Chan_05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="syntha" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\syntha.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Synthalingua-Chan_04" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Synthalingua-Chan_04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Synthalingua-Chan_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-Chan_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Synthalingua-Chan_06" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Synthalingua-Chan_06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,7 +166,7 @@
   <data name="Synthalingua-Chan_08" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\assets\Synthalingua-Chan_08.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Synthalingua-Chan_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\assets\Synthalingua-Chan_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Synthalingua-chan-logo-512x512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\assets\Synthalingua-chan-logo-512x512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
