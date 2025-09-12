@@ -226,11 +226,22 @@ Public Class MainUI
         End If
 
         If String.IsNullOrEmpty(ScriptFileLocation.Text) Then
-            Dim scriptInfo = FileOperations.FindScriptFile(System.IO.Directory.GetCurrentDirectory())
-            If Not String.IsNullOrEmpty(scriptInfo.ScriptPath) Then
-                ScriptFileLocation.Text = scriptInfo.ScriptPath
-                PrimaryFolder = scriptInfo.FolderPath
-                ShortCutType = scriptInfo.ShortcutType
+            ' First try to find synthalingua.exe in the current running directory
+            Dim currentDir As String = System.IO.Directory.GetCurrentDirectory()
+            Dim synthalinguaExePath As String = Path.Combine(currentDir, "synthalingua.exe")
+            
+            If File.Exists(synthalinguaExePath) Then
+                ScriptFileLocation.Text = synthalinguaExePath
+                PrimaryFolder = currentDir
+                ShortCutType = "Portable"
+            Else
+                ' Fallback to the existing FileOperations.FindScriptFile logic
+                Dim scriptInfo = FileOperations.FindScriptFile(currentDir)
+                If Not String.IsNullOrEmpty(scriptInfo.ScriptPath) Then
+                    ScriptFileLocation.Text = scriptInfo.ScriptPath
+                    PrimaryFolder = scriptInfo.FolderPath
+                    ShortCutType = scriptInfo.ShortcutType
+                End If
             End If
         End If
 
