@@ -657,7 +657,7 @@ Partial Class MainUI
         GenerateConfigButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         GenerateConfigButton.FlatStyle = FlatStyle.Popup
         GenerateConfigButton.Font = New Font("Segoe UI", 13F)
-        GenerateConfigButton.Location = New Point(257, 627)
+        GenerateConfigButton.Location = New Point(154, 627)
         GenerateConfigButton.Margin = New Padding(3, 2, 3, 2)
         GenerateConfigButton.Name = "GenerateConfigButton"
         GenerateConfigButton.Size = New Size(150, 32)
@@ -1852,7 +1852,7 @@ Partial Class MainUI
         SaveConfig.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfig.FlatStyle = FlatStyle.Popup
         SaveConfig.Font = New Font("Segoe UI", 12F)
-        SaveConfig.Location = New Point(153, 627)
+        SaveConfig.Location = New Point(307, 627)
         SaveConfig.Margin = New Padding(3, 2, 3, 2)
         SaveConfig.Name = "SaveConfig"
         SaveConfig.Size = New Size(98, 32)

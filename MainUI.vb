@@ -237,7 +237,7 @@ Public Class MainUI
             ' First try to find synthalingua.exe in the current running directory
             Dim currentDir As String = System.IO.Directory.GetCurrentDirectory()
             Dim synthalinguaExePath As String = Path.Combine(currentDir, "synthalingua.exe")
-            
+
             If File.Exists(synthalinguaExePath) Then
                 ScriptFileLocation.Text = synthalinguaExePath
                 PrimaryFolder = currentDir
