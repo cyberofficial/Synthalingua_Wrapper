@@ -22,6 +22,9 @@ Public Class MainUI
         AddHandler JetBrainsLogoImg.MouseHover, AddressOf JetBrainsLogoImg_MouseHover
         AddHandler JetBrainsLogoImg.Click, AddressOf JetBrainsLogoImg_Click
 
+        ' Attach event handler for GitHubSponsorPicture
+        AddHandler GitHubSponsorPicture.MouseHover, AddressOf GitHubSponsorPicture_MouseHover
+
         ' Attach event handlers for DisableSynthalinguaChan hover effects
         AddHandler DisableSynthalinguaChan.MouseEnter, AddressOf DisableSynthalinguaChan_MouseEnter
         AddHandler DisableSynthalinguaChan.MouseLeave, AddressOf DisableSynthalinguaChan_MouseLeave
@@ -44,6 +47,11 @@ Public Class MainUI
                 MessageBox.Show("Unable to open the web page: " & ex.Message)
             End Try
         End If
+    End Sub
+
+    ' Show GitHub Sponsors tooltip on hover
+    Private Sub GitHubSponsorPicture_MouseHover(sender As Object, e As EventArgs)
+        ToolTip1.SetToolTip(GitHubSponsorPicture, "Will open to https://github.com/sponsors/cyberofficial")
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles SearchForProgramBTN.Click
@@ -526,5 +534,9 @@ Public Class MainUI
             SynthalinguaChan_IMG_9.Visible = False ' Hide scared face
             SynthalinguaChan_IMG_8.Visible = True  ' Show happy face
         End If
+    End Sub
+
+    Private Sub GitHubSponsorPicture_MouseClick(sender As Object, e As MouseEventArgs) Handles GitHubSponsorPicture.MouseClick
+        WebManager.OpenSocialLink("https://github.com/sponsors/cyberofficial")
     End Sub
 End Class

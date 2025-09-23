@@ -179,14 +179,15 @@ Partial Class MainUI
         RepeatProtection = New CheckBox()
         Button1 = New Button()
         FolderBrowserDialog2 = New FolderBrowserDialog()
-        JetBrainsLogoImg = New PictureBox()
-        Label19 = New Label()
         Label7 = New Label()
         Label21 = New Label()
         demucs_model_jobs = New NumericUpDown()
         Label23 = New Label()
         SynthalinguaChan_IMG_1 = New PictureBox()
         SynthalinguaChan_IMG_10 = New PictureBox()
+        JetBrainsLogoImg = New PictureBox()
+        Label19 = New Label()
+        GitHubSponsorPicture = New PictureBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -228,10 +229,11 @@ Partial Class MainUI
         CType(GitHubPicture, ComponentModel.ISupportInitialize).BeginInit()
         CType(KoFiPicture, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox6.SuspendLayout()
-        CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).BeginInit()
         CType(demucs_model_jobs, ComponentModel.ISupportInitialize).BeginInit()
         CType(SynthalinguaChan_IMG_1, ComponentModel.ISupportInitialize).BeginInit()
         CType(SynthalinguaChan_IMG_10, ComponentModel.ISupportInitialize).BeginInit()
+        CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).BeginInit()
+        CType(GitHubSponsorPicture, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' GroupBox1
@@ -1825,7 +1827,7 @@ Partial Class MainUI
         ' PictureItch
         ' 
         PictureItch.Image = My.Resources.Resources.itch_io_icon_256x256_0aig5hor
-        PictureItch.Location = New Point(1126, 587)
+        PictureItch.Location = New Point(1116, 588)
         PictureItch.Name = "PictureItch"
         PictureItch.Size = New Size(48, 48)
         PictureItch.SizeMode = PictureBoxSizeMode.Zoom
@@ -1836,7 +1838,7 @@ Partial Class MainUI
         ' GitHubPicture
         ' 
         GitHubPicture.Image = My.Resources.Resources._25231
-        GitHubPicture.Location = New Point(894, 587)
+        GitHubPicture.Location = New Point(868, 588)
         GitHubPicture.Name = "GitHubPicture"
         GitHubPicture.Size = New Size(48, 48)
         GitHubPicture.SizeMode = PictureBoxSizeMode.Zoom
@@ -1862,7 +1864,7 @@ Partial Class MainUI
         ' KoFiPicture
         ' 
         KoFiPicture.Image = CType(resources.GetObject("KoFiPicture.Image"), Image)
-        KoFiPicture.Location = New Point(1072, 587)
+        KoFiPicture.Location = New Point(1062, 588)
         KoFiPicture.Name = "KoFiPicture"
         KoFiPicture.Size = New Size(48, 48)
         KoFiPicture.SizeMode = PictureBoxSizeMode.Zoom
@@ -1963,29 +1965,10 @@ Partial Class MainUI
         Button1.Text = "Load Word Blocklist"
         Button1.UseVisualStyleBackColor = True
         ' 
-        ' JetBrainsLogoImg
-        ' 
-        JetBrainsLogoImg.Image = My.Resources.Resources.PyCharm_Icon_svg
-        JetBrainsLogoImg.Location = New Point(621, 587)
-        JetBrainsLogoImg.Name = "JetBrainsLogoImg"
-        JetBrainsLogoImg.Size = New Size(48, 48)
-        JetBrainsLogoImg.SizeMode = PictureBoxSizeMode.StretchImage
-        JetBrainsLogoImg.TabIndex = 39
-        JetBrainsLogoImg.TabStop = False
-        ' 
-        ' Label19
-        ' 
-        Label19.AutoSize = True
-        Label19.Location = New Point(675, 587)
-        Label19.Name = "Label19"
-        Label19.Size = New Size(133, 45)
-        Label19.TabIndex = 40
-        Label19.Text = "Thanks to Jetbrains for" & vbCrLf & "providing PyCharm" & vbCrLf & "with their OSS Program."
-        ' 
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Location = New Point(814, 587)
+        Label7.Location = New Point(788, 588)
         Label7.Name = "Label7"
         Label7.Size = New Size(74, 15)
         Label7.TabIndex = 41
@@ -1994,11 +1977,11 @@ Partial Class MainUI
         ' Label21
         ' 
         Label21.AutoSize = True
-        Label21.Location = New Point(948, 588)
+        Label21.Location = New Point(933, 589)
         Label21.Name = "Label21"
         Label21.Size = New Size(270, 105)
         Label21.TabIndex = 41
-        Label21.Text = "Like the Project?" & vbCrLf & "You Can Support" & vbCrLf & "On itch.io and Ko-Fi" & vbCrLf & vbCrLf & "Please note: This project is free, will always be free" & vbCrLf & "if someone is trying to sell you it, report them and" & vbCrLf & "ignore them."
+        Label21.Text = "Like the Project?" & vbCrLf & "You Can Support via:" & vbCrLf & "itch.io / Ko-Fi / GitHub" & vbCrLf & vbCrLf & "Please note: This project is free, will always be free" & vbCrLf & "if someone is trying to sell you it, report them and" & vbCrLf & "ignore them."
         ' 
         ' demucs_model_jobs
         ' 
@@ -2039,12 +2022,44 @@ Partial Class MainUI
         SynthalinguaChan_IMG_10.TabIndex = 45
         SynthalinguaChan_IMG_10.TabStop = False
         ' 
+        ' JetBrainsLogoImg
+        ' 
+        JetBrainsLogoImg.Image = My.Resources.Resources.PyCharm_Icon_svg
+        JetBrainsLogoImg.Location = New Point(626, 649)
+        JetBrainsLogoImg.Name = "JetBrainsLogoImg"
+        JetBrainsLogoImg.Size = New Size(48, 48)
+        JetBrainsLogoImg.SizeMode = PictureBoxSizeMode.StretchImage
+        JetBrainsLogoImg.TabIndex = 39
+        JetBrainsLogoImg.TabStop = False
+        JetBrainsLogoImg.Visible = False
+        ' 
+        ' Label19
+        ' 
+        Label19.AutoSize = True
+        Label19.Location = New Point(680, 649)
+        Label19.Name = "Label19"
+        Label19.Size = New Size(133, 45)
+        Label19.TabIndex = 40
+        Label19.Text = "Thanks to Jetbrains for" & vbCrLf & "providing PyCharm" & vbCrLf & "with their OSS Program."
+        Label19.Visible = False
+        ' 
+        ' GitHubSponsorPicture
+        ' 
+        GitHubSponsorPicture.Image = CType(resources.GetObject("GitHubSponsorPicture.Image"), Image)
+        GitHubSponsorPicture.Location = New Point(1170, 588)
+        GitHubSponsorPicture.Name = "GitHubSponsorPicture"
+        GitHubSponsorPicture.Size = New Size(48, 48)
+        GitHubSponsorPicture.SizeMode = PictureBoxSizeMode.Zoom
+        GitHubSponsorPicture.TabIndex = 46
+        GitHubSponsorPicture.TabStop = False
+        ' 
         ' MainUI
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateBlue
         ClientSize = New Size(1226, 702)
+        Controls.Add(GitHubSponsorPicture)
         Controls.Add(SynthalinguaChan_IMG_10)
         Controls.Add(SynthalinguaChan_IMG_1)
         Controls.Add(Label23)
@@ -2054,7 +2069,6 @@ Partial Class MainUI
         Controls.Add(WhatModelsBtn)
         Controls.Add(demucs_model)
         Controls.Add(SecondaryTranslation)
-        Controls.Add(Label19)
         Controls.Add(JetBrainsLogoImg)
         Controls.Add(ConfigTextBox)
         Controls.Add(KoFiPicture)
@@ -2078,6 +2092,7 @@ Partial Class MainUI
         Controls.Add(SaveConfigToFileButton)
         Controls.Add(GroupBox1)
         Controls.Add(Label21)
+        Controls.Add(Label19)
         ForeColor = Color.FloralWhite
         FormBorderStyle = FormBorderStyle.FixedSingle
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
@@ -2142,10 +2157,11 @@ Partial Class MainUI
         CType(KoFiPicture, ComponentModel.ISupportInitialize).EndInit()
         GroupBox6.ResumeLayout(False)
         GroupBox6.PerformLayout()
-        CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).EndInit()
         CType(demucs_model_jobs, ComponentModel.ISupportInitialize).EndInit()
         CType(SynthalinguaChan_IMG_1, ComponentModel.ISupportInitialize).EndInit()
         CType(SynthalinguaChan_IMG_10, ComponentModel.ISupportInitialize).EndInit()
+        CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).EndInit()
+        CType(GitHubSponsorPicture, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -2269,8 +2285,6 @@ Partial Class MainUI
     Friend WithEvents silent_duration_lbl As Label
     Friend WithEvents demucs_model As ComboBox
     Friend WithEvents WhatModelsBtn As Label
-    Friend WithEvents JetBrainsLogoImg As PictureBox
-    Friend WithEvents Label19 As Label
     Friend WithEvents compare_mode As CheckBox
     Friend WithEvents TabPage5 As TabPage
     Friend WithEvents GroupBox7 As GroupBox
@@ -2313,5 +2327,8 @@ Partial Class MainUI
     Friend WithEvents DisableSynthalinguaChan As CheckBox
     Friend WithEvents SynthalinguaChan_IMG_9 As PictureBox
     Friend WithEvents SynthalinguaChan_IMG_10 As PictureBox
+    Friend WithEvents JetBrainsLogoImg As PictureBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents GitHubSponsorPicture As PictureBox
 
 End Class
