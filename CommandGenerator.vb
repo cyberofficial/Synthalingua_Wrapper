@@ -5,6 +5,15 @@ Public Class CommandGenerator
     Private ReadOnly builder As StringBuilder
     Private ReadOnly settings As MainUI
 
+    ' Constants for repeated strings
+    Private Const DEFAULT_IP As String = "127.0.0.1"
+    Private Const MODEL_SOURCE_PREFIX As String = "--model_source "
+    Private Const DEMUCS_MODEL_PREFIX As String = "--demucs_model "
+    Private Const PADDING_AUDIO_PREFIX As String = "--paddedaudio "
+    Private Const PORT_NUMBER_PREFIX As String = "--portnumber "
+    Private Const HTTPS_PREFIX As String = "--https "
+    Private Const SERVER_IP_PREFIX As String = "--serverip "
+
     Public Sub New(mainForm As MainUI)
         builder = New StringBuilder()
         settings = mainForm
@@ -64,77 +73,90 @@ Public Class CommandGenerator
     Private Sub AppendModelSource()
         ' check to see which radio button is checked and apply the appropriate model source with "--model_source {value}"
         ' model_openvino = openvino, model_whisper = whisper, model_fasterwhisper = fasterwhisper
-        If settings.model_openvino.Checked Then
-            builder.Append("--model_source openvino ")
-        ElseIf settings.model_whisper.Checked Then
-            builder.Append("--model_source whisper ")
-        ElseIf settings.model_fasterwhisper.Checked Then
-            builder.Append("--model_source fasterwhisper ")
+        Select Case True
+            Case settings.model_openvino.Checked
+                builder.Append(MODEL_SOURCE_PREFIX & "openvino ")
+            Case settings.model_whisper.Checked
+                builder.Append(MODEL_SOURCE_PREFIX & "whisper ")
+            Case settings.model_fasterwhisper.Checked
+                builder.Append(MODEL_SOURCE_PREFIX & "fasterwhisper ")
+        End Select
+    End Sub
+
+    Private Sub AppendCapSettings()
+        ' If compare_mode is checked, append "--makecaptions compare", else just "--makecaptions"
+        If settings.compare_mode IsNot Nothing AndAlso settings.compare_mode.Checked Then
+            builder.Append($"--makecaptions compare --file_input=""{settings.CaptionsInput.Text}"" --file_output=""{settings.CaptionsOutput.Text}"" --file_output_name=""{settings.CaptionsName.Text}"" ")
+        Else
+            builder.Append($"--makecaptions --file_input=""{settings.CaptionsInput.Text}"" --file_output=""{settings.CaptionsOutput.Text}"" --file_output_name=""{settings.CaptionsName.Text}"" ")
         End If
+        ' Add this block for print_srt_to_console
+        If settings.print_srt_to_console IsNot Nothing AndAlso settings.print_srt_to_console.Checked Then builder.Append("--print_srt_to_console ")
+        If settings.silent_detect.Checked Then builder.Append("--silent_detect ")
+        If settings.silent_threshold.Value <> -35 Then builder.Append($"--silent_threshold {settings.silent_threshold.Value} ")
+        If settings.silent_duration.Value <> 0.5 Then builder.Append($"--silent_duration {settings.silent_duration.Value} ")
+        If settings.intelligent_mode.Checked Then builder.Append("--intelligent_mode ")
+        If settings.batchjobs.Value > 1 Then builder.Append($"--batchmode {settings.batchjobs.Value} ")
+        ' if timeout's value is greater than 0, append "--timeout {value}"
+        If settings.timeout.Value > 0 And settings.batchjobs.Value > 1 Then builder.Append($"--timeout {settings.timeout.Value} ")
+        If settings.word_timestamps.Checked Then builder.Append("--word_timestamps ")
+        If settings.silent_detect.Checked AndAlso settings.demucs_model.Text <> "DEFAULT" Then builder.Append(DEMUCS_MODEL_PREFIX & settings.demucs_model.Text & " ")
+        AppendSubtitleSettings()
+    End Sub
 
+    Private Sub AppendSubtitleSettings()
+        If settings.add_subs.Checked Then
+            If settings.subtype_burn.Checked Then builder.Append("--subtype burn ")
+            If settings.subtype_burn.Checked Then
+                ' Build substyle parameter based on fontname availability
+                If Not String.IsNullOrEmpty(settings.substyle_fontname.Text) Then
+                    builder.Append($"--substyle {settings.substyle_fontname.Text},{settings.substyle_fontsize.Value},{settings.substyle_color.Text} ")
+                Else
+                    builder.Append($"--substyle {settings.substyle_fontsize.Value},{settings.substyle_color.Text} ")
+                End If
+            End If
+            If settings.subtype_embed.Checked Then builder.Append("--subtype embed ")
+        End If
+    End Sub
 
+    Private Sub AppendHlsSettings()
+        If Not String.IsNullOrEmpty(settings.CookiesName.Text) Then builder.Append($"--cookies {settings.CookiesName.Text} ")
+        If settings.cb_halspassword.Checked Then builder.Append($"--remote_hls_password_id {settings.hlspassid.Text} --remote_hls_password {settings.hlspassword.Text} ")
+        If settings.AutoHLS_Checkbox.Checked Then builder.Append("--auto_hls ")
+        If settings.SelectSource.Checked Then builder.Append("--selectsource ")
+        If settings.ShowOriginalText.Checked Then builder.Append("--stream_original_text ")
+        builder.Append($"--stream ""{settings.HLS_URL.Text}"" ")
+        builder.Append($"--stream_chunks {settings.ChunkSizeTrackBar.Value} ")
+        If settings.paddedaudio.Checked Then builder.Append(PADDING_AUDIO_PREFIX & settings.paddedaudio_value.Value & " ")
+        If settings.demucs_model.Text <> "DEFAULT" Then builder.Append(DEMUCS_MODEL_PREFIX & settings.demucs_model.Text & " ")
+        If settings.WebServerButton.Checked Then AppendWebServerSettings()
+    End Sub
+
+    Private Sub AppendMicSettings()
+        builder.Append("--microphone_enabled true ")
+        If settings.MicEnCheckBox.Checked Then builder.Append($"--energy_threshold {settings.EnThreshValue.Value} ")
+        If settings.MicCaliCheckBox.Checked Then builder.Append($"--mic_calibration_time {settings.MicCaliTime.Value} ")
+        If settings.RecordTimeOutCHeckBox.Checked Then builder.Append($"--record_timeout {settings.RecordTimeout.Value} ")
+        If settings.PhraseTimeOutCheckbox.Checked Then builder.Append($"--phrase_timeout {settings.PhraseTimeout.Value} ")
+        builder.Append($"--set_microphone {settings.MicID.Value} ")
+        builder.Append($"--mic_chunk_size {settings.mic_chunk_size.Value} ")
+        If settings.paddedaudio.Checked Then builder.Append(PADDING_AUDIO_PREFIX & settings.paddedaudio_value.Value & " ")
+        If settings.WebServerButton.Checked Then AppendWebServerSettings()
+    End Sub
+
+    Private Sub AppendWebServerSettings()
+        builder.Append(PORT_NUMBER_PREFIX & settings.PortNumber.Value & " ")
+        builder.Append(HTTPS_PREFIX & CInt(settings.HTTPSPortNumber.Value) & " ")
+        builder.Append(SERVER_IP_PREFIX & NormalizeServerIp() & " ")
     End Sub
 
     Private Sub AppendAudioSourceSettings()
         If settings.CAP_RadioButton.Checked Then
-            ' If compare_mode is checked, append "--makecaptions compare", else just "--makecaptions"
-            If settings.compare_mode IsNot Nothing AndAlso settings.compare_mode.Checked Then
-                builder.Append($"--makecaptions compare --file_input=""{settings.CaptionsInput.Text}"" --file_output=""{settings.CaptionsOutput.Text}"" --file_output_name=""{settings.CaptionsName.Text}"" ")
-            Else
-                builder.Append($"--makecaptions --file_input=""{settings.CaptionsInput.Text}"" --file_output=""{settings.CaptionsOutput.Text}"" --file_output_name=""{settings.CaptionsName.Text}"" ")
-            End If
-            ' Add this block for print_srt_to_console
-            If settings.print_srt_to_console IsNot Nothing AndAlso settings.print_srt_to_console.Checked Then builder.Append("--print_srt_to_console ")
-            If settings.silent_detect.Checked Then builder.Append("--silent_detect ")
-            If settings.silent_threshold.Value <> -35 Then builder.Append($"--silent_threshold {settings.silent_threshold.Value} ")
-            If settings.silent_duration.Value <> 0.5 Then builder.Append($"--silent_duration {settings.silent_duration.Value} ")
-            If settings.intelligent_mode.Checked Then builder.Append("--intelligent_mode ")
-            If settings.batchjobs.Value > 1 Then builder.Append($"--batchmode {settings.batchjobs.Value} ")
-            ' if timeout's value is greater than 0, append "--timeout {value}"
-            If settings.timeout.Value > 0 And settings.batchjobs.Value > 1 Then builder.Append($"--timeout {settings.timeout.Value} ")
-            If settings.word_timestamps.Checked Then builder.Append("--word_timestamps ")
-            If settings.silent_detect.Checked AndAlso settings.demucs_model.Text <> "DEFAULT" Then builder.Append($"--demucs_model {settings.demucs_model.Text} ")
-            If settings.add_subs.Checked Then
-                If settings.subtype_burn.Checked Then builder.Append("--subtype burn ")
-                If settings.subtype_burn.Checked Then
-                    ' Build substyle parameter based on fontname availability
-                    If Not String.IsNullOrEmpty(settings.substyle_fontname.Text) Then
-                        builder.Append($"--substyle {settings.substyle_fontname.Text},{settings.substyle_fontsize.Value},{settings.substyle_color.Text} ")
-                    Else
-                        builder.Append($"--substyle {settings.substyle_fontsize.Value},{settings.substyle_color.Text} ")
-                    End If
-                End If
-                If settings.subtype_embed.Checked Then builder.Append("--subtype embed ")
-            End If
-        ElseIf settings.HSL_RadioButton.Checked = True Then
-            If Not String.IsNullOrEmpty(settings.CookiesName.Text) Then builder.Append($"--cookies {settings.CookiesName.Text} ")
-            If settings.cb_halspassword.Checked Then builder.Append($"--remote_hls_password_id {settings.hlspassid.Text} --remote_hls_password {settings.hlspassword.Text} ")
-            If settings.AutoHLS_Checkbox.Checked Then builder.Append("--auto_hls ")
-            If settings.SelectSource.Checked Then builder.Append("--selectsource ")
-            If settings.ShowOriginalText.Checked Then builder.Append("--stream_original_text ")
-            builder.Append($"--stream ""{settings.HLS_URL.Text}"" ")
-            builder.Append($"--stream_chunks {settings.ChunkSizeTrackBar.Value} ")
-            If settings.paddedaudio.Checked Then builder.Append($"--paddedaudio {settings.paddedaudio_value.Value} ")
-            If settings.demucs_model.Text <> "DEFAULT" Then builder.Append($"--demucs_model {settings.demucs_model.Text} ")
-            If settings.WebServerButton.Checked Then
-                builder.Append($"--portnumber {settings.PortNumber.Value} ")
-                builder.Append($"--https {CInt(settings.HTTPSPortNumber.Value)} ")
-                builder.Append($"--serverip {NormalizeServerIp()} ")
-            End If
+            AppendCapSettings()
+        ElseIf settings.HSL_RadioButton.Checked Then
+            AppendHlsSettings()
         ElseIf settings.MIC_RadioButton.Checked Then
-            builder.Append("--microphone_enabled true ")
-            If settings.MicEnCheckBox.Checked Then builder.Append($"--energy_threshold {settings.EnThreshValue.Value} ")
-            If settings.MicCaliCheckBox.Checked Then builder.Append($"--mic_calibration_time {settings.MicCaliTime.Value} ")
-            If settings.RecordTimeOutCHeckBox.Checked Then builder.Append($"--record_timeout {settings.RecordTimeout.Value} ")
-            If settings.PhraseTimeOutCheckbox.Checked Then builder.Append($"--phrase_timeout {settings.PhraseTimeout.Value} ")
-            builder.Append($"--set_microphone {settings.MicID.Value} ")
-            builder.Append($"--mic_chunk_size {settings.mic_chunk_size.Value} ")
-            If settings.paddedaudio.Checked Then builder.Append($"--paddedaudio {settings.paddedaudio_value.Value} ")
-            If settings.WebServerButton.Checked Then
-                builder.Append($"--portnumber {settings.PortNumber.Value} ")
-                builder.Append($"--https {CInt(settings.HTTPSPortNumber.Value)} ")
-                builder.Append($"--serverip {NormalizeServerIp()} ")
-            End If
+            AppendMicSettings()
         End If
     End Sub
 
@@ -180,27 +202,24 @@ Public Class CommandGenerator
 
     Private Function NormalizeServerIp() As String
         Dim rawServerIp = settings.ServerIP.Text
-        Dim sanitized = rawServerIp.Replace("_", String.Empty).Replace(" ", String.Empty)
+        If String.IsNullOrWhiteSpace(rawServerIp) Then Return DEFAULT_IP
 
-        If String.IsNullOrWhiteSpace(sanitized) Then
-            Return "127.0.0.1"
-        End If
+        Dim sanitized = rawServerIp.Replace("_", "").Replace(" ", "")
+        If String.IsNullOrWhiteSpace(sanitized) Then Return DEFAULT_IP
 
         Dim segments = sanitized.Split("."c, StringSplitOptions.RemoveEmptyEntries)
-        If segments.Length <> 4 Then
-            Return "127.0.0.1"
-        End If
+        If segments.Length <> 4 Then Return DEFAULT_IP
 
-        Dim normalizedSegments As New List(Of String)
+        Dim normalized As New List(Of String)(4)
         For Each segment In segments
             Dim value As Integer
-            If Not Integer.TryParse(segment, value) Then
-                Return "127.0.0.1"
+            If Integer.TryParse(segment, value) AndAlso value >= 0 AndAlso value <= 255 Then
+                normalized.Add(value.ToString())
+            Else
+                Return DEFAULT_IP
             End If
-            value = Math.Max(0, Math.Min(255, value))
-            normalizedSegments.Add(value.ToString())
         Next
 
-        Return String.Join(".", normalizedSegments)
+        Return String.Join(".", normalized)
     End Function
 End Class
