@@ -215,5 +215,11 @@
     <Setting Name="DisableSynthalinguaChan" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="HTTPSPortNumber" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2001</Value>
+    </Setting>
+    <Setting Name="ServerIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.000.000.1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

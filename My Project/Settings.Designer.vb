@@ -905,6 +905,30 @@ Namespace My
                 Me("DisableSynthalinguaChan") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("2001")>  _
+        Public Property HTTPSPortNumber() As Integer
+            Get
+                Return CType(Me("HTTPSPortNumber"),Integer)
+            End Get
+            Set
+                Me("HTTPSPortNumber") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("127.000.000.1")>  _
+        Public Property ServerIP() As String
+            Get
+                Return CType(Me("ServerIP"),String)
+            End Get
+            Set
+                Me("ServerIP") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

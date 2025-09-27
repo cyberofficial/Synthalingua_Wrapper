@@ -188,6 +188,10 @@ Partial Class MainUI
         JetBrainsLogoImg = New PictureBox()
         Label19 = New Label()
         GitHubSponsorPicture = New PictureBox()
+        Label28 = New Label()
+        HTTPSPortNumber = New NumericUpDown()
+        Label29 = New Label()
+        ServerIP = New MaskedTextBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -234,6 +238,7 @@ Partial Class MainUI
         CType(SynthalinguaChan_IMG_10, ComponentModel.ISupportInitialize).BeginInit()
         CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).BeginInit()
         CType(GitHubSponsorPicture, ComponentModel.ISupportInitialize).BeginInit()
+        CType(HTTPSPortNumber, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' GroupBox1
@@ -668,7 +673,7 @@ Partial Class MainUI
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Location = New Point(360, 8)
+        Label8.Location = New Point(322, 100)
         Label8.Name = "Label8"
         Label8.Size = New Size(103, 15)
         Label8.TabIndex = 12
@@ -679,8 +684,9 @@ Partial Class MainUI
         PortNumber.Location = New Point(91, 20)
         PortNumber.Margin = New Padding(3, 2, 3, 2)
         PortNumber.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
+        PortNumber.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         PortNumber.Name = "PortNumber"
-        PortNumber.Size = New Size(83, 23)
+        PortNumber.Size = New Size(58, 23)
         PortNumber.TabIndex = 15
         PortNumber.Value = New Decimal(New Integer() {2000, 0, 0, 0})
         ' 
@@ -699,14 +705,18 @@ Partial Class MainUI
         ' Label10
         ' 
         Label10.AutoSize = True
-        Label10.Location = New Point(6, 18)
+        Label10.Location = New Point(15, 22)
         Label10.Name = "Label10"
-        Label10.Size = New Size(79, 15)
+        Label10.Size = New Size(63, 15)
         Label10.TabIndex = 17
-        Label10.Text = "Port Number:"
+        Label10.Text = "HTTP Port:"
         ' 
         ' GroupBox4
         ' 
+        GroupBox4.Controls.Add(ServerIP)
+        GroupBox4.Controls.Add(Label29)
+        GroupBox4.Controls.Add(HTTPSPortNumber)
+        GroupBox4.Controls.Add(Label28)
         GroupBox4.Controls.Add(Label10)
         GroupBox4.Controls.Add(PortNumber)
         GroupBox4.Controls.Add(WebServerButton)
@@ -715,7 +725,7 @@ Partial Class MainUI
         GroupBox4.Margin = New Padding(3, 2, 3, 2)
         GroupBox4.Name = "GroupBox4"
         GroupBox4.Padding = New Padding(3, 2, 3, 2)
-        GroupBox4.Size = New Size(187, 53)
+        GroupBox4.Size = New Size(347, 85)
         GroupBox4.TabIndex = 18
         GroupBox4.TabStop = False
         GroupBox4.Text = "Web Server"
@@ -1633,10 +1643,10 @@ Partial Class MainUI
         CookiesName.AutoCompleteSource = AutoCompleteSource.ListItems
         CookiesName.DropDownStyle = ComboBoxStyle.DropDownList
         CookiesName.FormattingEnabled = True
-        CookiesName.Location = New Point(360, 25)
+        CookiesName.Location = New Point(431, 96)
         CookiesName.Margin = New Padding(3, 2, 3, 2)
         CookiesName.Name = "CookiesName"
-        CookiesName.Size = New Size(184, 23)
+        CookiesName.Size = New Size(113, 23)
         CookiesName.TabIndex = 26
         ' 
         ' paddedaudio
@@ -1655,7 +1665,7 @@ Partial Class MainUI
         CookiesRefresh.FlatStyle = FlatStyle.Flat
         CookiesRefresh.Font = New Font("Segoe UI", 8F)
         CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
-        CookiesRefresh.Location = New Point(550, 25)
+        CookiesRefresh.Location = New Point(550, 97)
         CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
         CookiesRefresh.Name = "CookiesRefresh"
         CookiesRefresh.Size = New Size(22, 21)
@@ -2053,6 +2063,44 @@ Partial Class MainUI
         GitHubSponsorPicture.TabIndex = 46
         GitHubSponsorPicture.TabStop = False
         ' 
+        ' Label28
+        ' 
+        Label28.AutoSize = True
+        Label28.Location = New Point(6, 55)
+        Label28.Name = "Label28"
+        Label28.Size = New Size(72, 15)
+        Label28.TabIndex = 18
+        Label28.Text = "HTTPS Port: "
+        ' 
+        ' HTTPSPortNumber
+        ' 
+        HTTPSPortNumber.Location = New Point(91, 53)
+        HTTPSPortNumber.Margin = New Padding(3, 2, 3, 2)
+        HTTPSPortNumber.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
+        HTTPSPortNumber.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        HTTPSPortNumber.Name = "HTTPSPortNumber"
+        HTTPSPortNumber.Size = New Size(58, 23)
+        HTTPSPortNumber.TabIndex = 19
+        HTTPSPortNumber.Value = New Decimal(New Integer() {2001, 0, 0, 0})
+        ' 
+        ' Label29
+        ' 
+        Label29.AutoSize = True
+        Label29.Location = New Point(155, 22)
+        Label29.Name = "Label29"
+        Label29.Size = New Size(58, 15)
+        Label29.TabIndex = 20
+        Label29.Text = "Server IP: "
+        ' 
+        ' ServerIP
+        ' 
+        ServerIP.Location = New Point(219, 19)
+        ServerIP.Mask = "000.000.000.000"
+        ServerIP.Name = "ServerIP"
+        ServerIP.Size = New Size(122, 23)
+        ServerIP.TabIndex = 21
+        ServerIP.Text = "127000000001"
+        ' 
         ' MainUI
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -2162,6 +2210,7 @@ Partial Class MainUI
         CType(SynthalinguaChan_IMG_10, ComponentModel.ISupportInitialize).EndInit()
         CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).EndInit()
         CType(GitHubSponsorPicture, ComponentModel.ISupportInitialize).EndInit()
+        CType(HTTPSPortNumber, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -2330,5 +2379,9 @@ Partial Class MainUI
     Friend WithEvents JetBrainsLogoImg As PictureBox
     Friend WithEvents Label19 As Label
     Friend WithEvents GitHubSponsorPicture As PictureBox
+    Friend WithEvents HTTPSPortNumber As NumericUpDown
+    Friend WithEvents Label28 As Label
+    Friend WithEvents ServerIP As MaskedTextBox
+    Friend WithEvents Label29 As Label
 
 End Class
