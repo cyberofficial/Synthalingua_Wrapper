@@ -17,6 +17,8 @@ Public Class ConfigManager
                 ' Web Server
                 .WebServerEnabled = If(settings.WebServerButton.Checked, 1, 0)
                 .WebServerPort = settings.PortNumber.Value
+                .HTTPSPortNumber = CInt(settings.HTTPSPortNumber.Value)
+                .ServerIP = settings.ServerIP.Text
 
                 ' RAM Size
                 .RamSize = settings.RamSize.Text
@@ -200,6 +202,14 @@ Public Class ConfigManager
                 form.CPU_RadioButton.Checked = Not (.ProcDevice = 1)
 
                 form.PortNumber.Value = .WebServerPort
+                If .HTTPSPortNumber >= form.HTTPSPortNumber.Minimum AndAlso .HTTPSPortNumber <= form.HTTPSPortNumber.Maximum Then
+                    form.HTTPSPortNumber.Value = .HTTPSPortNumber
+                Else
+                    form.HTTPSPortNumber.Value = Math.Min(Math.Max(.HTTPSPortNumber, CInt(form.HTTPSPortNumber.Minimum)), CInt(form.HTTPSPortNumber.Maximum))
+                End If
+                If Not String.IsNullOrEmpty(.ServerIP) Then
+                    form.ServerIP.Text = .ServerIP
+                End If
                 form.WebServerButton.Checked = .WebServerEnabled
                 form.RamSize.Text = .RamSize
                 form.ForceRam.Checked = .ForceRam

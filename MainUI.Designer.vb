@@ -67,6 +67,10 @@ Partial Class MainUI
         WebServerButton = New CheckBox()
         Label10 = New Label()
         GroupBox4 = New GroupBox()
+        ServerIP = New MaskedTextBox()
+        Label29 = New Label()
+        HTTPSPortNumber = New NumericUpDown()
+        Label28 = New Label()
         SettingsTabs = New TabControl()
         TabPage1 = New TabPage()
         SynthalinguaChan_IMG_2 = New PictureBox()
@@ -188,10 +192,6 @@ Partial Class MainUI
         JetBrainsLogoImg = New PictureBox()
         Label19 = New Label()
         GitHubSponsorPicture = New PictureBox()
-        Label28 = New Label()
-        HTTPSPortNumber = New NumericUpDown()
-        Label29 = New Label()
-        ServerIP = New MaskedTextBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -199,6 +199,7 @@ Partial Class MainUI
         GroupBox3.SuspendLayout()
         CType(PortNumber, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox4.SuspendLayout()
+        CType(HTTPSPortNumber, ComponentModel.ISupportInitialize).BeginInit()
         SettingsTabs.SuspendLayout()
         TabPage1.SuspendLayout()
         CType(SynthalinguaChan_IMG_2, ComponentModel.ISupportInitialize).BeginInit()
@@ -238,7 +239,6 @@ Partial Class MainUI
         CType(SynthalinguaChan_IMG_10, ComponentModel.ISupportInitialize).BeginInit()
         CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).BeginInit()
         CType(GitHubSponsorPicture, ComponentModel.ISupportInitialize).BeginInit()
-        CType(HTTPSPortNumber, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' GroupBox1
@@ -729,6 +729,43 @@ Partial Class MainUI
         GroupBox4.TabIndex = 18
         GroupBox4.TabStop = False
         GroupBox4.Text = "Web Server"
+        ' 
+        ' ServerIP
+        ' 
+        ServerIP.Location = New Point(219, 19)
+        ServerIP.Mask = "000.000.000.000"
+        ServerIP.Name = "ServerIP"
+        ServerIP.Size = New Size(122, 23)
+        ServerIP.TabIndex = 21
+        ' 
+        ' Label29
+        ' 
+        Label29.AutoSize = True
+        Label29.Location = New Point(155, 22)
+        Label29.Name = "Label29"
+        Label29.Size = New Size(58, 15)
+        Label29.TabIndex = 20
+        Label29.Text = "Server IP: "
+        ' 
+        ' HTTPSPortNumber
+        ' 
+        HTTPSPortNumber.Location = New Point(91, 53)
+        HTTPSPortNumber.Margin = New Padding(3, 2, 3, 2)
+        HTTPSPortNumber.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
+        HTTPSPortNumber.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        HTTPSPortNumber.Name = "HTTPSPortNumber"
+        HTTPSPortNumber.Size = New Size(58, 23)
+        HTTPSPortNumber.TabIndex = 19
+        HTTPSPortNumber.Value = New Decimal(New Integer() {2001, 0, 0, 0})
+        ' 
+        ' Label28
+        ' 
+        Label28.AutoSize = True
+        Label28.Location = New Point(6, 55)
+        Label28.Name = "Label28"
+        Label28.Size = New Size(72, 15)
+        Label28.TabIndex = 18
+        Label28.Text = "HTTPS Port: "
         ' 
         ' SettingsTabs
         ' 
@@ -2063,44 +2100,6 @@ Partial Class MainUI
         GitHubSponsorPicture.TabIndex = 46
         GitHubSponsorPicture.TabStop = False
         ' 
-        ' Label28
-        ' 
-        Label28.AutoSize = True
-        Label28.Location = New Point(6, 55)
-        Label28.Name = "Label28"
-        Label28.Size = New Size(72, 15)
-        Label28.TabIndex = 18
-        Label28.Text = "HTTPS Port: "
-        ' 
-        ' HTTPSPortNumber
-        ' 
-        HTTPSPortNumber.Location = New Point(91, 53)
-        HTTPSPortNumber.Margin = New Padding(3, 2, 3, 2)
-        HTTPSPortNumber.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
-        HTTPSPortNumber.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        HTTPSPortNumber.Name = "HTTPSPortNumber"
-        HTTPSPortNumber.Size = New Size(58, 23)
-        HTTPSPortNumber.TabIndex = 19
-        HTTPSPortNumber.Value = New Decimal(New Integer() {2001, 0, 0, 0})
-        ' 
-        ' Label29
-        ' 
-        Label29.AutoSize = True
-        Label29.Location = New Point(155, 22)
-        Label29.Name = "Label29"
-        Label29.Size = New Size(58, 15)
-        Label29.TabIndex = 20
-        Label29.Text = "Server IP: "
-        ' 
-        ' ServerIP
-        ' 
-        ServerIP.Location = New Point(219, 19)
-        ServerIP.Mask = "000.000.000.000"
-        ServerIP.Name = "ServerIP"
-        ServerIP.Size = New Size(122, 23)
-        ServerIP.TabIndex = 21
-        ServerIP.Text = "127000000001"
-        ' 
         ' MainUI
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -2162,6 +2161,7 @@ Partial Class MainUI
         CType(PortNumber, ComponentModel.ISupportInitialize).EndInit()
         GroupBox4.ResumeLayout(False)
         GroupBox4.PerformLayout()
+        CType(HTTPSPortNumber, ComponentModel.ISupportInitialize).EndInit()
         SettingsTabs.ResumeLayout(False)
         TabPage1.ResumeLayout(False)
         CType(SynthalinguaChan_IMG_2, ComponentModel.ISupportInitialize).EndInit()
@@ -2210,7 +2210,6 @@ Partial Class MainUI
         CType(SynthalinguaChan_IMG_10, ComponentModel.ISupportInitialize).EndInit()
         CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).EndInit()
         CType(GitHubSponsorPicture, ComponentModel.ISupportInitialize).EndInit()
-        CType(HTTPSPortNumber, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub

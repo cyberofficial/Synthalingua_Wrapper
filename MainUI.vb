@@ -539,4 +539,46 @@ Public Class MainUI
     Private Sub GitHubSponsorPicture_MouseClick(sender As Object, e As MouseEventArgs) Handles GitHubSponsorPicture.MouseClick
         WebManager.OpenSocialLink("https://github.com/sponsors/cyberofficial")
     End Sub
+
+    Private Sub ServerIP_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ServerIP.KeyPress
+        If Char.IsControl(e.KeyChar) OrElse Char.IsDigit(e.KeyChar) OrElse e.KeyChar = "."c OrElse Char.IsWhiteSpace(e.KeyChar) Then
+            Return
+        End If
+
+        e.Handled = True
+    End Sub
+
+    Private Sub ServerIP_LostFocus(sender As Object, e As EventArgs) Handles ServerIP.LostFocus
+        Dim digitsOnly = New String(ServerIP.Text.Where(Function(c) Char.IsDigit(c)).ToArray())
+        If digitsOnly.Length = 0 Then
+            ServerIP.Text = String.Empty
+            Return
+        End If
+
+        Dim cleaned = ServerIP.Text.Replace(" ", String.Empty).Replace("_", String.Empty)
+        Dim segments = cleaned.Split("."c, StringSplitOptions.RemoveEmptyEntries)
+        If segments.Length <> 4 Then
+            ShowInvalidIpMessage()
+            Return
+        End If
+
+        Dim values As New List(Of Integer)
+        For Each segment In segments
+            Dim value As Integer
+            If Not Integer.TryParse(segment, value) OrElse value < 0 OrElse value > 255 Then
+                ShowInvalidIpMessage()
+                Return
+            End If
+            values.Add(value)
+        Next
+
+        ServerIP.Text = String.Format("{0:000}.{1:000}.{2:000}.{3:000}", values(0), values(1), values(2), values(3))
+    End Sub
+
+    Private Sub ShowInvalidIpMessage()
+        MessageBox.Show("Server IP address must be in the form XXX.XXX.XXX.XXX with values between 0 and 255.", "Invalid IP Address", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        ServerIP.Focus()
+        ServerIP.SelectionStart = 0
+        ServerIP.SelectionLength = ServerIP.Text.Length
+    End Sub
 End Class

@@ -116,7 +116,11 @@ Public Class CommandGenerator
             builder.Append($"--stream_chunks {settings.ChunkSizeTrackBar.Value} ")
             If settings.paddedaudio.Checked Then builder.Append($"--paddedaudio {settings.paddedaudio_value.Value} ")
             If settings.demucs_model.Text <> "DEFAULT" Then builder.Append($"--demucs_model {settings.demucs_model.Text} ")
-            If settings.WebServerButton.Checked Then builder.Append($"--portnumber {settings.PortNumber.Value} ")
+            If settings.WebServerButton.Checked Then
+                builder.Append($"--portnumber {settings.PortNumber.Value} ")
+                builder.Append($"--https {CInt(settings.HTTPSPortNumber.Value)} ")
+                builder.Append($"--serverip {NormalizeServerIp()} ")
+            End If
         ElseIf settings.MIC_RadioButton.Checked Then
             builder.Append("--microphone_enabled true ")
             If settings.MicEnCheckBox.Checked Then builder.Append($"--energy_threshold {settings.EnThreshValue.Value} ")
@@ -126,7 +130,11 @@ Public Class CommandGenerator
             builder.Append($"--set_microphone {settings.MicID.Value} ")
             builder.Append($"--mic_chunk_size {settings.mic_chunk_size.Value} ")
             If settings.paddedaudio.Checked Then builder.Append($"--paddedaudio {settings.paddedaudio_value.Value} ")
-            If settings.WebServerButton.Checked Then builder.Append($"--portnumber {settings.PortNumber.Value} ")
+            If settings.WebServerButton.Checked Then
+                builder.Append($"--portnumber {settings.PortNumber.Value} ")
+                builder.Append($"--https {CInt(settings.HTTPSPortNumber.Value)} ")
+                builder.Append($"--serverip {NormalizeServerIp()} ")
+            End If
         End If
     End Sub
 
@@ -169,4 +177,30 @@ Public Class CommandGenerator
         End If
 
     End Sub
+
+    Private Function NormalizeServerIp() As String
+        Dim rawServerIp = settings.ServerIP.Text
+        Dim sanitized = rawServerIp.Replace("_", String.Empty).Replace(" ", String.Empty)
+
+        If String.IsNullOrWhiteSpace(sanitized) Then
+            Return "127.0.0.1"
+        End If
+
+        Dim segments = sanitized.Split("."c, StringSplitOptions.RemoveEmptyEntries)
+        If segments.Length <> 4 Then
+            Return "127.0.0.1"
+        End If
+
+        Dim normalizedSegments As New List(Of String)
+        For Each segment In segments
+            Dim value As Integer
+            If Not Integer.TryParse(segment, value) Then
+                Return "127.0.0.1"
+            End If
+            value = Math.Max(0, Math.Min(255, value))
+            normalizedSegments.Add(value.ToString())
+        Next
+
+        Return String.Join(".", normalizedSegments)
+    End Function
 End Class
