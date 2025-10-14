@@ -199,6 +199,19 @@ Public Class MainUI
     Private Sub MainUI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = Me.Text & " v" & My.Application.Info.Version.ToString()
 
+        ' Check terms acceptance
+        Dim termsFile As String = Path.Combine(Application.StartupPath, "accepted_terms.txt")
+        If Not File.Exists(termsFile) OrElse Not File.ReadAllText(termsFile).Trim().Equals("accepted=true", StringComparison.OrdinalIgnoreCase) Then
+            Using disclaimerForm As New DisclaimerForm()
+                If disclaimerForm.ShowDialog() = DialogResult.OK Then
+                    File.WriteAllText(termsFile, "accepted=true")
+                Else
+                    Application.Exit()
+                    Return
+                End If
+            End Using
+        End If
+
         Dim createdNew As Boolean
         appMutex = New Mutex(True, "Synthalingua_Wrapper", createdNew)
 

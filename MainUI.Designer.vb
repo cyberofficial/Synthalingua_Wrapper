@@ -61,7 +61,6 @@ Partial Class MainUI
         OpenScriptDiag = New OpenFileDialog()
         ConfigTextBox = New TextBox()
         GenerateConfigButton = New Button()
-        Label8 = New Label()
         SaveFileDialog = New SaveFileDialog()
         PortNumber = New NumericUpDown()
         WebServerButton = New CheckBox()
@@ -152,9 +151,7 @@ Partial Class MainUI
         DiscordWebHook = New TextBox()
         Label13 = New Label()
         paddedaudio_value = New TrackBar()
-        CookiesName = New ComboBox()
         paddedaudio = New CheckBox()
-        CookiesRefresh = New Button()
         SynthalinguaChan_IMG_7 = New PictureBox()
         WhatModelsBtn = New Label()
         demucs_model = New ComboBox()
@@ -192,6 +189,9 @@ Partial Class MainUI
         JetBrainsLogoImg = New PictureBox()
         Label19 = New Label()
         GitHubSponsorPicture = New PictureBox()
+        CookiesRefresh = New Button()
+        Label8 = New Label()
+        CookiesName = New ComboBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -387,6 +387,9 @@ Partial Class MainUI
         GroupBox2.Controls.Add(Label6)
         GroupBox2.Controls.Add(HLS_URL)
         GroupBox2.Controls.Add(Label3)
+        GroupBox2.Controls.Add(CookiesName)
+        GroupBox2.Controls.Add(CookiesRefresh)
+        GroupBox2.Controls.Add(Label8)
         GroupBox2.ForeColor = Color.FloralWhite
         GroupBox2.Location = New Point(5, 9)
         GroupBox2.Margin = New Padding(3, 2, 3, 2)
@@ -669,15 +672,6 @@ Partial Class MainUI
         GenerateConfigButton.TabIndex = 11
         GenerateConfigButton.Text = "Generate Config"
         GenerateConfigButton.UseVisualStyleBackColor = True
-        ' 
-        ' Label8
-        ' 
-        Label8.AutoSize = True
-        Label8.Location = New Point(322, 100)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(103, 15)
-        Label8.TabIndex = 12
-        Label8.Text = "Cookie File Name:"
         ' 
         ' PortNumber
         ' 
@@ -1507,10 +1501,7 @@ Partial Class MainUI
         TabPage5.Controls.Add(DiscordWebHook)
         TabPage5.Controls.Add(Label13)
         TabPage5.Controls.Add(paddedaudio_value)
-        TabPage5.Controls.Add(CookiesName)
         TabPage5.Controls.Add(paddedaudio)
-        TabPage5.Controls.Add(Label8)
-        TabPage5.Controls.Add(CookiesRefresh)
         TabPage5.Controls.Add(SynthalinguaChan_IMG_7)
         TabPage5.Location = New Point(4, 27)
         TabPage5.Name = "TabPage5"
@@ -1674,18 +1665,6 @@ Partial Class MainUI
         paddedaudio_value.TabIndex = 37
         paddedaudio_value.Value = 1
         ' 
-        ' CookiesName
-        ' 
-        CookiesName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        CookiesName.AutoCompleteSource = AutoCompleteSource.ListItems
-        CookiesName.DropDownStyle = ComboBoxStyle.DropDownList
-        CookiesName.FormattingEnabled = True
-        CookiesName.Location = New Point(431, 96)
-        CookiesName.Margin = New Padding(3, 2, 3, 2)
-        CookiesName.Name = "CookiesName"
-        CookiesName.Size = New Size(113, 23)
-        CookiesName.TabIndex = 26
-        ' 
         ' paddedaudio
         ' 
         paddedaudio.AutoSize = True
@@ -1696,19 +1675,6 @@ Partial Class MainUI
         paddedaudio.TabIndex = 36
         paddedaudio.Text = "Enabled Padded Audio" & vbCrLf & "(Hover for info)"
         paddedaudio.UseVisualStyleBackColor = True
-        ' 
-        ' CookiesRefresh
-        ' 
-        CookiesRefresh.FlatStyle = FlatStyle.Flat
-        CookiesRefresh.Font = New Font("Segoe UI", 8F)
-        CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
-        CookiesRefresh.Location = New Point(550, 97)
-        CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
-        CookiesRefresh.Name = "CookiesRefresh"
-        CookiesRefresh.Size = New Size(22, 21)
-        CookiesRefresh.TabIndex = 27
-        CookiesRefresh.Text = "🔃"
-        CookiesRefresh.UseVisualStyleBackColor = True
         ' 
         ' SynthalinguaChan_IMG_7
         ' 
@@ -2100,6 +2066,40 @@ Partial Class MainUI
         GitHubSponsorPicture.TabIndex = 46
         GitHubSponsorPicture.TabStop = False
         ' 
+        ' CookiesRefresh
+        ' 
+        CookiesRefresh.FlatStyle = FlatStyle.Flat
+        CookiesRefresh.Font = New Font("Segoe UI", 8F)
+        CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
+        CookiesRefresh.Location = New Point(441, 111)
+        CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
+        CookiesRefresh.Name = "CookiesRefresh"
+        CookiesRefresh.Size = New Size(22, 21)
+        CookiesRefresh.TabIndex = 27
+        CookiesRefresh.Text = "🔃"
+        CookiesRefresh.UseVisualStyleBackColor = True
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Location = New Point(213, 114)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(103, 15)
+        Label8.TabIndex = 12
+        Label8.Text = "Cookie File Name:"
+        ' 
+        ' CookiesName
+        ' 
+        CookiesName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        CookiesName.AutoCompleteSource = AutoCompleteSource.ListItems
+        CookiesName.DropDownStyle = ComboBoxStyle.DropDownList
+        CookiesName.FormattingEnabled = True
+        CookiesName.Location = New Point(322, 110)
+        CookiesName.Margin = New Padding(3, 2, 3, 2)
+        CookiesName.Name = "CookiesName"
+        CookiesName.Size = New Size(113, 23)
+        CookiesName.TabIndex = 26
+        ' 
         ' MainUI
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -2242,7 +2242,6 @@ Partial Class MainUI
     Friend WithEvents OpenScriptDiag As OpenFileDialog
     Friend WithEvents ConfigTextBox As TextBox
     Friend WithEvents GenerateConfigButton As Button
-    Friend WithEvents Label8 As Label
     Friend WithEvents SaveFileDialog As SaveFileDialog
     Friend WithEvents PortNumber As NumericUpDown
     Friend WithEvents WebServerButton As CheckBox
@@ -2276,8 +2275,6 @@ Partial Class MainUI
     Friend WithEvents WebLinkOG As Button
     Friend WithEvents Label15 As Label
     Friend WithEvents WebLinkT2 As Button
-    Friend WithEvents CookiesName As ComboBox
-    Friend WithEvents CookiesRefresh As Button
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents CheckBoxCMDBLock As CheckBox
     Friend WithEvents SubWindow As Button
@@ -2382,5 +2379,8 @@ Partial Class MainUI
     Friend WithEvents Label28 As Label
     Friend WithEvents ServerIP As MaskedTextBox
     Friend WithEvents Label29 As Label
+    Friend WithEvents CookiesName As ComboBox
+    Friend WithEvents CookiesRefresh As Button
+    Friend WithEvents Label8 As Label
 
 End Class
