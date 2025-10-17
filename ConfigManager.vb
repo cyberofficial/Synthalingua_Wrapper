@@ -168,6 +168,18 @@ Public Class ConfigManager
                 ' DisableSynthalinguaChan Checkbox
                 .DisableSynthalinguaChan = settings.DisableSynthalinguaChan.Checked
 
+                ' Batch Mode Settings only one can be true at a time
+                If settings.BatchModeManual.Checked And settings.BatchModeAuto.Checked Then
+                    .BatchModeManual = True
+                    .BatchModeAuto = False
+                Else
+                    .BatchModeManual = settings.BatchModeManual.Checked
+                    .BatchModeAuto = settings.BatchModeAuto.Checked
+                End If
+
+                ' String Value from a numeric up down
+                .batchjobsize = settings.batchjobsize.Value.ToString()
+
 
 
             End With
@@ -282,6 +294,18 @@ Public Class ConfigManager
                 form.substyle_fontname.Text = .substyle_fontname
                 form.substyle_color.Text = .substyle_color
                 form.DisableSynthalinguaChan.Checked = .DisableSynthalinguaChan
+
+                ' Batch Mode Settings only one can be true at a time
+                If .BatchModeManual And .BatchModeAuto Then
+                    form.BatchModeManual.Checked = True
+                    form.BatchModeAuto.Checked = False
+                Else
+                    form.BatchModeManual.Checked = .BatchModeManual
+                    form.BatchModeAuto.Checked = .BatchModeAuto
+                End If
+
+                ' String Value from a numeric up down
+                form.batchjobsize.Value = .batchjobsize.ToString()
             End With
             Return True
         Catch ex As Exception

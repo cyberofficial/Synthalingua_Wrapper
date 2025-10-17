@@ -221,5 +221,14 @@
     <Setting Name="ServerIP" Type="System.String" Scope="User">
       <Value Profile="(Default)">127.000.000.1</Value>
     </Setting>
+    <Setting Name="BatchModeAuto" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BatchModeManual" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="batchjobsize" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

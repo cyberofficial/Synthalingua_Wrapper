@@ -49,6 +49,9 @@ Partial Class MainUI
         Label6 = New Label()
         HLS_URL = New TextBox()
         Label3 = New Label()
+        CookiesName = New ComboBox()
+        CookiesRefresh = New Button()
+        Label8 = New Label()
         EnglishTranslationCheckBox = New CheckBox()
         SecondaryTranslation = New CheckBox()
         Label5 = New Label()
@@ -93,6 +96,11 @@ Partial Class MainUI
         MicCaliLbl = New Label()
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
+        ModelSizeInfoLblForCaptions = New Label()
+        batchjobsize = New NumericUpDown()
+        GroupBox11 = New GroupBox()
+        BatchModeAuto = New RadioButton()
+        BatchModeManual = New RadioButton()
         GroupBox9 = New GroupBox()
         GroupBox10 = New GroupBox()
         subtype_burn = New RadioButton()
@@ -136,6 +144,7 @@ Partial Class MainUI
         modelDirPicker = New Button()
         SynthalinguaChan_IMG_5 = New PictureBox()
         TabPage5 = New TabPage()
+        debugmode = New CheckBox()
         SynthalinguaChan_IMG_9 = New PictureBox()
         SynthalinguaChan_IMG_8 = New PictureBox()
         DisableSynthalinguaChan = New CheckBox()
@@ -189,9 +198,6 @@ Partial Class MainUI
         JetBrainsLogoImg = New PictureBox()
         Label19 = New Label()
         GitHubSponsorPicture = New PictureBox()
-        CookiesRefresh = New Button()
-        Label8 = New Label()
-        CookiesName = New ComboBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -212,6 +218,8 @@ Partial Class MainUI
         CType(MicCaliTime, ComponentModel.ISupportInitialize).BeginInit()
         CType(EnThreshValue, ComponentModel.ISupportInitialize).BeginInit()
         TabPage3.SuspendLayout()
+        CType(batchjobsize, ComponentModel.ISupportInitialize).BeginInit()
+        GroupBox11.SuspendLayout()
         GroupBox9.SuspendLayout()
         GroupBox10.SuspendLayout()
         CType(substyle_fontsize, ComponentModel.ISupportInitialize).BeginInit()
@@ -527,6 +535,40 @@ Partial Class MainUI
         Label3.Size = New Size(71, 15)
         Label3.TabIndex = 0
         Label3.Text = "Stream URL:"
+        ' 
+        ' CookiesName
+        ' 
+        CookiesName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        CookiesName.AutoCompleteSource = AutoCompleteSource.ListItems
+        CookiesName.DropDownStyle = ComboBoxStyle.DropDownList
+        CookiesName.FormattingEnabled = True
+        CookiesName.Location = New Point(322, 110)
+        CookiesName.Margin = New Padding(3, 2, 3, 2)
+        CookiesName.Name = "CookiesName"
+        CookiesName.Size = New Size(113, 23)
+        CookiesName.TabIndex = 26
+        ' 
+        ' CookiesRefresh
+        ' 
+        CookiesRefresh.FlatStyle = FlatStyle.Flat
+        CookiesRefresh.Font = New Font("Segoe UI", 8F)
+        CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
+        CookiesRefresh.Location = New Point(441, 111)
+        CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
+        CookiesRefresh.Name = "CookiesRefresh"
+        CookiesRefresh.Size = New Size(22, 21)
+        CookiesRefresh.TabIndex = 27
+        CookiesRefresh.Text = "🔃"
+        CookiesRefresh.UseVisualStyleBackColor = True
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Location = New Point(213, 114)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(103, 15)
+        Label8.TabIndex = 12
+        Label8.Text = "Cookie File Name:"
         ' 
         ' EnglishTranslationCheckBox
         ' 
@@ -1017,6 +1059,9 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
+        TabPage3.Controls.Add(ModelSizeInfoLblForCaptions)
+        TabPage3.Controls.Add(batchjobsize)
+        TabPage3.Controls.Add(GroupBox11)
         TabPage3.Controls.Add(GroupBox9)
         TabPage3.Controls.Add(timeout)
         TabPage3.Controls.Add(Label22)
@@ -1046,6 +1091,61 @@ Partial Class MainUI
         TabPage3.Size = New Size(583, 545)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Generate Captions"
+        ' 
+        ' ModelSizeInfoLblForCaptions
+        ' 
+        ModelSizeInfoLblForCaptions.AutoSize = True
+        ModelSizeInfoLblForCaptions.Location = New Point(291, 174)
+        ModelSizeInfoLblForCaptions.Name = "ModelSizeInfoLblForCaptions"
+        ModelSizeInfoLblForCaptions.Size = New Size(80, 15)
+        ModelSizeInfoLblForCaptions.TabIndex = 24
+        ModelSizeInfoLblForCaptions.Text = "Model Size (?)"
+        ' 
+        ' batchjobsize
+        ' 
+        batchjobsize.DecimalPlaces = 1
+        batchjobsize.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        batchjobsize.Location = New Point(291, 194)
+        batchjobsize.Maximum = New Decimal(New Integer() {24, 0, 0, 0})
+        batchjobsize.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
+        batchjobsize.Name = "batchjobsize"
+        batchjobsize.Size = New Size(45, 23)
+        batchjobsize.TabIndex = 23
+        batchjobsize.Value = New Decimal(New Integer() {1, 0, 0, 65536})
+        ' 
+        ' GroupBox11
+        ' 
+        GroupBox11.Controls.Add(BatchModeAuto)
+        GroupBox11.Controls.Add(BatchModeManual)
+        GroupBox11.ForeColor = Color.FloralWhite
+        GroupBox11.Location = New Point(129, 174)
+        GroupBox11.Name = "GroupBox11"
+        GroupBox11.Size = New Size(156, 43)
+        GroupBox11.TabIndex = 22
+        GroupBox11.TabStop = False
+        GroupBox11.Text = "Batch Mode"
+        ' 
+        ' BatchModeAuto
+        ' 
+        BatchModeAuto.AutoSize = True
+        BatchModeAuto.Location = New Point(77, 18)
+        BatchModeAuto.Name = "BatchModeAuto"
+        BatchModeAuto.Size = New Size(78, 19)
+        BatchModeAuto.TabIndex = 1
+        BatchModeAuto.Text = "Intelligent"
+        BatchModeAuto.UseVisualStyleBackColor = True
+        ' 
+        ' BatchModeManual
+        ' 
+        BatchModeManual.AutoSize = True
+        BatchModeManual.Checked = True
+        BatchModeManual.Location = New Point(6, 18)
+        BatchModeManual.Name = "BatchModeManual"
+        BatchModeManual.Size = New Size(65, 19)
+        BatchModeManual.TabIndex = 0
+        BatchModeManual.TabStop = True
+        BatchModeManual.Text = "Manual"
+        BatchModeManual.UseVisualStyleBackColor = True
         ' 
         ' GroupBox9
         ' 
@@ -1221,7 +1321,7 @@ Partial Class MainUI
         batchjobs.Maximum = 4
         batchjobs.Minimum = 1
         batchjobs.Name = "batchjobs"
-        batchjobs.Size = New Size(571, 45)
+        batchjobs.Size = New Size(397, 45)
         batchjobs.TabIndex = 16
         batchjobs.Value = 1
         ' 
@@ -1487,6 +1587,7 @@ Partial Class MainUI
         ' TabPage5
         ' 
         TabPage5.BackColor = Color.DarkSlateBlue
+        TabPage5.Controls.Add(debugmode)
         TabPage5.Controls.Add(SynthalinguaChan_IMG_9)
         TabPage5.Controls.Add(SynthalinguaChan_IMG_8)
         TabPage5.Controls.Add(DisableSynthalinguaChan)
@@ -1509,6 +1610,16 @@ Partial Class MainUI
         TabPage5.Size = New Size(583, 545)
         TabPage5.TabIndex = 4
         TabPage5.Text = "Configuration"
+        ' 
+        ' debugmode
+        ' 
+        debugmode.AutoSize = True
+        debugmode.Location = New Point(182, 200)
+        debugmode.Name = "debugmode"
+        debugmode.Size = New Size(133, 19)
+        debugmode.TabIndex = 47
+        debugmode.Text = "Enable Debug Mode"
+        debugmode.UseVisualStyleBackColor = True
         ' 
         ' SynthalinguaChan_IMG_9
         ' 
@@ -2066,40 +2177,6 @@ Partial Class MainUI
         GitHubSponsorPicture.TabIndex = 46
         GitHubSponsorPicture.TabStop = False
         ' 
-        ' CookiesRefresh
-        ' 
-        CookiesRefresh.FlatStyle = FlatStyle.Flat
-        CookiesRefresh.Font = New Font("Segoe UI", 8F)
-        CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
-        CookiesRefresh.Location = New Point(441, 111)
-        CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
-        CookiesRefresh.Name = "CookiesRefresh"
-        CookiesRefresh.Size = New Size(22, 21)
-        CookiesRefresh.TabIndex = 27
-        CookiesRefresh.Text = "🔃"
-        CookiesRefresh.UseVisualStyleBackColor = True
-        ' 
-        ' Label8
-        ' 
-        Label8.AutoSize = True
-        Label8.Location = New Point(213, 114)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(103, 15)
-        Label8.TabIndex = 12
-        Label8.Text = "Cookie File Name:"
-        ' 
-        ' CookiesName
-        ' 
-        CookiesName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        CookiesName.AutoCompleteSource = AutoCompleteSource.ListItems
-        CookiesName.DropDownStyle = ComboBoxStyle.DropDownList
-        CookiesName.FormattingEnabled = True
-        CookiesName.Location = New Point(322, 110)
-        CookiesName.Margin = New Padding(3, 2, 3, 2)
-        CookiesName.Name = "CookiesName"
-        CookiesName.Size = New Size(113, 23)
-        CookiesName.TabIndex = 26
-        ' 
         ' MainUI
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -2176,6 +2253,9 @@ Partial Class MainUI
         CType(EnThreshValue, ComponentModel.ISupportInitialize).EndInit()
         TabPage3.ResumeLayout(False)
         TabPage3.PerformLayout()
+        CType(batchjobsize, ComponentModel.ISupportInitialize).EndInit()
+        GroupBox11.ResumeLayout(False)
+        GroupBox11.PerformLayout()
         GroupBox9.ResumeLayout(False)
         GroupBox9.PerformLayout()
         GroupBox10.ResumeLayout(False)
@@ -2382,5 +2462,11 @@ Partial Class MainUI
     Friend WithEvents CookiesName As ComboBox
     Friend WithEvents CookiesRefresh As Button
     Friend WithEvents Label8 As Label
+    Friend WithEvents debugmode As CheckBox
+    Friend WithEvents GroupBox11 As GroupBox
+    Friend WithEvents BatchModeAuto As RadioButton
+    Friend WithEvents BatchModeManual As RadioButton
+    Friend WithEvents batchjobsize As NumericUpDown
+    Friend WithEvents ModelSizeInfoLblForCaptions As Label
 
 End Class

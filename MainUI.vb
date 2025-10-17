@@ -479,7 +479,11 @@ Public Class MainUI
             timeout.Enabled = True
         Else
             timeout.Enabled = False
-            batchjobs_lbl.Text = "Batch Jobs (disabled)"
+            If BatchModeAuto.Checked Then
+                batchjobs_lbl.Text = "Batch Jobs (1)"
+            Else
+                batchjobs_lbl.Text = "Batch Jobs (disabled)"
+            End If
         End If
     End Sub
 
@@ -593,5 +597,14 @@ Public Class MainUI
         ServerIP.Focus()
         ServerIP.SelectionStart = 0
         ServerIP.SelectionLength = ServerIP.Text.Length
+    End Sub
+
+    Private Sub BatchModeManual_CheckedChanged(sender As Object, e As EventArgs) Handles BatchModeManual.CheckedChanged
+        ' if batchjobs_lbl.Text = "Batch Jobs (1)" then set it to "Batch Jobs (disabled)" if not dont do anything
+        If True = BatchModeManual.Checked Then
+            If batchjobs_lbl.Text = "Batch Jobs (1)" Then
+                batchjobs_lbl.Text = "Batch Jobs (disabled)"
+            End If
+        End If
     End Sub
 End Class

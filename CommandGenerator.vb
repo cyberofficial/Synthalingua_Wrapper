@@ -42,6 +42,8 @@ Public Class CommandGenerator
         builder.Clear()
         builder.AppendLine("chcp 65001")
         builder.AppendLine("set PYTHONIOENCODING=utf-8")
+        builder.AppendLine("SET TORCHAUDIO_USE_BACKEND_DISPATCHER=1")
+        builder.AppendLine("SET TORIO_USE_FFMPEG=0")
         builder.AppendLine().AppendLine("cls").AppendLine("@echo off").AppendLine("Echo Loading Script")
         builder.AppendLine($"""{settings.PrimaryFolder}\set_up_env.exe""")
         builder.AppendLine($"call ""{settings.PrimaryFolder}\ffmpeg_path.bat""")
@@ -84,6 +86,8 @@ Public Class CommandGenerator
     End Sub
 
     Private Sub AppendCapSettings()
+        'if the debugmode checkbox is checked, append "--debug "
+        If settings.debugmode.Checked Then builder.Append("--debug ")
         ' If compare_mode is checked, append "--makecaptions compare", else just "--makecaptions"
         If settings.compare_mode IsNot Nothing AndAlso settings.compare_mode.Checked Then
             builder.Append($"--makecaptions compare --file_input=""{settings.CaptionsInput.Text}"" --file_output=""{settings.CaptionsOutput.Text}"" --file_output_name=""{settings.CaptionsName.Text}"" ")
@@ -96,12 +100,12 @@ Public Class CommandGenerator
         If settings.silent_threshold.Value <> -35 Then builder.Append($"--silent_threshold {settings.silent_threshold.Value} ")
         If settings.silent_duration.Value <> 0.5 Then builder.Append($"--silent_duration {settings.silent_duration.Value} ")
         If settings.intelligent_mode.Checked Then builder.Append("--intelligent_mode ")
-        If settings.batchjobs.Value > 1 Then builder.Append($"--batchmode {settings.batchjobs.Value} ")
         ' if timeout's value is greater than 0, append "--timeout {value}"
         If settings.timeout.Value > 0 And settings.batchjobs.Value > 1 Then builder.Append($"--timeout {settings.timeout.Value} ")
         If settings.word_timestamps.Checked Then builder.Append("--word_timestamps ")
         If settings.silent_detect.Checked AndAlso settings.demucs_model.Text <> "DEFAULT" Then builder.Append(DEMUCS_MODEL_PREFIX & settings.demucs_model.Text & " ")
         AppendSubtitleSettings()
+        builder.Append(BatchModeSettings())
     End Sub
 
     Private Sub AppendSubtitleSettings()
@@ -222,4 +226,20 @@ Public Class CommandGenerator
 
         Return String.Join(".", normalized)
     End Function
+
+    Private Function BatchModeSettings() As String
+        ' using the checkbox "BatchModeAuto" or "BatchModeManual" to determine if batch mode is enabled
+        ' If Auto is checked then we use "--adaptive_batch" otherwise we use "--batchmode {value}"
+        ' We grab the value from the track bar value "batchjobs"
+        ' If we use automode then we use "--adaptive_batch --batchjobsize {value}", the value is grabbed from the numericupdown "batchjobsize"
+        ' If settings.batchjobs.Value > 1 Then builder.Append($"--batchmode {settings.batchjobs.Value} ")
+        If settings.BatchModeAuto.Checked Then
+            Return $"--adaptive_batch --batchjobsize {settings.batchjobsize.Value} --cpu_batches {settings.batchjobs.Value} "
+        ElseIf settings.BatchModeManual.Checked Then
+            Return $"--batchmode {settings.batchjobs.Value} "
+        End If
+        Return String.Empty
+
+    End Function
+
 End Class
