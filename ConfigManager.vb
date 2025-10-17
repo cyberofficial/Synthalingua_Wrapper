@@ -180,6 +180,8 @@ Public Class ConfigManager
                 ' String Value from a numeric up down
                 .batchjobsize = settings.batchjobsize.Value.ToString()
 
+                .max_cpu_time = settings.max_cpu_time.Value
+
 
 
             End With
@@ -306,6 +308,8 @@ Public Class ConfigManager
 
                 ' String Value from a numeric up down
                 form.batchjobsize.Value = .batchjobsize.ToString()
+
+                form.max_cpu_time.Value = .max_cpu_time
             End With
             Return True
         Catch ex As Exception

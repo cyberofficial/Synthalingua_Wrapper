@@ -607,4 +607,54 @@ Public Class MainUI
             End If
         End If
     End Sub
+
+    Private Sub ModelSizeInfoLblForCaptions_Click(sender As Object, e As EventArgs) Handles ModelSizeInfoLblForCaptions.Click
+        ' Show a simple message box explaining the model sizes
+        ' It's suggested to have the user do a test run with 4 see how much vram is used then adjust accordingly, its recommended to to add 0.5GB to the value they see used. So if they see 3.86GB used, they should set 4.5GB in the config. We should note that faster whisper normally uses about 3.8 to 4.2 depending on the audio segments.
+        Dim info As String =
+            "Model Size Information for Captions:" & vbCrLf & vbCrLf &
+            "tiny: ~0.5 GB VRAM" & vbCrLf &
+            "base: ~1.0 GB VRAM" & vbCrLf &
+            "small: ~2.0 GB VRAM" & vbCrLf &
+            "medium: ~4.0 GB VRAM" & vbCrLf &
+            "large: ~8.0 GB VRAM" & vbCrLf & vbCrLf &
+            "Note: Actual VRAM usage may vary based on audio length and system configuration. " &
+            "It's recommended to monitor VRAM usage during initial runs and adjust settings accordingly." & vbCrLf & vbCrLf &
+            "Faster Whisper 12GB-v3 typically uses between 3.8 to 4.2 GB of VRAM depending on audio segments."
+
+        MessageBox.Show(info, "Model Size Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub max_cpu_time_label_Click(sender As Object, e As EventArgs) Handles max_cpu_time_label.Click
+        ' Show a message box explaining max CPU time
+        ' Maximum time in seconds that a single job can run on CPU during adaptive batch processing. Jobs predicted to exceed this time will wait for GPU instead. Default: 300 seconds (5 minutes). Lower values prioritize GPU for longer jobs, higher values allow more CPU usage. Recommended: 60-600. Only used with --adaptive_batch.
+        Dim info As String =
+            "Maximum CPU Time Explanation:" & vbCrLf & vbCrLf &
+            "The 'Maximum CPU Time' setting defines the maximum duration (in seconds) that a single job is allowed to run on the CPU during adaptive batch processing." & vbCrLf & vbCrLf &
+            "If a job is predicted to exceed this time limit, it will be queued to wait for GPU processing instead." & vbCrLf & vbCrLf &
+            "Default Value: 300 seconds (5 minutes)" & vbCrLf & vbCrLf &
+            "Guidelines:" & vbCrLf &
+            "- Lower Values (e.g., 60-120 seconds): Prioritize GPU usage for longer jobs, reducing CPU load but potentially increasing wait times for GPU availability." & vbCrLf &
+            "- Higher Values (e.g., 300-600 seconds): Allow more extensive CPU processing, which may reduce GPU wait times but increase overall CPU usage." & vbCrLf & vbCrLf &
+            "Recommended Range: 300-600 seconds (5-10 minutes), depending on your system's capabilities and workload."
+        MessageBox.Show(info, "Maximum CPU Time Explanation", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub TimeoutLabel_Click(sender As Object, e As EventArgs) Handles TimeoutLabel.Click
+        ' Show message box with info: Maximum time in seconds allowed for individual transcription jobs to complete before being terminated. Set to 0 (default) for no timeout - jobs run until completion. Useful for preventing stuck jobs in batch processing, setting time limits for large files, or ensuring predictable completion times. Example: --timeout 600 allows 10 minutes per job. Jobs exceeding this limit are killed and marked as failed. Only affects file processing modes, not real-time streaming or microphone input.
+        Dim info As String =
+            "Timeout Explanation:" & vbCrLf & vbCrLf &
+            "The 'Timeout' setting specifies the maximum duration (in seconds) allowed for individual transcription jobs to complete before they are automatically terminated." & vbCrLf & vbCrLf &
+            "Setting this value to 0 (the default) means there is no timeout, and jobs will run until they finish." & vbCrLf & vbCrLf &
+            "This setting is particularly useful for:" & vbCrLf &
+            "- Preventing Stuck Jobs: Ensures that jobs that hang or take excessively long do not block the processing queue." & vbCrLf &
+            "- Managing Large Files: Allows you to set time limits for processing large audio files, helping to maintain workflow efficiency." & vbCrLf &
+            "- Predictable Completion Times: Helps in scenarios where you need to ensure that jobs complete within a certain timeframe." & vbCrLf & vbCrLf &
+            "Example Usage: --timeout 600 allows each job a maximum of 10 minutes to complete." & vbCrLf & vbCrLf &
+            "Recommended Range: 300-600 seconds (5-10 minutes), depending on your system's capabilities and workload. For systems with at least 6 CPU cores, 10 minutes (600 seconds) is recommended. For systems with 12 or more cores, 5 minutes (300 seconds) may be sufficient." & vbCrLf & vbCrLf &
+            "Jobs that exceed this time limit will be terminated and marked as failed." & vbCrLf &
+            "Note: Failed jobs will automatically retry at the end of other operations, so work will continue." & vbCrLf & vbCrLf &
+            "Note: This setting only affects file processing modes and does not apply to real-time streaming or microphone input."
+        MessageBox.Show(info, "Timeout Explanation", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 End Class

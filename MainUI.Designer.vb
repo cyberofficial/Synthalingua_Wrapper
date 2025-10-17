@@ -96,8 +96,11 @@ Partial Class MainUI
         MicCaliLbl = New Label()
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
+        GroupBox12 = New GroupBox()
         ModelSizeInfoLblForCaptions = New Label()
+        max_cpu_time_label = New Label()
         batchjobsize = New NumericUpDown()
+        max_cpu_time = New NumericUpDown()
         GroupBox11 = New GroupBox()
         BatchModeAuto = New RadioButton()
         BatchModeManual = New RadioButton()
@@ -115,7 +118,7 @@ Partial Class MainUI
         Label25 = New Label()
         Label24 = New Label()
         timeout = New NumericUpDown()
-        Label22 = New Label()
+        TimeoutLabel = New Label()
         batchjobs_lbl = New Label()
         batchjobs = New TrackBar()
         intelligent_mode = New CheckBox()
@@ -218,7 +221,9 @@ Partial Class MainUI
         CType(MicCaliTime, ComponentModel.ISupportInitialize).BeginInit()
         CType(EnThreshValue, ComponentModel.ISupportInitialize).BeginInit()
         TabPage3.SuspendLayout()
+        GroupBox12.SuspendLayout()
         CType(batchjobsize, ComponentModel.ISupportInitialize).BeginInit()
+        CType(max_cpu_time, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox11.SuspendLayout()
         GroupBox9.SuspendLayout()
         GroupBox10.SuspendLayout()
@@ -1059,12 +1064,11 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
-        TabPage3.Controls.Add(ModelSizeInfoLblForCaptions)
-        TabPage3.Controls.Add(batchjobsize)
+        TabPage3.Controls.Add(GroupBox12)
         TabPage3.Controls.Add(GroupBox11)
         TabPage3.Controls.Add(GroupBox9)
         TabPage3.Controls.Add(timeout)
-        TabPage3.Controls.Add(Label22)
+        TabPage3.Controls.Add(TimeoutLabel)
         TabPage3.Controls.Add(batchjobs_lbl)
         TabPage3.Controls.Add(batchjobs)
         TabPage3.Controls.Add(intelligent_mode)
@@ -1092,26 +1096,59 @@ Partial Class MainUI
         TabPage3.TabIndex = 2
         TabPage3.Text = "Generate Captions"
         ' 
+        ' GroupBox12
+        ' 
+        GroupBox12.Controls.Add(ModelSizeInfoLblForCaptions)
+        GroupBox12.Controls.Add(max_cpu_time_label)
+        GroupBox12.Controls.Add(batchjobsize)
+        GroupBox12.Controls.Add(max_cpu_time)
+        GroupBox12.ForeColor = Color.FloralWhite
+        GroupBox12.Location = New Point(291, 147)
+        GroupBox12.Name = "GroupBox12"
+        GroupBox12.Size = New Size(112, 131)
+        GroupBox12.TabIndex = 27
+        GroupBox12.TabStop = False
+        GroupBox12.Text = "Batch Intelligent Mode Settings"
+        ' 
         ' ModelSizeInfoLblForCaptions
         ' 
         ModelSizeInfoLblForCaptions.AutoSize = True
-        ModelSizeInfoLblForCaptions.Location = New Point(291, 174)
+        ModelSizeInfoLblForCaptions.Location = New Point(6, 35)
         ModelSizeInfoLblForCaptions.Name = "ModelSizeInfoLblForCaptions"
         ModelSizeInfoLblForCaptions.Size = New Size(80, 15)
         ModelSizeInfoLblForCaptions.TabIndex = 24
         ModelSizeInfoLblForCaptions.Text = "Model Size (?)"
         ' 
+        ' max_cpu_time_label
+        ' 
+        max_cpu_time_label.AutoSize = True
+        max_cpu_time_label.Location = New Point(6, 79)
+        max_cpu_time_label.Name = "max_cpu_time_label"
+        max_cpu_time_label.Size = New Size(75, 15)
+        max_cpu_time_label.TabIndex = 26
+        max_cpu_time_label.Text = "CPU Time (?)"
+        ' 
         ' batchjobsize
         ' 
         batchjobsize.DecimalPlaces = 1
         batchjobsize.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-        batchjobsize.Location = New Point(291, 194)
+        batchjobsize.Location = New Point(7, 53)
         batchjobsize.Maximum = New Decimal(New Integer() {24, 0, 0, 0})
         batchjobsize.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
         batchjobsize.Name = "batchjobsize"
         batchjobsize.Size = New Size(45, 23)
         batchjobsize.TabIndex = 23
         batchjobsize.Value = New Decimal(New Integer() {1, 0, 0, 65536})
+        ' 
+        ' max_cpu_time
+        ' 
+        max_cpu_time.Location = New Point(7, 97)
+        max_cpu_time.Maximum = New Decimal(New Integer() {300, 0, 0, 0})
+        max_cpu_time.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        max_cpu_time.Name = "max_cpu_time"
+        max_cpu_time.Size = New Size(50, 23)
+        max_cpu_time.TabIndex = 25
+        max_cpu_time.Value = New Decimal(New Integer() {1, 0, 0, 0})
         ' 
         ' GroupBox11
         ' 
@@ -1297,14 +1334,14 @@ Partial Class MainUI
         timeout.Size = New Size(71, 23)
         timeout.TabIndex = 19
         ' 
-        ' Label22
+        ' TimeoutLabel
         ' 
-        Label22.AutoSize = True
-        Label22.Location = New Point(10, 255)
-        Label22.Name = "Label22"
-        Label22.Size = New Size(130, 30)
-        Label22.TabIndex = 18
-        Label22.Text = "Time Out (in Seconds): " & vbCrLf & "Leave 0 for no timeout."
+        TimeoutLabel.AutoSize = True
+        TimeoutLabel.Location = New Point(10, 255)
+        TimeoutLabel.Name = "TimeoutLabel"
+        TimeoutLabel.Size = New Size(130, 45)
+        TimeoutLabel.TabIndex = 18
+        TimeoutLabel.Text = "Time Out (in Seconds): " & vbCrLf & "Leave 0 for no timeout." & vbCrLf & "(?)"
         ' 
         ' batchjobs_lbl
         ' 
@@ -1321,7 +1358,7 @@ Partial Class MainUI
         batchjobs.Maximum = 4
         batchjobs.Minimum = 1
         batchjobs.Name = "batchjobs"
-        batchjobs.Size = New Size(397, 45)
+        batchjobs.Size = New Size(279, 45)
         batchjobs.TabIndex = 16
         batchjobs.Value = 1
         ' 
@@ -2253,7 +2290,10 @@ Partial Class MainUI
         CType(EnThreshValue, ComponentModel.ISupportInitialize).EndInit()
         TabPage3.ResumeLayout(False)
         TabPage3.PerformLayout()
+        GroupBox12.ResumeLayout(False)
+        GroupBox12.PerformLayout()
         CType(batchjobsize, ComponentModel.ISupportInitialize).EndInit()
+        CType(max_cpu_time, ComponentModel.ISupportInitialize).EndInit()
         GroupBox11.ResumeLayout(False)
         GroupBox11.PerformLayout()
         GroupBox9.ResumeLayout(False)
@@ -2427,7 +2467,7 @@ Partial Class MainUI
     Friend WithEvents batchjobs_lbl As Label
     Friend WithEvents batchjobs As TrackBar
     Friend WithEvents timeout As NumericUpDown
-    Friend WithEvents Label22 As Label
+    Friend WithEvents TimeoutLabel As Label
     Friend WithEvents GroupBox9 As GroupBox
     Friend WithEvents subtype_embed As RadioButton
     Friend WithEvents subtype_burn As RadioButton
@@ -2468,5 +2508,8 @@ Partial Class MainUI
     Friend WithEvents BatchModeManual As RadioButton
     Friend WithEvents batchjobsize As NumericUpDown
     Friend WithEvents ModelSizeInfoLblForCaptions As Label
+    Friend WithEvents max_cpu_time_label As Label
+    Friend WithEvents max_cpu_time As NumericUpDown
+    Friend WithEvents GroupBox12 As GroupBox
 
 End Class

@@ -230,5 +230,8 @@
     <Setting Name="batchjobsize" Type="System.String" Scope="User">
       <Value Profile="(Default)">4</Value>
     </Setting>
+    <Setting Name="max_cpu_time" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

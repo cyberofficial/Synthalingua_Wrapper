@@ -234,7 +234,7 @@ Public Class CommandGenerator
         ' If we use automode then we use "--adaptive_batch --batchjobsize {value}", the value is grabbed from the numericupdown "batchjobsize"
         ' If settings.batchjobs.Value > 1 Then builder.Append($"--batchmode {settings.batchjobs.Value} ")
         If settings.BatchModeAuto.Checked Then
-            Return $"--adaptive_batch --batchjobsize {settings.batchjobsize.Value} --cpu_batches {settings.batchjobs.Value} "
+            Return $"--adaptive_batch --batchjobsize {settings.batchjobsize.Value} --cpu_batches {settings.batchjobs.Value} --max_cpu_time {settings.max_cpu_time.Value} "
         ElseIf settings.BatchModeManual.Checked Then
             Return $"--batchmode {settings.batchjobs.Value} "
         End If

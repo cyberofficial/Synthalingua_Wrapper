@@ -965,6 +965,18 @@ Namespace My
                 Me("batchjobsize") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("300")>  _
+        Public Property max_cpu_time() As Integer
+            Get
+                Return CType(Me("max_cpu_time"),Integer)
+            End Get
+            Set
+                Me("max_cpu_time") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
