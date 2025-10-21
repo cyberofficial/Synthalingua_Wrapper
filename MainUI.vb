@@ -613,11 +613,6 @@ Public Class MainUI
         ' It's suggested to have the user do a test run with 4 see how much vram is used then adjust accordingly, its recommended to to add 0.5GB to the value they see used. So if they see 3.86GB used, they should set 4.5GB in the config. We should note that faster whisper normally uses about 3.8 to 4.2 depending on the audio segments.
         Dim info As String =
             "Model Size Information for Captions:" & vbCrLf & vbCrLf &
-            "tiny: ~0.5 GB VRAM" & vbCrLf &
-            "base: ~1.0 GB VRAM" & vbCrLf &
-            "small: ~2.0 GB VRAM" & vbCrLf &
-            "medium: ~4.0 GB VRAM" & vbCrLf &
-            "large: ~8.0 GB VRAM" & vbCrLf & vbCrLf &
             "Note: Actual VRAM usage may vary based on audio length and system configuration. " &
             "It's recommended to monitor VRAM usage during initial runs and adjust settings accordingly." & vbCrLf & vbCrLf &
             "Faster Whisper 12GB-v3 typically uses between 3.8 to 4.2 GB of VRAM depending on audio segments."

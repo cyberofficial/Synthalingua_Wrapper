@@ -1138,17 +1138,17 @@ Partial Class MainUI
         batchjobsize.Name = "batchjobsize"
         batchjobsize.Size = New Size(45, 23)
         batchjobsize.TabIndex = 23
-        batchjobsize.Value = New Decimal(New Integer() {1, 0, 0, 65536})
+        batchjobsize.Value = New Decimal(New Integer() {4, 0, 0, 0})
         ' 
         ' max_cpu_time
         ' 
         max_cpu_time.Location = New Point(7, 97)
-        max_cpu_time.Maximum = New Decimal(New Integer() {300, 0, 0, 0})
+        max_cpu_time.Maximum = New Decimal(New Integer() {1200, 0, 0, 0})
         max_cpu_time.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         max_cpu_time.Name = "max_cpu_time"
         max_cpu_time.Size = New Size(50, 23)
         max_cpu_time.TabIndex = 25
-        max_cpu_time.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        max_cpu_time.Value = New Decimal(New Integer() {300, 0, 0, 0})
         ' 
         ' GroupBox11
         ' 
