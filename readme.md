@@ -220,6 +220,43 @@ dotnet build Synthalingua_Wrapper.sln -c Release
 
 Or open `Synthalingua_Wrapper.sln` in Visual Studio 2022 with the **.NET Desktop Development** workload installed. The WinForms designer remains fully functional thanks to the VB project structure.
 
+## Building the Project
+
+The wrapper is a VB.NET WinForms application targeting **.NET 8.0 Windows**. Follow these steps to build it locally:
+
+1. **Prerequisites**
+   - Install the [.NET 8 Desktop Runtime & SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (Windows x64).
+   - Install **Visual Studio 2022** with the *“.NET Desktop Development”* workload, or have the `dotnet` CLI available.
+   - Ensure you have Git installed to fetch sub‑modules if needed.
+
+2. **Restore NuGet packages**
+   ```powershell
+   dotnet restore
+   ```
+
+3. **Build the solution**
+   ```powershell
+   dotnet build Synthalingua_Wrapper.sln -c Release
+   ```
+
+   The compiled binaries will appear in `bin\Release\net8.0-windows\`.
+
+4. **Run the application**
+   - From the command line:
+     ```powershell
+     dotnet run --project Synthalingua_Wrapper.vbproj
+     ```
+   - Or open `Synthalingua_Wrapper.sln` in Visual Studio, set the startup project to **Synthalingua_Wrapper**, and press **F5**.
+
+5. **Optional: Create a distributable package**
+   ```powershell
+   dotnet publish Synthalingua_Wrapper.vbproj -c Release -r win-x64 --self-contained false -o publish
+   # Build verified on Windows 10 with .NET 8 SDK – compilation succeeded
+   ```
+
+   The `publish` folder contains everything needed to run the GUI on a Windows machine.
+
+> **Note:** The wrapper works with either the portable `Synthalingua.exe` binary or a local source checkout of the Synthalingua backend. Make sure the corresponding backend is available before running the built GUI.
 Key source files:
 - `MainUI.vb` – advanced interface logic and event wiring.
 - `BasicMode.vb` – simplified configuration panel for new users.
