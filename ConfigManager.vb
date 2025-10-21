@@ -17,6 +17,8 @@ Public Class ConfigManager
                 ' Web Server
                 .WebServerEnabled = If(settings.WebServerButton.Checked, 1, 0)
                 .WebServerPort = settings.PortNumber.Value
+                .HTTPSPortNumber = CInt(settings.HTTPSPortNumber.Value)
+                .ServerIP = settings.ServerIP.Text
 
                 ' RAM Size
                 .RamSize = settings.RamSize.Text
@@ -166,6 +168,20 @@ Public Class ConfigManager
                 ' DisableSynthalinguaChan Checkbox
                 .DisableSynthalinguaChan = settings.DisableSynthalinguaChan.Checked
 
+                ' Batch Mode Settings only one can be true at a time
+                If settings.BatchModeManual.Checked And settings.BatchModeAuto.Checked Then
+                    .BatchModeManual = True
+                    .BatchModeAuto = False
+                Else
+                    .BatchModeManual = settings.BatchModeManual.Checked
+                    .BatchModeAuto = settings.BatchModeAuto.Checked
+                End If
+
+                ' String Value from a numeric up down
+                .batchjobsize = settings.batchjobsize.Value.ToString()
+
+                .max_cpu_time = settings.max_cpu_time.Value
+
 
 
             End With
@@ -200,6 +216,14 @@ Public Class ConfigManager
                 form.CPU_RadioButton.Checked = Not (.ProcDevice = 1)
 
                 form.PortNumber.Value = .WebServerPort
+                If .HTTPSPortNumber >= form.HTTPSPortNumber.Minimum AndAlso .HTTPSPortNumber <= form.HTTPSPortNumber.Maximum Then
+                    form.HTTPSPortNumber.Value = .HTTPSPortNumber
+                Else
+                    form.HTTPSPortNumber.Value = Math.Min(Math.Max(.HTTPSPortNumber, CInt(form.HTTPSPortNumber.Minimum)), CInt(form.HTTPSPortNumber.Maximum))
+                End If
+                If Not String.IsNullOrEmpty(.ServerIP) Then
+                    form.ServerIP.Text = .ServerIP
+                End If
                 form.WebServerButton.Checked = .WebServerEnabled
                 form.RamSize.Text = .RamSize
                 form.ForceRam.Checked = .ForceRam
@@ -272,6 +296,20 @@ Public Class ConfigManager
                 form.substyle_fontname.Text = .substyle_fontname
                 form.substyle_color.Text = .substyle_color
                 form.DisableSynthalinguaChan.Checked = .DisableSynthalinguaChan
+
+                ' Batch Mode Settings only one can be true at a time
+                If .BatchModeManual And .BatchModeAuto Then
+                    form.BatchModeManual.Checked = True
+                    form.BatchModeAuto.Checked = False
+                Else
+                    form.BatchModeManual.Checked = .BatchModeManual
+                    form.BatchModeAuto.Checked = .BatchModeAuto
+                End If
+
+                ' String Value from a numeric up down
+                form.batchjobsize.Value = .batchjobsize.ToString()
+
+                form.max_cpu_time.Value = .max_cpu_time
             End With
             Return True
         Catch ex As Exception

@@ -49,6 +49,9 @@ Partial Class MainUI
         Label6 = New Label()
         HLS_URL = New TextBox()
         Label3 = New Label()
+        CookiesName = New ComboBox()
+        CookiesRefresh = New Button()
+        Label8 = New Label()
         EnglishTranslationCheckBox = New CheckBox()
         SecondaryTranslation = New CheckBox()
         Label5 = New Label()
@@ -61,12 +64,15 @@ Partial Class MainUI
         OpenScriptDiag = New OpenFileDialog()
         ConfigTextBox = New TextBox()
         GenerateConfigButton = New Button()
-        Label8 = New Label()
         SaveFileDialog = New SaveFileDialog()
         PortNumber = New NumericUpDown()
         WebServerButton = New CheckBox()
         Label10 = New Label()
         GroupBox4 = New GroupBox()
+        ServerIP = New MaskedTextBox()
+        Label29 = New Label()
+        HTTPSPortNumber = New NumericUpDown()
+        Label28 = New Label()
         SettingsTabs = New TabControl()
         TabPage1 = New TabPage()
         SynthalinguaChan_IMG_2 = New PictureBox()
@@ -90,6 +96,14 @@ Partial Class MainUI
         MicCaliLbl = New Label()
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
+        GroupBox12 = New GroupBox()
+        ModelSizeInfoLblForCaptions = New Label()
+        max_cpu_time_label = New Label()
+        batchjobsize = New NumericUpDown()
+        max_cpu_time = New NumericUpDown()
+        GroupBox11 = New GroupBox()
+        BatchModeAuto = New RadioButton()
+        BatchModeManual = New RadioButton()
         GroupBox9 = New GroupBox()
         GroupBox10 = New GroupBox()
         subtype_burn = New RadioButton()
@@ -104,7 +118,7 @@ Partial Class MainUI
         Label25 = New Label()
         Label24 = New Label()
         timeout = New NumericUpDown()
-        Label22 = New Label()
+        TimeoutLabel = New Label()
         batchjobs_lbl = New Label()
         batchjobs = New TrackBar()
         intelligent_mode = New CheckBox()
@@ -133,6 +147,7 @@ Partial Class MainUI
         modelDirPicker = New Button()
         SynthalinguaChan_IMG_5 = New PictureBox()
         TabPage5 = New TabPage()
+        debugmode = New CheckBox()
         SynthalinguaChan_IMG_9 = New PictureBox()
         SynthalinguaChan_IMG_8 = New PictureBox()
         DisableSynthalinguaChan = New CheckBox()
@@ -148,9 +163,7 @@ Partial Class MainUI
         DiscordWebHook = New TextBox()
         Label13 = New Label()
         paddedaudio_value = New TrackBar()
-        CookiesName = New ComboBox()
         paddedaudio = New CheckBox()
-        CookiesRefresh = New Button()
         SynthalinguaChan_IMG_7 = New PictureBox()
         WhatModelsBtn = New Label()
         demucs_model = New ComboBox()
@@ -179,14 +192,15 @@ Partial Class MainUI
         RepeatProtection = New CheckBox()
         Button1 = New Button()
         FolderBrowserDialog2 = New FolderBrowserDialog()
-        JetBrainsLogoImg = New PictureBox()
-        Label19 = New Label()
         Label7 = New Label()
         Label21 = New Label()
         demucs_model_jobs = New NumericUpDown()
         Label23 = New Label()
         SynthalinguaChan_IMG_1 = New PictureBox()
         SynthalinguaChan_IMG_10 = New PictureBox()
+        JetBrainsLogoImg = New PictureBox()
+        Label19 = New Label()
+        GitHubSponsorPicture = New PictureBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -194,6 +208,7 @@ Partial Class MainUI
         GroupBox3.SuspendLayout()
         CType(PortNumber, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox4.SuspendLayout()
+        CType(HTTPSPortNumber, ComponentModel.ISupportInitialize).BeginInit()
         SettingsTabs.SuspendLayout()
         TabPage1.SuspendLayout()
         CType(SynthalinguaChan_IMG_2, ComponentModel.ISupportInitialize).BeginInit()
@@ -206,6 +221,10 @@ Partial Class MainUI
         CType(MicCaliTime, ComponentModel.ISupportInitialize).BeginInit()
         CType(EnThreshValue, ComponentModel.ISupportInitialize).BeginInit()
         TabPage3.SuspendLayout()
+        GroupBox12.SuspendLayout()
+        CType(batchjobsize, ComponentModel.ISupportInitialize).BeginInit()
+        CType(max_cpu_time, ComponentModel.ISupportInitialize).BeginInit()
+        GroupBox11.SuspendLayout()
         GroupBox9.SuspendLayout()
         GroupBox10.SuspendLayout()
         CType(substyle_fontsize, ComponentModel.ISupportInitialize).BeginInit()
@@ -228,10 +247,11 @@ Partial Class MainUI
         CType(GitHubPicture, ComponentModel.ISupportInitialize).BeginInit()
         CType(KoFiPicture, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox6.SuspendLayout()
-        CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).BeginInit()
         CType(demucs_model_jobs, ComponentModel.ISupportInitialize).BeginInit()
         CType(SynthalinguaChan_IMG_1, ComponentModel.ISupportInitialize).BeginInit()
         CType(SynthalinguaChan_IMG_10, ComponentModel.ISupportInitialize).BeginInit()
+        CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).BeginInit()
+        CType(GitHubSponsorPicture, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' GroupBox1
@@ -380,6 +400,9 @@ Partial Class MainUI
         GroupBox2.Controls.Add(Label6)
         GroupBox2.Controls.Add(HLS_URL)
         GroupBox2.Controls.Add(Label3)
+        GroupBox2.Controls.Add(CookiesName)
+        GroupBox2.Controls.Add(CookiesRefresh)
+        GroupBox2.Controls.Add(Label8)
         GroupBox2.ForeColor = Color.FloralWhite
         GroupBox2.Location = New Point(5, 9)
         GroupBox2.Margin = New Padding(3, 2, 3, 2)
@@ -518,6 +541,40 @@ Partial Class MainUI
         Label3.TabIndex = 0
         Label3.Text = "Stream URL:"
         ' 
+        ' CookiesName
+        ' 
+        CookiesName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        CookiesName.AutoCompleteSource = AutoCompleteSource.ListItems
+        CookiesName.DropDownStyle = ComboBoxStyle.DropDownList
+        CookiesName.FormattingEnabled = True
+        CookiesName.Location = New Point(322, 110)
+        CookiesName.Margin = New Padding(3, 2, 3, 2)
+        CookiesName.Name = "CookiesName"
+        CookiesName.Size = New Size(113, 23)
+        CookiesName.TabIndex = 26
+        ' 
+        ' CookiesRefresh
+        ' 
+        CookiesRefresh.FlatStyle = FlatStyle.Flat
+        CookiesRefresh.Font = New Font("Segoe UI", 8F)
+        CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
+        CookiesRefresh.Location = New Point(441, 111)
+        CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
+        CookiesRefresh.Name = "CookiesRefresh"
+        CookiesRefresh.Size = New Size(22, 21)
+        CookiesRefresh.TabIndex = 27
+        CookiesRefresh.Text = "🔃"
+        CookiesRefresh.UseVisualStyleBackColor = True
+        ' 
+        ' Label8
+        ' 
+        Label8.AutoSize = True
+        Label8.Location = New Point(213, 114)
+        Label8.Name = "Label8"
+        Label8.Size = New Size(103, 15)
+        Label8.TabIndex = 12
+        Label8.Text = "Cookie File Name:"
+        ' 
         ' EnglishTranslationCheckBox
         ' 
         EnglishTranslationCheckBox.AutoSize = True
@@ -655,7 +712,7 @@ Partial Class MainUI
         GenerateConfigButton.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         GenerateConfigButton.FlatStyle = FlatStyle.Popup
         GenerateConfigButton.Font = New Font("Segoe UI", 13F)
-        GenerateConfigButton.Location = New Point(257, 627)
+        GenerateConfigButton.Location = New Point(154, 627)
         GenerateConfigButton.Margin = New Padding(3, 2, 3, 2)
         GenerateConfigButton.Name = "GenerateConfigButton"
         GenerateConfigButton.Size = New Size(150, 32)
@@ -663,22 +720,14 @@ Partial Class MainUI
         GenerateConfigButton.Text = "Generate Config"
         GenerateConfigButton.UseVisualStyleBackColor = True
         ' 
-        ' Label8
-        ' 
-        Label8.AutoSize = True
-        Label8.Location = New Point(360, 8)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(103, 15)
-        Label8.TabIndex = 12
-        Label8.Text = "Cookie File Name:"
-        ' 
         ' PortNumber
         ' 
         PortNumber.Location = New Point(91, 20)
         PortNumber.Margin = New Padding(3, 2, 3, 2)
         PortNumber.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
+        PortNumber.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         PortNumber.Name = "PortNumber"
-        PortNumber.Size = New Size(83, 23)
+        PortNumber.Size = New Size(58, 23)
         PortNumber.TabIndex = 15
         PortNumber.Value = New Decimal(New Integer() {2000, 0, 0, 0})
         ' 
@@ -697,14 +746,18 @@ Partial Class MainUI
         ' Label10
         ' 
         Label10.AutoSize = True
-        Label10.Location = New Point(6, 18)
+        Label10.Location = New Point(15, 22)
         Label10.Name = "Label10"
-        Label10.Size = New Size(79, 15)
+        Label10.Size = New Size(63, 15)
         Label10.TabIndex = 17
-        Label10.Text = "Port Number:"
+        Label10.Text = "HTTP Port:"
         ' 
         ' GroupBox4
         ' 
+        GroupBox4.Controls.Add(ServerIP)
+        GroupBox4.Controls.Add(Label29)
+        GroupBox4.Controls.Add(HTTPSPortNumber)
+        GroupBox4.Controls.Add(Label28)
         GroupBox4.Controls.Add(Label10)
         GroupBox4.Controls.Add(PortNumber)
         GroupBox4.Controls.Add(WebServerButton)
@@ -713,10 +766,47 @@ Partial Class MainUI
         GroupBox4.Margin = New Padding(3, 2, 3, 2)
         GroupBox4.Name = "GroupBox4"
         GroupBox4.Padding = New Padding(3, 2, 3, 2)
-        GroupBox4.Size = New Size(187, 53)
+        GroupBox4.Size = New Size(347, 85)
         GroupBox4.TabIndex = 18
         GroupBox4.TabStop = False
         GroupBox4.Text = "Web Server"
+        ' 
+        ' ServerIP
+        ' 
+        ServerIP.Location = New Point(219, 19)
+        ServerIP.Mask = "000.000.000.000"
+        ServerIP.Name = "ServerIP"
+        ServerIP.Size = New Size(122, 23)
+        ServerIP.TabIndex = 21
+        ' 
+        ' Label29
+        ' 
+        Label29.AutoSize = True
+        Label29.Location = New Point(155, 22)
+        Label29.Name = "Label29"
+        Label29.Size = New Size(58, 15)
+        Label29.TabIndex = 20
+        Label29.Text = "Server IP: "
+        ' 
+        ' HTTPSPortNumber
+        ' 
+        HTTPSPortNumber.Location = New Point(91, 53)
+        HTTPSPortNumber.Margin = New Padding(3, 2, 3, 2)
+        HTTPSPortNumber.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
+        HTTPSPortNumber.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        HTTPSPortNumber.Name = "HTTPSPortNumber"
+        HTTPSPortNumber.Size = New Size(58, 23)
+        HTTPSPortNumber.TabIndex = 19
+        HTTPSPortNumber.Value = New Decimal(New Integer() {2001, 0, 0, 0})
+        ' 
+        ' Label28
+        ' 
+        Label28.AutoSize = True
+        Label28.Location = New Point(6, 55)
+        Label28.Name = "Label28"
+        Label28.Size = New Size(72, 15)
+        Label28.TabIndex = 18
+        Label28.Text = "HTTPS Port: "
         ' 
         ' SettingsTabs
         ' 
@@ -974,9 +1064,11 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
+        TabPage3.Controls.Add(GroupBox12)
+        TabPage3.Controls.Add(GroupBox11)
         TabPage3.Controls.Add(GroupBox9)
         TabPage3.Controls.Add(timeout)
-        TabPage3.Controls.Add(Label22)
+        TabPage3.Controls.Add(TimeoutLabel)
         TabPage3.Controls.Add(batchjobs_lbl)
         TabPage3.Controls.Add(batchjobs)
         TabPage3.Controls.Add(intelligent_mode)
@@ -1003,6 +1095,94 @@ Partial Class MainUI
         TabPage3.Size = New Size(583, 545)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Generate Captions"
+        ' 
+        ' GroupBox12
+        ' 
+        GroupBox12.Controls.Add(ModelSizeInfoLblForCaptions)
+        GroupBox12.Controls.Add(max_cpu_time_label)
+        GroupBox12.Controls.Add(batchjobsize)
+        GroupBox12.Controls.Add(max_cpu_time)
+        GroupBox12.ForeColor = Color.FloralWhite
+        GroupBox12.Location = New Point(291, 147)
+        GroupBox12.Name = "GroupBox12"
+        GroupBox12.Size = New Size(112, 131)
+        GroupBox12.TabIndex = 27
+        GroupBox12.TabStop = False
+        GroupBox12.Text = "Batch Intelligent Mode Settings"
+        ' 
+        ' ModelSizeInfoLblForCaptions
+        ' 
+        ModelSizeInfoLblForCaptions.AutoSize = True
+        ModelSizeInfoLblForCaptions.Location = New Point(6, 35)
+        ModelSizeInfoLblForCaptions.Name = "ModelSizeInfoLblForCaptions"
+        ModelSizeInfoLblForCaptions.Size = New Size(80, 15)
+        ModelSizeInfoLblForCaptions.TabIndex = 24
+        ModelSizeInfoLblForCaptions.Text = "Model Size (?)"
+        ' 
+        ' max_cpu_time_label
+        ' 
+        max_cpu_time_label.AutoSize = True
+        max_cpu_time_label.Location = New Point(6, 79)
+        max_cpu_time_label.Name = "max_cpu_time_label"
+        max_cpu_time_label.Size = New Size(75, 15)
+        max_cpu_time_label.TabIndex = 26
+        max_cpu_time_label.Text = "CPU Time (?)"
+        ' 
+        ' batchjobsize
+        ' 
+        batchjobsize.DecimalPlaces = 1
+        batchjobsize.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
+        batchjobsize.Location = New Point(7, 53)
+        batchjobsize.Maximum = New Decimal(New Integer() {24, 0, 0, 0})
+        batchjobsize.Minimum = New Decimal(New Integer() {1, 0, 0, 65536})
+        batchjobsize.Name = "batchjobsize"
+        batchjobsize.Size = New Size(45, 23)
+        batchjobsize.TabIndex = 23
+        batchjobsize.Value = New Decimal(New Integer() {4, 0, 0, 0})
+        ' 
+        ' max_cpu_time
+        ' 
+        max_cpu_time.Location = New Point(7, 97)
+        max_cpu_time.Maximum = New Decimal(New Integer() {1200, 0, 0, 0})
+        max_cpu_time.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        max_cpu_time.Name = "max_cpu_time"
+        max_cpu_time.Size = New Size(50, 23)
+        max_cpu_time.TabIndex = 25
+        max_cpu_time.Value = New Decimal(New Integer() {300, 0, 0, 0})
+        ' 
+        ' GroupBox11
+        ' 
+        GroupBox11.Controls.Add(BatchModeAuto)
+        GroupBox11.Controls.Add(BatchModeManual)
+        GroupBox11.ForeColor = Color.FloralWhite
+        GroupBox11.Location = New Point(129, 174)
+        GroupBox11.Name = "GroupBox11"
+        GroupBox11.Size = New Size(156, 43)
+        GroupBox11.TabIndex = 22
+        GroupBox11.TabStop = False
+        GroupBox11.Text = "Batch Mode"
+        ' 
+        ' BatchModeAuto
+        ' 
+        BatchModeAuto.AutoSize = True
+        BatchModeAuto.Location = New Point(77, 18)
+        BatchModeAuto.Name = "BatchModeAuto"
+        BatchModeAuto.Size = New Size(78, 19)
+        BatchModeAuto.TabIndex = 1
+        BatchModeAuto.Text = "Intelligent"
+        BatchModeAuto.UseVisualStyleBackColor = True
+        ' 
+        ' BatchModeManual
+        ' 
+        BatchModeManual.AutoSize = True
+        BatchModeManual.Checked = True
+        BatchModeManual.Location = New Point(6, 18)
+        BatchModeManual.Name = "BatchModeManual"
+        BatchModeManual.Size = New Size(65, 19)
+        BatchModeManual.TabIndex = 0
+        BatchModeManual.TabStop = True
+        BatchModeManual.Text = "Manual"
+        BatchModeManual.UseVisualStyleBackColor = True
         ' 
         ' GroupBox9
         ' 
@@ -1154,14 +1334,14 @@ Partial Class MainUI
         timeout.Size = New Size(71, 23)
         timeout.TabIndex = 19
         ' 
-        ' Label22
+        ' TimeoutLabel
         ' 
-        Label22.AutoSize = True
-        Label22.Location = New Point(10, 255)
-        Label22.Name = "Label22"
-        Label22.Size = New Size(130, 30)
-        Label22.TabIndex = 18
-        Label22.Text = "Time Out (in Seconds): " & vbCrLf & "Leave 0 for no timeout."
+        TimeoutLabel.AutoSize = True
+        TimeoutLabel.Location = New Point(10, 255)
+        TimeoutLabel.Name = "TimeoutLabel"
+        TimeoutLabel.Size = New Size(130, 45)
+        TimeoutLabel.TabIndex = 18
+        TimeoutLabel.Text = "Time Out (in Seconds): " & vbCrLf & "Leave 0 for no timeout." & vbCrLf & "(?)"
         ' 
         ' batchjobs_lbl
         ' 
@@ -1178,7 +1358,7 @@ Partial Class MainUI
         batchjobs.Maximum = 4
         batchjobs.Minimum = 1
         batchjobs.Name = "batchjobs"
-        batchjobs.Size = New Size(571, 45)
+        batchjobs.Size = New Size(279, 45)
         batchjobs.TabIndex = 16
         batchjobs.Value = 1
         ' 
@@ -1444,6 +1624,7 @@ Partial Class MainUI
         ' TabPage5
         ' 
         TabPage5.BackColor = Color.DarkSlateBlue
+        TabPage5.Controls.Add(debugmode)
         TabPage5.Controls.Add(SynthalinguaChan_IMG_9)
         TabPage5.Controls.Add(SynthalinguaChan_IMG_8)
         TabPage5.Controls.Add(DisableSynthalinguaChan)
@@ -1458,10 +1639,7 @@ Partial Class MainUI
         TabPage5.Controls.Add(DiscordWebHook)
         TabPage5.Controls.Add(Label13)
         TabPage5.Controls.Add(paddedaudio_value)
-        TabPage5.Controls.Add(CookiesName)
         TabPage5.Controls.Add(paddedaudio)
-        TabPage5.Controls.Add(Label8)
-        TabPage5.Controls.Add(CookiesRefresh)
         TabPage5.Controls.Add(SynthalinguaChan_IMG_7)
         TabPage5.Location = New Point(4, 27)
         TabPage5.Name = "TabPage5"
@@ -1469,6 +1647,16 @@ Partial Class MainUI
         TabPage5.Size = New Size(583, 545)
         TabPage5.TabIndex = 4
         TabPage5.Text = "Configuration"
+        ' 
+        ' debugmode
+        ' 
+        debugmode.AutoSize = True
+        debugmode.Location = New Point(182, 200)
+        debugmode.Name = "debugmode"
+        debugmode.Size = New Size(133, 19)
+        debugmode.TabIndex = 47
+        debugmode.Text = "Enable Debug Mode"
+        debugmode.UseVisualStyleBackColor = True
         ' 
         ' SynthalinguaChan_IMG_9
         ' 
@@ -1625,18 +1813,6 @@ Partial Class MainUI
         paddedaudio_value.TabIndex = 37
         paddedaudio_value.Value = 1
         ' 
-        ' CookiesName
-        ' 
-        CookiesName.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        CookiesName.AutoCompleteSource = AutoCompleteSource.ListItems
-        CookiesName.DropDownStyle = ComboBoxStyle.DropDownList
-        CookiesName.FormattingEnabled = True
-        CookiesName.Location = New Point(360, 25)
-        CookiesName.Margin = New Padding(3, 2, 3, 2)
-        CookiesName.Name = "CookiesName"
-        CookiesName.Size = New Size(184, 23)
-        CookiesName.TabIndex = 26
-        ' 
         ' paddedaudio
         ' 
         paddedaudio.AutoSize = True
@@ -1647,19 +1823,6 @@ Partial Class MainUI
         paddedaudio.TabIndex = 36
         paddedaudio.Text = "Enabled Padded Audio" & vbCrLf & "(Hover for info)"
         paddedaudio.UseVisualStyleBackColor = True
-        ' 
-        ' CookiesRefresh
-        ' 
-        CookiesRefresh.FlatStyle = FlatStyle.Flat
-        CookiesRefresh.Font = New Font("Segoe UI", 8F)
-        CookiesRefresh.ImageAlign = ContentAlignment.TopLeft
-        CookiesRefresh.Location = New Point(550, 25)
-        CookiesRefresh.Margin = New Padding(3, 2, 3, 2)
-        CookiesRefresh.Name = "CookiesRefresh"
-        CookiesRefresh.Size = New Size(22, 21)
-        CookiesRefresh.TabIndex = 27
-        CookiesRefresh.Text = "🔃"
-        CookiesRefresh.UseVisualStyleBackColor = True
         ' 
         ' SynthalinguaChan_IMG_7
         ' 
@@ -1825,7 +1988,7 @@ Partial Class MainUI
         ' PictureItch
         ' 
         PictureItch.Image = My.Resources.Resources.itch_io_icon_256x256_0aig5hor
-        PictureItch.Location = New Point(1126, 587)
+        PictureItch.Location = New Point(1116, 588)
         PictureItch.Name = "PictureItch"
         PictureItch.Size = New Size(48, 48)
         PictureItch.SizeMode = PictureBoxSizeMode.Zoom
@@ -1836,7 +1999,7 @@ Partial Class MainUI
         ' GitHubPicture
         ' 
         GitHubPicture.Image = My.Resources.Resources._25231
-        GitHubPicture.Location = New Point(894, 587)
+        GitHubPicture.Location = New Point(868, 588)
         GitHubPicture.Name = "GitHubPicture"
         GitHubPicture.Size = New Size(48, 48)
         GitHubPicture.SizeMode = PictureBoxSizeMode.Zoom
@@ -1850,7 +2013,7 @@ Partial Class MainUI
         SaveConfig.FlatAppearance.MouseOverBackColor = Color.SlateBlue
         SaveConfig.FlatStyle = FlatStyle.Popup
         SaveConfig.Font = New Font("Segoe UI", 12F)
-        SaveConfig.Location = New Point(153, 627)
+        SaveConfig.Location = New Point(307, 627)
         SaveConfig.Margin = New Padding(3, 2, 3, 2)
         SaveConfig.Name = "SaveConfig"
         SaveConfig.Size = New Size(98, 32)
@@ -1862,7 +2025,7 @@ Partial Class MainUI
         ' KoFiPicture
         ' 
         KoFiPicture.Image = CType(resources.GetObject("KoFiPicture.Image"), Image)
-        KoFiPicture.Location = New Point(1072, 587)
+        KoFiPicture.Location = New Point(1062, 588)
         KoFiPicture.Name = "KoFiPicture"
         KoFiPicture.Size = New Size(48, 48)
         KoFiPicture.SizeMode = PictureBoxSizeMode.Zoom
@@ -1963,29 +2126,10 @@ Partial Class MainUI
         Button1.Text = "Load Word Blocklist"
         Button1.UseVisualStyleBackColor = True
         ' 
-        ' JetBrainsLogoImg
-        ' 
-        JetBrainsLogoImg.Image = My.Resources.Resources.PyCharm_Icon_svg
-        JetBrainsLogoImg.Location = New Point(621, 587)
-        JetBrainsLogoImg.Name = "JetBrainsLogoImg"
-        JetBrainsLogoImg.Size = New Size(48, 48)
-        JetBrainsLogoImg.SizeMode = PictureBoxSizeMode.StretchImage
-        JetBrainsLogoImg.TabIndex = 39
-        JetBrainsLogoImg.TabStop = False
-        ' 
-        ' Label19
-        ' 
-        Label19.AutoSize = True
-        Label19.Location = New Point(675, 587)
-        Label19.Name = "Label19"
-        Label19.Size = New Size(133, 45)
-        Label19.TabIndex = 40
-        Label19.Text = "Thanks to Jetbrains for" & vbCrLf & "providing PyCharm" & vbCrLf & "with their OSS Program."
-        ' 
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Location = New Point(814, 587)
+        Label7.Location = New Point(788, 588)
         Label7.Name = "Label7"
         Label7.Size = New Size(74, 15)
         Label7.TabIndex = 41
@@ -1994,11 +2138,11 @@ Partial Class MainUI
         ' Label21
         ' 
         Label21.AutoSize = True
-        Label21.Location = New Point(948, 588)
+        Label21.Location = New Point(933, 589)
         Label21.Name = "Label21"
         Label21.Size = New Size(270, 105)
         Label21.TabIndex = 41
-        Label21.Text = "Like the Project?" & vbCrLf & "You Can Support" & vbCrLf & "On itch.io and Ko-Fi" & vbCrLf & vbCrLf & "Please note: This project is free, will always be free" & vbCrLf & "if someone is trying to sell you it, report them and" & vbCrLf & "ignore them."
+        Label21.Text = "Like the Project?" & vbCrLf & "You Can Support via:" & vbCrLf & "itch.io / Ko-Fi / GitHub" & vbCrLf & vbCrLf & "Please note: This project is free, will always be free" & vbCrLf & "if someone is trying to sell you it, report them and" & vbCrLf & "ignore them."
         ' 
         ' demucs_model_jobs
         ' 
@@ -2039,12 +2183,44 @@ Partial Class MainUI
         SynthalinguaChan_IMG_10.TabIndex = 45
         SynthalinguaChan_IMG_10.TabStop = False
         ' 
+        ' JetBrainsLogoImg
+        ' 
+        JetBrainsLogoImg.Image = My.Resources.Resources.PyCharm_Icon_svg
+        JetBrainsLogoImg.Location = New Point(626, 649)
+        JetBrainsLogoImg.Name = "JetBrainsLogoImg"
+        JetBrainsLogoImg.Size = New Size(48, 48)
+        JetBrainsLogoImg.SizeMode = PictureBoxSizeMode.StretchImage
+        JetBrainsLogoImg.TabIndex = 39
+        JetBrainsLogoImg.TabStop = False
+        JetBrainsLogoImg.Visible = False
+        ' 
+        ' Label19
+        ' 
+        Label19.AutoSize = True
+        Label19.Location = New Point(680, 649)
+        Label19.Name = "Label19"
+        Label19.Size = New Size(133, 45)
+        Label19.TabIndex = 40
+        Label19.Text = "Thanks to Jetbrains for" & vbCrLf & "providing PyCharm" & vbCrLf & "with their OSS Program."
+        Label19.Visible = False
+        ' 
+        ' GitHubSponsorPicture
+        ' 
+        GitHubSponsorPicture.Image = CType(resources.GetObject("GitHubSponsorPicture.Image"), Image)
+        GitHubSponsorPicture.Location = New Point(1170, 588)
+        GitHubSponsorPicture.Name = "GitHubSponsorPicture"
+        GitHubSponsorPicture.Size = New Size(48, 48)
+        GitHubSponsorPicture.SizeMode = PictureBoxSizeMode.Zoom
+        GitHubSponsorPicture.TabIndex = 46
+        GitHubSponsorPicture.TabStop = False
+        ' 
         ' MainUI
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.DarkSlateBlue
         ClientSize = New Size(1226, 702)
+        Controls.Add(GitHubSponsorPicture)
         Controls.Add(SynthalinguaChan_IMG_10)
         Controls.Add(SynthalinguaChan_IMG_1)
         Controls.Add(Label23)
@@ -2054,7 +2230,6 @@ Partial Class MainUI
         Controls.Add(WhatModelsBtn)
         Controls.Add(demucs_model)
         Controls.Add(SecondaryTranslation)
-        Controls.Add(Label19)
         Controls.Add(JetBrainsLogoImg)
         Controls.Add(ConfigTextBox)
         Controls.Add(KoFiPicture)
@@ -2078,6 +2253,7 @@ Partial Class MainUI
         Controls.Add(SaveConfigToFileButton)
         Controls.Add(GroupBox1)
         Controls.Add(Label21)
+        Controls.Add(Label19)
         ForeColor = Color.FloralWhite
         FormBorderStyle = FormBorderStyle.FixedSingle
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
@@ -2099,6 +2275,7 @@ Partial Class MainUI
         CType(PortNumber, ComponentModel.ISupportInitialize).EndInit()
         GroupBox4.ResumeLayout(False)
         GroupBox4.PerformLayout()
+        CType(HTTPSPortNumber, ComponentModel.ISupportInitialize).EndInit()
         SettingsTabs.ResumeLayout(False)
         TabPage1.ResumeLayout(False)
         CType(SynthalinguaChan_IMG_2, ComponentModel.ISupportInitialize).EndInit()
@@ -2113,6 +2290,12 @@ Partial Class MainUI
         CType(EnThreshValue, ComponentModel.ISupportInitialize).EndInit()
         TabPage3.ResumeLayout(False)
         TabPage3.PerformLayout()
+        GroupBox12.ResumeLayout(False)
+        GroupBox12.PerformLayout()
+        CType(batchjobsize, ComponentModel.ISupportInitialize).EndInit()
+        CType(max_cpu_time, ComponentModel.ISupportInitialize).EndInit()
+        GroupBox11.ResumeLayout(False)
+        GroupBox11.PerformLayout()
         GroupBox9.ResumeLayout(False)
         GroupBox9.PerformLayout()
         GroupBox10.ResumeLayout(False)
@@ -2142,10 +2325,11 @@ Partial Class MainUI
         CType(KoFiPicture, ComponentModel.ISupportInitialize).EndInit()
         GroupBox6.ResumeLayout(False)
         GroupBox6.PerformLayout()
-        CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).EndInit()
         CType(demucs_model_jobs, ComponentModel.ISupportInitialize).EndInit()
         CType(SynthalinguaChan_IMG_1, ComponentModel.ISupportInitialize).EndInit()
         CType(SynthalinguaChan_IMG_10, ComponentModel.ISupportInitialize).EndInit()
+        CType(JetBrainsLogoImg, ComponentModel.ISupportInitialize).EndInit()
+        CType(GitHubSponsorPicture, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -2178,7 +2362,6 @@ Partial Class MainUI
     Friend WithEvents OpenScriptDiag As OpenFileDialog
     Friend WithEvents ConfigTextBox As TextBox
     Friend WithEvents GenerateConfigButton As Button
-    Friend WithEvents Label8 As Label
     Friend WithEvents SaveFileDialog As SaveFileDialog
     Friend WithEvents PortNumber As NumericUpDown
     Friend WithEvents WebServerButton As CheckBox
@@ -2212,8 +2395,6 @@ Partial Class MainUI
     Friend WithEvents WebLinkOG As Button
     Friend WithEvents Label15 As Label
     Friend WithEvents WebLinkT2 As Button
-    Friend WithEvents CookiesName As ComboBox
-    Friend WithEvents CookiesRefresh As Button
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents CheckBoxCMDBLock As CheckBox
     Friend WithEvents SubWindow As Button
@@ -2269,8 +2450,6 @@ Partial Class MainUI
     Friend WithEvents silent_duration_lbl As Label
     Friend WithEvents demucs_model As ComboBox
     Friend WithEvents WhatModelsBtn As Label
-    Friend WithEvents JetBrainsLogoImg As PictureBox
-    Friend WithEvents Label19 As Label
     Friend WithEvents compare_mode As CheckBox
     Friend WithEvents TabPage5 As TabPage
     Friend WithEvents GroupBox7 As GroupBox
@@ -2288,7 +2467,7 @@ Partial Class MainUI
     Friend WithEvents batchjobs_lbl As Label
     Friend WithEvents batchjobs As TrackBar
     Friend WithEvents timeout As NumericUpDown
-    Friend WithEvents Label22 As Label
+    Friend WithEvents TimeoutLabel As Label
     Friend WithEvents GroupBox9 As GroupBox
     Friend WithEvents subtype_embed As RadioButton
     Friend WithEvents subtype_burn As RadioButton
@@ -2313,5 +2492,24 @@ Partial Class MainUI
     Friend WithEvents DisableSynthalinguaChan As CheckBox
     Friend WithEvents SynthalinguaChan_IMG_9 As PictureBox
     Friend WithEvents SynthalinguaChan_IMG_10 As PictureBox
+    Friend WithEvents JetBrainsLogoImg As PictureBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents GitHubSponsorPicture As PictureBox
+    Friend WithEvents HTTPSPortNumber As NumericUpDown
+    Friend WithEvents Label28 As Label
+    Friend WithEvents ServerIP As MaskedTextBox
+    Friend WithEvents Label29 As Label
+    Friend WithEvents CookiesName As ComboBox
+    Friend WithEvents CookiesRefresh As Button
+    Friend WithEvents Label8 As Label
+    Friend WithEvents debugmode As CheckBox
+    Friend WithEvents GroupBox11 As GroupBox
+    Friend WithEvents BatchModeAuto As RadioButton
+    Friend WithEvents BatchModeManual As RadioButton
+    Friend WithEvents batchjobsize As NumericUpDown
+    Friend WithEvents ModelSizeInfoLblForCaptions As Label
+    Friend WithEvents max_cpu_time_label As Label
+    Friend WithEvents max_cpu_time As NumericUpDown
+    Friend WithEvents GroupBox12 As GroupBox
 
 End Class

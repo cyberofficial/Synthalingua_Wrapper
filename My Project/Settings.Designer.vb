@@ -905,6 +905,78 @@ Namespace My
                 Me("DisableSynthalinguaChan") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("2001")>  _
+        Public Property HTTPSPortNumber() As Integer
+            Get
+                Return CType(Me("HTTPSPortNumber"),Integer)
+            End Get
+            Set
+                Me("HTTPSPortNumber") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("127.000.000.1")>  _
+        Public Property ServerIP() As String
+            Get
+                Return CType(Me("ServerIP"),String)
+            End Get
+            Set
+                Me("ServerIP") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property BatchModeAuto() As Boolean
+            Get
+                Return CType(Me("BatchModeAuto"),Boolean)
+            End Get
+            Set
+                Me("BatchModeAuto") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property BatchModeManual() As Boolean
+            Get
+                Return CType(Me("BatchModeManual"),Boolean)
+            End Get
+            Set
+                Me("BatchModeManual") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("4")>  _
+        Public Property batchjobsize() As String
+            Get
+                Return CType(Me("batchjobsize"),String)
+            End Get
+            Set
+                Me("batchjobsize") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("300")>  _
+        Public Property max_cpu_time() As Integer
+            Get
+                Return CType(Me("max_cpu_time"),Integer)
+            End Get
+            Set
+                Me("max_cpu_time") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
