@@ -70,6 +70,9 @@ Public Class ConfigManager
                 ' Microphone Chunk Size
                 .mic_chunk_size = settings.mic_chunk_size.Value
 
+                ' Microphone ID
+                .MicrophoneID = settings.MicID.Value
+
                 ' Padded Audio
                 .paddedaudio = settings.paddedaudio.Checked
                 .paddedaudio_value = settings.paddedaudio_value.Value
@@ -244,6 +247,9 @@ Public Class ConfigManager
                 form.PhraseTimeout.Value = .PhraseTimeOut
                 form.PhraseTimeOutCheckbox.Checked = .PhraseTimeOutEnabled
                 form.mic_chunk_size.Value = .mic_chunk_size
+
+                ' Microphone ID
+                form.MicID.Value = .MicrophoneID
                 form.paddedaudio.Checked = .paddedaudio
                 form.paddedaudio_value.Value = .paddedaudio_value
                 form.WordBlockListLocation = .WordBlockListLocation
