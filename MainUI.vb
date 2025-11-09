@@ -688,15 +688,17 @@ Public Class MainUI
             Return
         End If
 
-        Try
-            If My.Settings.PrimaryFolder IsNot Nothing AndAlso My.Settings.PrimaryFolder <> "" Then
-                PrimaryFolder = My.Settings.PrimaryFolder
-            End If
-        Catch ex As Exception
-        End Try
+        ' Update PrimaryFolder from ScriptFileLocation first
+        PrimaryFolder = Path.GetDirectoryName(ScriptFileLocation.Text)
 
+        ' Then check settings as fallback only if PrimaryFolder is still empty
         If String.IsNullOrEmpty(PrimaryFolder) Then
-            PrimaryFolder = Path.GetDirectoryName(ScriptFileLocation.Text)
+            Try
+                If My.Settings.PrimaryFolder IsNot Nothing AndAlso My.Settings.PrimaryFolder <> "" Then
+                    PrimaryFolder = My.Settings.PrimaryFolder
+                End If
+            Catch ex As Exception
+            End Try
         End If
 
         If String.IsNullOrEmpty(PrimaryFolder) Then
@@ -722,9 +724,9 @@ Public Class MainUI
 
             ' Script execution command
             If ScriptFileLocation.Text.Contains(".py") Then
-                command.Append($"python ""{ScriptFileLocation.Text}"" --launchui --portnumber {PortNumber.Value} --debug")
+                command.Append($"python ""{ScriptFileLocation.Text}"" --launchui --portnumber {PortNumber.Value} {HTTPSPortNumber.Value} --debug")
             Else
-                command.Append($"""{ScriptFileLocation.Text}"" --launchui --portnumber {PortNumber.Value} --debug")
+                command.Append($"""{ScriptFileLocation.Text}"" --launchui --portnumber {PortNumber.Value} --https {HTTPSPortNumber.Value} --debug")
             End If
 
             ' Add model directory if set
