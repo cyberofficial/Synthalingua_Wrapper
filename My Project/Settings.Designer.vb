@@ -92,7 +92,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("2000")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("8000")>  _
         Public Property WebServerPort() As Integer
             Get
                 Return CType(Me("WebServerPort"),Integer)
@@ -908,7 +908,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("2001")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("8001")>  _
         Public Property HTTPSPortNumber() As Integer
             Get
                 Return CType(Me("HTTPSPortNumber"),Integer)

@@ -96,6 +96,8 @@ Partial Class MainUI
         MicCaliLbl = New Label()
         Energy_Threshold = New Label()
         TabPage3 = New TabPage()
+        Label22 = New Label()
+        LaunchWebUIBtn = New Button()
         GroupBox12 = New GroupBox()
         ModelSizeInfoLblForCaptions = New Label()
         max_cpu_time_label = New Label()
@@ -729,7 +731,7 @@ Partial Class MainUI
         PortNumber.Name = "PortNumber"
         PortNumber.Size = New Size(58, 23)
         PortNumber.TabIndex = 15
-        PortNumber.Value = New Decimal(New Integer() {2000, 0, 0, 0})
+        PortNumber.Value = New Decimal(New Integer() {8000, 0, 0, 0})
         ' 
         ' WebServerButton
         ' 
@@ -797,7 +799,7 @@ Partial Class MainUI
         HTTPSPortNumber.Name = "HTTPSPortNumber"
         HTTPSPortNumber.Size = New Size(58, 23)
         HTTPSPortNumber.TabIndex = 19
-        HTTPSPortNumber.Value = New Decimal(New Integer() {2001, 0, 0, 0})
+        HTTPSPortNumber.Value = New Decimal(New Integer() {8001, 0, 0, 0})
         ' 
         ' Label28
         ' 
@@ -1064,6 +1066,8 @@ Partial Class MainUI
         ' TabPage3
         ' 
         TabPage3.BackColor = Color.DarkSlateBlue
+        TabPage3.Controls.Add(Label22)
+        TabPage3.Controls.Add(LaunchWebUIBtn)
         TabPage3.Controls.Add(GroupBox12)
         TabPage3.Controls.Add(GroupBox11)
         TabPage3.Controls.Add(GroupBox9)
@@ -1095,6 +1099,26 @@ Partial Class MainUI
         TabPage3.Size = New Size(583, 545)
         TabPage3.TabIndex = 2
         TabPage3.Text = "Generate Captions"
+        ' 
+        ' Label22
+        ' 
+        Label22.AutoSize = True
+        Label22.Location = New Point(462, 281)
+        Label22.Name = "Label22"
+        Label22.Size = New Size(117, 60)
+        Label22.TabIndex = 29
+        Label22.Text = "The Web-UI is a" & vbCrLf & "seperate tool. Set the" & vbCrLf & "[HTTP] port number" & vbCrLf & "in Config Tab"
+        ' 
+        ' LaunchWebUIBtn
+        ' 
+        LaunchWebUIBtn.BackColor = Color.DarkSlateBlue
+        LaunchWebUIBtn.ForeColor = Color.FloralWhite
+        LaunchWebUIBtn.Location = New Point(409, 237)
+        LaunchWebUIBtn.Name = "LaunchWebUIBtn"
+        LaunchWebUIBtn.Size = New Size(168, 41)
+        LaunchWebUIBtn.TabIndex = 28
+        LaunchWebUIBtn.Text = "Launch Web UI"
+        LaunchWebUIBtn.UseVisualStyleBackColor = False
         ' 
         ' GroupBox12
         ' 
@@ -2511,5 +2535,7 @@ Partial Class MainUI
     Friend WithEvents max_cpu_time_label As Label
     Friend WithEvents max_cpu_time As NumericUpDown
     Friend WithEvents GroupBox12 As GroupBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents LaunchWebUIBtn As Button
 
 End Class
