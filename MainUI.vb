@@ -613,7 +613,7 @@ Public Class MainUI
             values.Add(value)
         Next
 
-        ServerIP.Text = String.Format("{0:000}.{1:000}.{2:000}.{3:000}", values(0), values(1), values(2), values(3))
+        'ServerIP.Text = String.Format("{0:000}.{1:000}.{2:000}.{3:000}", values(0), values(1), values(2), values(3))
     End Sub
 
     Private Sub ShowInvalidIpMessage()
@@ -722,9 +722,15 @@ Public Class MainUI
             command.AppendLine($"""{PrimaryFolder}\set_up_env.exe""")
             command.AppendLine($"call ""{PrimaryFolder}\ffmpeg_path.bat""")
 
+            ' if data_whisper\Scripts\activate.bat exists, then activate the virtual environment
+            Dim venvActivatePath As String = Path.Combine(PrimaryFolder, "data_whisper", "Scripts", "activate.bat")
+            If File.Exists(venvActivatePath) Then
+                command.AppendLine($"call ""{venvActivatePath}""")
+            End If
+
             ' Script execution command
             If ScriptFileLocation.Text.Contains(".py") Then
-                command.Append($"python ""{ScriptFileLocation.Text}"" --launchui --portnumber {PortNumber.Value} {HTTPSPortNumber.Value} --debug")
+                command.Append($"python ""{ScriptFileLocation.Text}"" --launchui --portnumber {PortNumber.Value} --https {HTTPSPortNumber.Value} --debug")
             Else
                 command.Append($"""{ScriptFileLocation.Text}"" --launchui --portnumber {PortNumber.Value} --https {HTTPSPortNumber.Value} --debug")
             End If
@@ -734,11 +740,21 @@ Public Class MainUI
                 command.Append($" --model_dir ""{modelDIr.Text}""")
             End If
 
+            ' Add Server IP
+            command.Append($" --serverip ""{ServerIP.Text}""")
+
+            ' Add CaptionsInput (--video_input) if the textbox is filled
+            If Not String.IsNullOrEmpty(CaptionsInput.Text) Then
+                command.Append($" --video_input ""{CaptionsInput.Text}""")
+            End If
+
+
             command.AppendLine()
             command.AppendLine()
             command.AppendLine("pause")
 
             File.WriteAllText(tmpBatFile, command.ToString())
+            ' SHow message box wi
             Process.Start(tmpBatFile)
         Catch ex As Exception
             MessageBox.Show($"Error launching Web UI: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

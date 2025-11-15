@@ -69,7 +69,6 @@ Partial Class MainUI
         WebServerButton = New CheckBox()
         Label10 = New Label()
         GroupBox4 = New GroupBox()
-        ServerIP = New MaskedTextBox()
         Label29 = New Label()
         HTTPSPortNumber = New NumericUpDown()
         Label28 = New Label()
@@ -203,6 +202,7 @@ Partial Class MainUI
         JetBrainsLogoImg = New PictureBox()
         Label19 = New Label()
         GitHubSponsorPicture = New PictureBox()
+        ServerIP = New TextBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -772,14 +772,6 @@ Partial Class MainUI
         GroupBox4.TabIndex = 18
         GroupBox4.TabStop = False
         GroupBox4.Text = "Web Server"
-        ' 
-        ' ServerIP
-        ' 
-        ServerIP.Location = New Point(219, 19)
-        ServerIP.Mask = "000.000.000.000"
-        ServerIP.Name = "ServerIP"
-        ServerIP.Size = New Size(122, 23)
-        ServerIP.TabIndex = 21
         ' 
         ' Label29
         ' 
@@ -2238,6 +2230,14 @@ Partial Class MainUI
         GitHubSponsorPicture.TabIndex = 46
         GitHubSponsorPicture.TabStop = False
         ' 
+        ' ServerIP
+        ' 
+        ServerIP.Location = New Point(212, 20)
+        ServerIP.Name = "ServerIP"
+        ServerIP.Size = New Size(129, 23)
+        ServerIP.TabIndex = 22
+        ServerIP.Text = "127.0.0.1"
+        ' 
         ' MainUI
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -2521,7 +2521,6 @@ Partial Class MainUI
     Friend WithEvents GitHubSponsorPicture As PictureBox
     Friend WithEvents HTTPSPortNumber As NumericUpDown
     Friend WithEvents Label28 As Label
-    Friend WithEvents ServerIP As MaskedTextBox
     Friend WithEvents Label29 As Label
     Friend WithEvents CookiesName As ComboBox
     Friend WithEvents CookiesRefresh As Button
@@ -2537,5 +2536,6 @@ Partial Class MainUI
     Friend WithEvents GroupBox12 As GroupBox
     Friend WithEvents Label22 As Label
     Friend WithEvents LaunchWebUIBtn As Button
+    Friend WithEvents ServerIP As TextBox
 
 End Class
