@@ -12,7 +12,7 @@
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="WebServerPort" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2000</Value>
+      <Value Profile="(Default)">8000</Value>
     </Setting>
     <Setting Name="WebServerEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -216,7 +216,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="HTTPSPortNumber" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2001</Value>
+      <Value Profile="(Default)">8001</Value>
     </Setting>
     <Setting Name="ServerIP" Type="System.String" Scope="User">
       <Value Profile="(Default)">127.000.000.1</Value>

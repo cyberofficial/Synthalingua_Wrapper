@@ -1,9 +1,14 @@
 ﻿Imports System.IO
 Imports System.Diagnostics
 Imports System.Threading
+Imports System.Text
+Imports System.ComponentModel
+Imports System.Security.Principal
 
 Public Class MainUI
+    <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
     Public Property PrimaryFolder As String
+    <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
     Public Property ShortCutType As String
     Private Shared appMutex As Mutex
     Private ReadOnly toolTipManager As ToolTipManager
@@ -29,6 +34,20 @@ Public Class MainUI
         AddHandler DisableSynthalinguaChan.MouseEnter, AddressOf DisableSynthalinguaChan_MouseEnter
         AddHandler DisableSynthalinguaChan.MouseLeave, AddressOf DisableSynthalinguaChan_MouseLeave
     End Sub
+
+    Private Function IsRunningAsAdmin() As Boolean
+        Dim identity = WindowsIdentity.GetCurrent()
+        Dim principal = New WindowsPrincipal(identity)
+        Return principal.IsInRole(WindowsBuiltInRole.Administrator)
+    End Function
+
+    Private Function ValidatePortNumber() As Boolean
+        If PortNumber.Value < 8000 AndAlso Not IsRunningAsAdmin() Then
+            MessageBox.Show("Port numbers below 8000 are reserved for Windows administrators. Please select a port number of 8000 or higher, or run the application as administrator.", "Port Number Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return False
+        End If
+        Return True
+    End Function
     ' Show legal notice on hover
     Private Sub JetBrainsLogoImg_MouseHover(sender As Object, e As EventArgs)
         ToolTip1.SetToolTip(JetBrainsLogoImg, JetBrainsLegalNotice)
@@ -81,6 +100,11 @@ Public Class MainUI
 
     <Obsolete>
     Private Sub GenerateConfigButton_Click(sender As Object, e As EventArgs) Handles GenerateConfigButton.Click
+        ' Validate port number
+        If Not ValidatePortNumber() Then
+            Exit Sub
+        End If
+
         ' Validate StreamLanguage and SecondaryTranslationLanguage
         If Not StreamLanguage.Items.Contains(StreamLanguage.Text) Then
             MessageBox.Show($"The language '{StreamLanguage.Text}' doesn't exist in the item list.", "Invalid Language", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -161,10 +185,10 @@ Public Class MainUI
             Return
         End If
 
-        If ScriptFileLocation.Text.Contains(" ") Then
-            MessageBox.Show("Please select a program file that does not have spaces in the file path.")
-            Return
-        End If
+        'If ScriptFileLocation.Text.Contains(" ") Then
+        '    MessageBox.Show("Please select a program file that does not have spaces in the file path.")
+        '    Return
+        'End If
 
         Try
             Dim tmpBatFile As String = Path.Combine(PrimaryFolder, "tmp.bat")
@@ -589,7 +613,7 @@ Public Class MainUI
             values.Add(value)
         Next
 
-        ServerIP.Text = String.Format("{0:000}.{1:000}.{2:000}.{3:000}", values(0), values(1), values(2), values(3))
+        'ServerIP.Text = String.Format("{0:000}.{1:000}.{2:000}.{3:000}", values(0), values(1), values(2), values(3))
     End Sub
 
     Private Sub ShowInvalidIpMessage()
@@ -651,5 +675,89 @@ Public Class MainUI
             "Note: Failed jobs will automatically retry at the end of other operations, so work will continue." & vbCrLf & vbCrLf &
             "Note: This setting only affects file processing modes and does not apply to real-time streaming or microphone input."
         MessageBox.Show(info, "Timeout Explanation", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub LaunchWebUIBtn_Click(sender As Object, e As EventArgs) Handles LaunchWebUIBtn.Click
+        ' Validate port number
+        If Not ValidatePortNumber() Then
+            Return
+        End If
+
+        If String.IsNullOrEmpty(ScriptFileLocation.Text) Then
+            MessageBox.Show("Please select the program file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        ' Update PrimaryFolder from ScriptFileLocation first
+        PrimaryFolder = Path.GetDirectoryName(ScriptFileLocation.Text)
+
+        ' Then check settings as fallback only if PrimaryFolder is still empty
+        If String.IsNullOrEmpty(PrimaryFolder) Then
+            Try
+                If My.Settings.PrimaryFolder IsNot Nothing AndAlso My.Settings.PrimaryFolder <> "" Then
+                    PrimaryFolder = My.Settings.PrimaryFolder
+                End If
+            Catch ex As Exception
+            End Try
+        End If
+
+        If String.IsNullOrEmpty(PrimaryFolder) Then
+            MessageBox.Show("Primary folder is not set.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        Try
+            Dim tmpBatFile As String = Path.Combine(PrimaryFolder, "tmp_webui.bat")
+            Dim command As New StringBuilder()
+
+            ' Basic setup
+            command.AppendLine("chcp 65001")
+            command.AppendLine("set PYTHONIOENCODING=utf-8")
+            command.AppendLine("SET TORCHAUDIO_USE_BACKEND_DISPATCHER=1")
+            command.AppendLine("SET TORIO_USE_FFMPEG=0")
+            command.AppendLine()
+            command.AppendLine("cls")
+            command.AppendLine("@echo off")
+            command.AppendLine("Echo Loading Script")
+            command.AppendLine($"""{PrimaryFolder}\set_up_env.exe""")
+            command.AppendLine($"call ""{PrimaryFolder}\ffmpeg_path.bat""")
+
+            ' if data_whisper\Scripts\activate.bat exists, then activate the virtual environment
+            Dim venvActivatePath As String = Path.Combine(PrimaryFolder, "data_whisper", "Scripts", "activate.bat")
+            If File.Exists(venvActivatePath) Then
+                command.AppendLine($"call ""{venvActivatePath}""")
+            End If
+
+            ' Script execution command
+            If ScriptFileLocation.Text.Contains(".py") Then
+                command.Append($"python ""{ScriptFileLocation.Text}"" --launchui --portnumber {PortNumber.Value} --https {HTTPSPortNumber.Value} --debug")
+            Else
+                command.Append($"""{ScriptFileLocation.Text}"" --launchui --portnumber {PortNumber.Value} --https {HTTPSPortNumber.Value} --debug")
+            End If
+
+            ' Add model directory if set
+            If Not String.IsNullOrEmpty(modelDIr.Text) Then
+                command.Append($" --model_dir ""{modelDIr.Text}""")
+            End If
+
+            ' Add Server IP
+            command.Append($" --serverip ""{ServerIP.Text}""")
+
+            ' Add CaptionsInput (--video_input) if the textbox is filled
+            If Not String.IsNullOrEmpty(CaptionsInput.Text) Then
+                command.Append($" --video_input ""{CaptionsInput.Text}""")
+            End If
+
+
+            command.AppendLine()
+            command.AppendLine()
+            command.AppendLine("pause")
+
+            File.WriteAllText(tmpBatFile, command.ToString())
+            ' SHow message box wi
+            Process.Start(tmpBatFile)
+        Catch ex As Exception
+            MessageBox.Show($"Error launching Web UI: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 End Class
