@@ -219,7 +219,7 @@
       <Value Profile="(Default)">8001</Value>
     </Setting>
     <Setting Name="ServerIP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">127.000.000.1</Value>
+      <Value Profile="(Default)">127.0.0.1</Value>
     </Setting>
     <Setting Name="BatchModeAuto" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

@@ -917,19 +917,19 @@ Namespace My
                 Me("HTTPSPortNumber") = value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("127.000.000.1")>  _
+
+        <Global.System.Configuration.UserScopedSettingAttribute(),
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),
+         Global.System.Configuration.DefaultSettingValueAttribute("127.0.0.1")>
         Public Property ServerIP() As String
             Get
-                Return CType(Me("ServerIP"),String)
+                Return CType(Me("ServerIP"), String)
             End Get
             Set
-                Me("ServerIP") = value
+                Me("ServerIP") = Value
             End Set
         End Property
-        
+
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
