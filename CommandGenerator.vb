@@ -174,8 +174,13 @@ Public Class CommandGenerator
             builder.Append($"--{prefix}translate ")
         End If
         If settings.SecondaryTranslation.Checked Then
-            ' builder.Append($"--{prefix}transcribe ")
-            builder.Append($"--{prefix}transcribe {settings.SecondaryTranslationLanguage.Text} ")
+            If settings.HSL_RadioButton.Checked Then
+                ' Stream mode: --stream_transcribe accepts optional language value directly
+                builder.Append($"--stream_transcribe {settings.SecondaryTranslationLanguage.Text} ")
+            Else
+                ' Mic/Cap mode: --transcribe is a boolean flag; language goes in --target_language
+                builder.Append($"--transcribe --target_language {settings.SecondaryTranslationLanguage.Text} ")
+            End If
         End If
     End Sub
 

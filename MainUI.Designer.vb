@@ -69,6 +69,7 @@ Partial Class MainUI
         WebServerButton = New CheckBox()
         Label10 = New Label()
         GroupBox4 = New GroupBox()
+        ServerIP = New TextBox()
         Label29 = New Label()
         HTTPSPortNumber = New NumericUpDown()
         Label28 = New Label()
@@ -202,7 +203,6 @@ Partial Class MainUI
         JetBrainsLogoImg = New PictureBox()
         Label19 = New Label()
         GitHubSponsorPicture = New PictureBox()
-        ServerIP = New TextBox()
         GroupBox1.SuspendLayout()
         GroupBox2.SuspendLayout()
         GroupBox7.SuspendLayout()
@@ -772,6 +772,14 @@ Partial Class MainUI
         GroupBox4.TabIndex = 18
         GroupBox4.TabStop = False
         GroupBox4.Text = "Web Server"
+        ' 
+        ' ServerIP
+        ' 
+        ServerIP.Location = New Point(212, 20)
+        ServerIP.Name = "ServerIP"
+        ServerIP.Size = New Size(129, 23)
+        ServerIP.TabIndex = 22
+        ServerIP.Text = "127.0.0.1"
         ' 
         ' Label29
         ' 
@@ -2229,14 +2237,6 @@ Partial Class MainUI
         GitHubSponsorPicture.SizeMode = PictureBoxSizeMode.Zoom
         GitHubSponsorPicture.TabIndex = 46
         GitHubSponsorPicture.TabStop = False
-        ' 
-        ' ServerIP
-        ' 
-        ServerIP.Location = New Point(212, 20)
-        ServerIP.Name = "ServerIP"
-        ServerIP.Size = New Size(129, 23)
-        ServerIP.TabIndex = 22
-        ServerIP.Text = "127.0.0.1"
         ' 
         ' MainUI
         ' 
